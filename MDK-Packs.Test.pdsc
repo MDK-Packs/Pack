@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package schemaVersion="1.4" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="Utilities/PACK.xsd">
+  <name>Test</name>
+  <description>Test Pack</description>
+  <vendor>MDK-Packs</vendor>
+  <url>https://github.com/MDK-Packs/raw/master/</url>
+  <license>LICENSE.txt</license>
+
+  <releases>
+    <release version="1.0.0">
+      Initial release
+    </release>
+  </releases>
+</package>
