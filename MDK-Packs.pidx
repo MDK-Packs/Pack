@@ -4,6 +4,7 @@
   <url>https://raw.githubusercontent.com/MDK-Packs/Pack/</url>
   <timestamp>2018-01-23T12:00:10.7300074+00:00</timestamp>
   <pindex>
-    <pdsc url="https://raw.githubusercontent.com/MDK-Packs/Pack/" vendor="MDK-Packs" name="AWS_IoT_Device" version="1.0.0"/>
+    <pdsc url="https://github.com/MDK-Packs/Pack/raw/master/" vendor="MDK-Packs" name="AWS_IoT_Device" version="1.0.0"/>
+    <pdsc url="https://github.com/MDK-Packs/Pack/raw/master/" vendor="MDK-Packs" name="Test" version="1.0.0"/>
   </pindex>
 </index>
