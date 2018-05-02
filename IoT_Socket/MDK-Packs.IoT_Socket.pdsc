@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package schemaVersion="1.4" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd">
+  <vendor>MDK-Packs</vendor>
+  <name>IoT_Socket</name>
+  <description>Simple IP Socket (BSD like)</description>
+  <!-- web download link -->
+  <url>https://github.com/MDK-Packs/pack/</url>
+  <releases>
+    <release version="1.0.0">
+      Initial release
+    </release>
+  </releases>
+  <apis>
+    <api Cclass="IoT Utility" Cgroup="Socket" Capiversion="1.0.0" exclusive="1">
+      <description>Simple IP Socket interface</description>
+      <files>
+        <file category="header" name="include/iot_socket.h"/>
+      </files>
+    </api>
+  </apis>
+  <conditions>
+    <condition id="Cortex-M Device">
+      <description>Cortex-M processor based device: Cortex-M0, Cortex-M0+, Cortex-M3, Cortex-M4, Cortex-M7, Cortex-M23, Cortex-M33, SC000 or SC3000</description>
+      <accept Dcore="Cortex-M0"/>
+      <accept Dcore="Cortex-M0+"/>
+      <accept Dcore="Cortex-M3"/>
+      <accept Dcore="Cortex-M4"/>
+      <accept Dcore="Cortex-M7"/>
+      <accept Dcore="Cortex-M23"/>
+      <accept Dcore="Cortex-M33"/>
+      <accept Dcore="ARMV8MBL"/>
+      <accept Dcore="ARMV8MML"/>
+      <accept Dcore="SC000"/>
+      <accept Dcore="SC300"/>
+    </condition>
+    <condition id="IoT Client MDK Network">
+      <description>IoT Client MDK Network component</description>
+      <require condition="Cortex-M Device"/>
+      <require Cclass="CMSIS" Cgroup="CORE" Cversion="5.0.1"/>
+      <require Cclass="CMSIS" Cgroup="RTOS2"/>
+      <require Cbundle="MDK-Pro" Cclass="Network" Cgroup="Socket"  Csub="BSD"        Cversion="7.4.0"/>
+      <require Cbundle="MDK-Pro" Cclass="Network" Cgroup="Service" Csub="DNS Client" Cversion="7.4.0"/>
+    </condition>
+  </conditions>
+  <components>
+    <component Cclass="IoT Utility" Cgroup="Socket" Csub="MDK Network" Capiversion="1.0.0" Cversion="1.0.0" condition="IoT Client MDK Network">
+      <description>IoT Socket implementation with MDK::Network</description>
+      <RTE_Components_h>
+        <!-- the following content goes into file 'RTE_Components.h' -->
+        #define RTE_IoT_Socket                  /* IoT Socket */
+        #define RTE_IoT_Socket_MDK_Network      /* IoT Socket: MDK::Network */
+      </RTE_Components_h>
+      <files>
+        <file category="source"  name="source/mdk_network/iot_socket.c"/>
+      </files>
+    </component>
+  </components>
+</package>
