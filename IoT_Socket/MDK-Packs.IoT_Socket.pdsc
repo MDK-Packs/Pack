@@ -4,7 +4,7 @@
   <name>IoT_Socket</name>
   <description>Simple IP Socket (BSD like)</description>
   <!-- web download link -->
-  <url>https://github.com/MDK-Packs/pack/</url>
+  <url>https://github.com/MDK-Packs/Pack/raw/master/IoT_Socket/</url>
   <license>LICENSE.txt</license>
 
   <releases>
