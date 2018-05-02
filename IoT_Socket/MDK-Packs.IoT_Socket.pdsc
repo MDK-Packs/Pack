@@ -5,6 +5,8 @@
   <description>Simple IP Socket (BSD like)</description>
   <!-- web download link -->
   <url>https://github.com/MDK-Packs/pack/</url>
+  <license>LICENSE.txt</license>
+
   <releases>
     <release version="1.0.0">
       Initial release
