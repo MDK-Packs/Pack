@@ -5,7 +5,7 @@
   <description>Embedded MQTT C/C++ Client Libraries</description>
   <!-- web download link -->
   <url>https://github.com/MDK-Packs/Pack/raw/master/Paho_MQTT/</url>
-  <license>edl-v10</license>
+  <license>edl-v10.txt</license>
   
   <releases>
     <release version="1.0.0">
