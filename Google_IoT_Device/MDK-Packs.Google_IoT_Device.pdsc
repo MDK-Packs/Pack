@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package schemaVersion="1.4" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd">
+  <vendor>MDK-Packs</vendor>
+  <name>Google_IoT_Device</name>
+  <description>Google Cloud IoT Device Connector</description>
+  <!-- web download link -->
+  <url>https://github.com/MDK-Packs/Pack/raw/master/Google_IoT_Device/</url>
+  <license>LICENSE.txt</license>
+
+  <releases>
+    <release version="1.0.0">
+      Initial release
+    </release>
+  </releases>
+  <requirements>
+    <packages>
+      <package vendor="ARM"       name="mbedTLS"   version="1.3.1-0"/>
+      <package vendor="MDK-Packs" name="Paho_MQTT" version="1.0.0-0"/>
+    </packages>
+  </requirements>
+  <conditions>
+    <condition id="Cortex-M Device">
+      <description>Cortex-M processor based device: Cortex-M0, Cortex-M0+, Cortex-M3, Cortex-M4, Cortex-M7, Cortex-M23, Cortex-M33, SC000 or SC3000</description>
+      <accept Dcore="Cortex-M0"/>
+      <accept Dcore="Cortex-M0+"/>
+      <accept Dcore="Cortex-M3"/>
+      <accept Dcore="Cortex-M4"/>
+      <accept Dcore="Cortex-M7"/>
+      <accept Dcore="Cortex-M23"/>
+      <accept Dcore="Cortex-M33"/>
+      <accept Dcore="ARMV8MBL"/>
+      <accept Dcore="ARMV8MML"/>
+      <accept Dcore="SC000"/>
+      <accept Dcore="SC300"/>
+    </condition>
+    <condition id="Google IoT Client">
+      <description>Google IoT Client component</description>
+      <require condition="Cortex-M Device"/>
+      <require Cclass="Security" Cgroup="mbed TLS"/>
+      <require Cclass="IoT Client" Cgroup="MQTTClient-C"/>
+    </condition>
+  </conditions>
+  <components>
+    <component Cclass="IoT Client" Cgroup="Google" Cversion="1.0.0" condition="Google IoT Client">
+      <description>Google Cloud IoT Device Client</description>
+      <RTE_Components_h>
+        <!-- the following content goes into file 'RTE_Components.h' -->
+        #define RTE_IoT_Client_Google           /* Google IoT Client */
+      </RTE_Components_h>
+      <files>
+        <file category="doc"     name="doc/Google_IoT_MDK.html"/>
+        <file category="header"  name="include/google_iot.h"/>
+        <file category="source"  name="source/google_iot.c"/>
+        <file category="source"  name="template/demo.c" attr="template" select="Simple Demo"/>
+        <file category="source"  name="template/pkey.h" attr="template" select="Device Private Key"/>
+      </files>
+    </component>
+  </components>
+</package>
