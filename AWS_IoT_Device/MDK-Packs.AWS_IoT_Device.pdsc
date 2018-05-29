@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package schemaVersion="1.4" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd">
+  <vendor>MDK-Packs</vendor>
+  <name>AWS_IoT_Device</name>
+  <description>SDK for connecting to AWS IoT from a device using embedded C</description>
+  <!-- web download link -->
+  <url>https://github.com/MDK-Packs/Pack/raw/master/AWS_IoT_Device/</url>
+  <license>LICENSE.txt</license>
+  <releases>
+    <release version="1.0.0" date="2018-05-29">
+      Initial release based on aws-iot-device-sdk-embedded-C v3.0.1
+    </release>
+  </releases>
+  <requirements>
+    <packages>
+      <package vendor="ARM" name="mbedTLS" version="1.5.0-0"/>
+    </packages>
+  </requirements>
+  <conditions>
+    <condition id="Cortex-M Device">
+      <description>Cortex-M processor based device: Cortex-M0, Cortex-M0+, Cortex-M3, Cortex-M4, Cortex-M7, Cortex-M23, Cortex-M33, SC000 or SC3000</description>
+      <accept Dcore="Cortex-M0"/>
+      <accept Dcore="Cortex-M0+"/>
+      <accept Dcore="Cortex-M3"/>
+      <accept Dcore="Cortex-M4"/>
+      <accept Dcore="Cortex-M7"/>
+      <accept Dcore="Cortex-M23"/>
+      <accept Dcore="Cortex-M33"/>
+      <accept Dcore="ARMV8MBL"/>
+      <accept Dcore="ARMV8MML"/>
+      <accept Dcore="SC000"/>
+      <accept Dcore="SC300"/>
+    </condition>
+    <condition id="MDK-Pro Socket">
+      <description>MDK-Pro Socket component</description>
+      <require Cbundle="MDK-Pro" Cclass="Network" Cgroup="Socket"  Csub="BSD"        Cversion="7.9.0"/>
+      <require Cbundle="MDK-Pro" Cclass="Network" Cgroup="Service" Csub="DNS Client" Cversion="7.9.0"/>
+    </condition>
+    <condition id="Network Socket">
+      <description>Network Socket component</description>
+      <accept  condition="MDK-Pro Socket"/>
+      <accept  Cclass="IoT Utility" Cgroup="Socket" Capiversion="1.0.0"/>
+    </condition>
+    <condition id="AWS IoT Client">
+      <description>AWS IoT Client component</description>
+      <require condition="Cortex-M Device"/>
+      <require Cclass="CMSIS" Cgroup="CORE" Cversion="5.0.1"/>
+      <require Cclass="CMSIS" Cgroup="RTOS2"/>
+      <require Cclass="Security" Cgroup="mbed TLS"/>
+      <require condition="Network Socket"/>
+    </condition>
+  </conditions>
+  <components>
+    <component Cclass="IoT Client" Cgroup="AWS" Cversion="3.0.1" condition="AWS IoT Client">
+      <description>AWS IoT Device Client</description>
+      <RTE_Components_h>
+        <!-- the following content goes into file 'RTE_Components.h' -->
+        #define RTE_IoT_Client_AWS              /* AWS IoT Client */
+      </RTE_Components_h>
+      <files>
+        <file category="doc"     name="doc/AWS_IoT_MDK.html"/>
+        <file category="header"  name="config/aws_iot_config.h" attr="config" version="1.0.0"/>
+        <file category="include" name="include/"/>
+        <file category="header"  name="include/aws_certificates.h"/>
+        <file category="header"  name="include/aws_iot_log.h"/>
+        <file category="header"  name="include/aws_iot_jobs_interface.h"/>
+        <file category="header"  name="include/aws_iot_mqtt_client_interface.h"/>
+        <file category="header"  name="include/aws_iot_shadow_interface.h"/>
+        <file category="header"  name="include/aws_iot_version.h"/>
+        <file category="source"  name="src/aws_iot_jobs_interface.c"/>
+        <file category="source"  name="src/aws_iot_jobs_json.c"/>
+        <file category="source"  name="src/aws_iot_jobs_topics.c"/>
+        <file category="source"  name="src/aws_iot_jobs_types.c"/>
+        <file category="source"  name="src/aws_iot_json_utils.c"/>
+        <file category="source"  name="src/aws_iot_mqtt_client.c"/>
+        <file category="source"  name="src/aws_iot_mqtt_client_common_internal.c"/>
+        <file category="source"  name="src/aws_iot_mqtt_client_connect.c"/>
+        <file category="source"  name="src/aws_iot_mqtt_client_publish.c"/>
+        <file category="source"  name="src/aws_iot_mqtt_client_subscribe.c"/>
+        <file category="source"  name="src/aws_iot_mqtt_client_unsubscribe.c"/>
+        <file category="source"  name="src/aws_iot_mqtt_client_yield.c"/>
+        <file category="source"  name="src/aws_iot_shadow.c"/>
+        <file category="source"  name="src/aws_iot_shadow_actions.c"/>
+        <file category="source"  name="src/aws_iot_shadow_json.c"/>
+        <file category="source"  name="src/aws_iot_shadow_records.c"/>
+        <file category="include" name="external_libs/jsmn/"/>
+        <file category="source"  name="external_libs/jsmn/jsmn.c"/>
+        <file category="include" name="platform/mdk/common/"/>
+        <file category="source"  name="platform/mdk/common/timer.c"/>
+        <file category="include" name="platform/mdk/mbedtls/"/>
+        <file category="source"  name="platform/mdk/mbedtls/network_mbedtls_wrapper.c"/>
+        <file category="include" name="platform/mdk/pthread/"/>
+        <file category="source"  name="platform/mdk/pthread/threads_pthread_wrapper.c"/>
+        <file category="source"  name="samples/mdk/aws_certificates.c"          attr="template" select="Certificates"/>
+        <file category="source"  name="samples/mdk/subscribe_publish_sample.c"  attr="template" select="Subscribe and publish"/>
+        <file category="source"  name="samples/mdk/shadow_sample.c"             attr="template" select="Shadow"/>
+        <file category="source"  name="samples/mdk/shadow_console_echo.c"       attr="template" select="Shadow (console echo)"/>
+        <file category="source"  name="samples/mdk/jobs_sample.c"               attr="template" select="Jobs"/>
+      </files>
+    </component>
+  </components>
+</package>
