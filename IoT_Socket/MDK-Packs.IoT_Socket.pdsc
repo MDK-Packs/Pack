@@ -6,9 +6,8 @@
   <!-- web download link -->
   <url>https://github.com/MDK-Packs/Pack/raw/master/IoT_Socket/</url>
   <license>LICENSE.txt</license>
-
   <releases>
-    <release version="1.0.0">
+    <release version="1.0.0" date="2018-05-28">
       Initial release
     </release>
   </releases>
@@ -40,8 +39,8 @@
       <require condition="Cortex-M Device"/>
       <require Cclass="CMSIS" Cgroup="CORE" Cversion="5.0.1"/>
       <require Cclass="CMSIS" Cgroup="RTOS2"/>
-      <require Cbundle="MDK-Pro" Cclass="Network" Cgroup="Socket"  Csub="BSD"        Cversion="7.4.0"/>
-      <require Cbundle="MDK-Pro" Cclass="Network" Cgroup="Service" Csub="DNS Client" Cversion="7.4.0"/>
+      <require Cbundle="MDK-Pro" Cclass="Network" Cgroup="Socket"  Csub="BSD"        Cversion="7.9.0"/>
+      <require Cbundle="MDK-Pro" Cclass="Network" Cgroup="Service" Csub="DNS Client" Cversion="7.9.0"/>
     </condition>
   </conditions>
   <components>
