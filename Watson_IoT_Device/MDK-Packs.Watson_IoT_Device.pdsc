@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package schemaVersion="1.4" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd">
+  <vendor>MDK-Packs</vendor>
+  <name>Watson_IoT_Device</name>
+  <description>Client libraries and samples for connecting to IBM Watson IoT using Embedded C</description>
+  <!-- web download link -->
+  <url>https://github.com/MDK-Packs/Pack/raw/master/Watson_IoT_Device/</url>
+  <license>LICENSE.txt</license>
+  <releases>
+    <release version="1.0.0" date="2018-05-29">
+      Initial release based on ibm-watson-iot/iot-embeddedc 2018-01-24 (30f4ffb)
+    </release>
+  </releases>
+  <requirements>
+    <packages>
+      <package vendor="ARM"       name="mbedTLS"   version="1.5.0-0"/>
+      <package vendor="MDK-Packs" name="Paho_MQTT" version="1.0.0-0"/>
+    </packages>
+  </requirements>
+  <conditions>
+    <condition id="Cortex-M Device">
+      <description>Cortex-M processor based device: Cortex-M0, Cortex-M0+, Cortex-M3, Cortex-M4, Cortex-M7, Cortex-M23, Cortex-M33, SC000 or SC3000</description>
+      <accept Dcore="Cortex-M0"/>
+      <accept Dcore="Cortex-M0+"/>
+      <accept Dcore="Cortex-M3"/>
+      <accept Dcore="Cortex-M4"/>
+      <accept Dcore="Cortex-M7"/>
+      <accept Dcore="Cortex-M23"/>
+      <accept Dcore="Cortex-M33"/>
+      <accept Dcore="ARMV8MBL"/>
+      <accept Dcore="ARMV8MML"/>
+      <accept Dcore="SC000"/>
+      <accept Dcore="SC300"/>
+    </condition>
+    <condition id="Watson IoT Client">
+      <description>Watson IoT Client component</description>
+      <require condition="Cortex-M Device"/>
+      <require Cclass="CMSIS" Cgroup="CORE" Cversion="5.0.1"/>
+      <require Cclass="CMSIS" Cgroup="RTOS2"/>
+      <require Cclass="Security" Cgroup="mbed TLS"/>
+      <require Cclass="IoT Utility" Cgroup="Socket" Capiversion="1.0.0"/>
+      <require Cclass="IoT Utility" Cgroup="MQTTPacket"/>
+      <require Cclass="Data Exchange" Cgroup="JSON" Csub="cJSON"/>
+    </condition>
+  </conditions>
+  <components>
+    <component Cclass="IoT Client" Cgroup="Watson" Cversion="1.0.0" condition="Watson IoT Client">
+      <description>IBM Watson Cloud IoT Device Client</description>
+      <RTE_Components_h>
+        <!-- the following content goes into file 'RTE_Components.h' -->
+        #define RTE_IoT_Client_Watson           /* Watson IoT Client */
+        #define MQTTCLIENT_PLATFORM_HEADER      iotf_network_tls_wrapper.h
+      </RTE_Components_h>
+      <files>
+        <file category="doc"     name="doc/Watson_IoT_MDK.html"/>
+        <file category="header"  name="src/deviceclient.h"/>
+        <file category="source"  name="src/deviceclient.c"/>
+        <file category="header"  name="src/devicemanagementclient.h"/>
+        <file category="source"  name="src/devicemanagementclient.c"/>
+        <file category="header"  name="src/gatewayclient.h"/>
+        <file category="source"  name="src/gatewayclient.c"/>
+        <file category="source"  name="src/iotf_network_tls_wrapper.c"/>
+        <file category="source"  name="src/iotf_utils.c"/>
+        <file category="source"  name="src/iotfclient.c"/>
+        <file category="source"  name="config/iotf_env.c"                     attr="config" version="1.0.0"/>
+        <file category="source"  name="samples/mdk/helloWorld.c"              attr="template" select="Hello World"/>
+        <file category="source"  name="samples/mdk/sampleDevice.c"            attr="template" select="Device"/>
+        <file category="source"  name="samples/mdk/sampleDeviceManagement.c"  attr="template" select="Device Management"/>
+        <file category="source"  name="samples/mdk/sampleDMActions.c"         attr="template" select="Device Management Actions"/>
+        <file category="source"  name="samples/mdk/sampleDMFirmwareActions.c" attr="template" select="Device Management Firmware Actions"/>
+        <file category="source"  name="samples/mdk/sampleGateway.c"           attr="template" select="Gateway"/>
+      </files>
+    </component>
+  </components>
+</package>
