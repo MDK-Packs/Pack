@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package schemaVersion="1.4" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd">
+  <vendor>MDK-Packs</vendor>
+  <name>QCA400x_Host_Driver_SDK</name>
+  <description>Qualcomm QCA4002/4 Host Driver SDK</description>
+  <!-- web download link -->
+  <url>https://github.com/MDK-Packs/Pack/raw/master/QCA400x_Host_Driver_SDK/</url>
+  <license>license_terms.txt</license>
+  <releases>
+    <release version="1.0.0-beta">
+      Beta release based on Qualcomm QCA4002/4 Host Driver SDK v3.3.6
+    </release>
+  </releases>
+  <conditions>
+    <condition id="CMSIS_RTOS2 CMSIS_Driver_SPI">
+      <description>QCA400x SDK component requires CMSIS RTOS2 and CMSIS SPI Driver</description>
+      <require Cclass="CMSIS"        Cgroup="RTOS2"/>
+      <require Cclass="CMSIS Driver" Cgroup="SPI"  />
+    </condition>
+  </conditions>
+  <components>
+    <component Cclass="Qualcomm" Cgroup="QCA400x" Csub="Host Driver SDK" Cvariant="SPI" Cversion="1.0.0-beta" condition="CMSIS_RTOS2 CMSIS_Driver_SPI">
+      <description>Qualcomm QCA400x Host Driver SDK (SPI)</description>
+      <RTE_Components_h>
+        <!-- the following content goes into file 'RTE_Components.h' -->
+        #define RTE_QCA400X_Host_Driver_SDK_SPI /* QCA400x Host Driver SDK (SPI) */
+      </RTE_Components_h>
+      <files>
+        <!-- SDK port files -->
+        <file category="header"  name="port/config/QCA400x_Config.h" attr="config" version="1.0.0"/>
+        <file category="source"  name="port/config/QCA400x_HW.c"     attr="config" version="1.0.0"/>
+        <file category="header"  name="port/QCA400x.h"/>
+        <file category="source"  name="port/dns/qcom_dns.c"/>
+
+        <!-- include -->
+        <file category="header"  name="atheros_wifi/atheros_stack_offload.h"/>
+        <file category="header"  name="atheros_wifi/atheros_wifi.h"/>
+        <file category="header"  name="atheros_wifi/qcom_api.h"/>
+        <file category="include" name="atheros_wifi/include/"/>
+        <file category="include" name="atheros_wifi/include/AR6002/"/>
+
+        <!-- atheros_wifi: common -->
+        <file category="include" name="atheros_wifi/common_src/include/"/>
+
+        <file category="source"  name="atheros_wifi/common_src/api_interface/api_init.c"/>
+        <file category="source"  name="atheros_wifi/common_src/api_interface/api_ioctl.c"/>
+        <file category="source"  name="atheros_wifi/common_src/api_interface/api_txrx.c"/>
+        <file category="source"  name="atheros_wifi/common_src/api_interface/api_wmi_rx.c"/>
+
+        <file category="source"  name="atheros_wifi/common_src/bmi/bmi.c"/>
+
+        <file category="source"  name="atheros_wifi/common_src/driver/driver_diag.c"/>
+        <file category="source"  name="atheros_wifi/common_src/driver/driver_init.c"/>
+        <file category="source"  name="atheros_wifi/common_src/driver/driver_main.c"/>
+        <file category="source"  name="atheros_wifi/common_src/driver/driver_netbuf.c"/>
+        <file category="source"  name="atheros_wifi/common_src/driver/driver_txrx.c"/>
+
+        <file category="include" name="atheros_wifi/common_src/hcd/"/>
+        <file category="source"  name="atheros_wifi/common_src/hcd/spi_hcd.c"/>
+
+        <file category="source"  name="atheros_wifi/common_src/htc/htc.c"/>
+
+        <file category="source"  name="atheros_wifi/common_src/hw_interface/hw_api.c"/>
+
+        <file category="source"  name="atheros_wifi/common_src/qapi/qcom_api.c"/>
+        
+        <file category="source"  name="atheros_wifi/common_src/reorder/rcv_aggr.c"/>
+
+        <file category="include" name="atheros_wifi/common_src/stack_common/"/>
+        <file category="source"  name="atheros_wifi/common_src/stack_common/api_stack_offload.c"/>
+
+        <file category="source"  name="atheros_wifi/common_src/storerecall/dset.c"/>
+        <file category="source"  name="atheros_wifi/common_src/storerecall/dset_api.c"/>
+        <file category="source"  name="atheros_wifi/common_src/storerecall/storerecall.c"/>
+
+        <file category="source"  name="atheros_wifi/common_src/util/util.c"/>
+
+        <file category="include" name="atheros_wifi/common_src/wmi/"/>
+        <file category="source"  name="atheros_wifi/common_src/wmi/wmi.c"/>
+
+        <!-- atheros_wifi: custom -->
+        <file category="include" name="atheros_wifi/custom_src/include/"/>
+        <file category="header"  name="atheros_wifi/custom_src/include/config/a_config.h" attr="config" version="1.0.0"/>
+
+        <file category="source"  name="atheros_wifi/custom_src/api_interface/cust_api_init.c"/>
+        <file category="source"  name="atheros_wifi/custom_src/api_interface/cust_api_ioctl.c"/>
+        <file category="source"  name="atheros_wifi/custom_src/api_interface/cust_api_txrx.c"/>
+        <file category="source"  name="atheros_wifi/custom_src/api_interface/cust_api_wmi_rx.c"/>
+
+        <file category="source"  name="atheros_wifi/custom_src/driver/cust_driver_main.c"/>
+        <file category="source"  name="atheros_wifi/custom_src/driver/cust_driver_netbuf.c"/>
+
+        <file category="source"  name="atheros_wifi/custom_src/hw_interface/cust_spi_hcd.c"/>
+
+        <file category="source"  name="atheros_wifi/custom_src/osal/osal.c"/>
+
+        <file category="source"  name="atheros_wifi/custom_src/qapi/custom_qcom_api.c"/>
+
+        <file category="include" name="atheros_wifi/custom_src/stack_custom/"/>
+        <file category="source"  name="atheros_wifi/custom_src/stack_custom/cust_api_stack_offload.c"/>
+        <file category="source"  name="atheros_wifi/custom_src/stack_custom/cust_api_stack_txrx.c"/>
+      </files>
+    </component>
+  </components>
+</package>
