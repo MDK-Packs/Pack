@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<package schemaVersion="1.4" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd">
+<package schemaVersion="1.6" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd">
   <vendor>MDK-Packs</vendor>
   <name>AWS_IoT_Device</name>
   <description>SDK for connecting to AWS IoT from a device using embedded C</description>
@@ -7,6 +7,9 @@
   <url>https://github.com/MDK-Packs/Pack/raw/master/AWS_IoT_Device/</url>
   <license>LICENSE.txt</license>
   <releases>
+    <release version="1.0.1" date="2019-04-03">
+      Updated mbedTLS configuration template (include path)
+    </release>
     <release version="1.0.0" date="2018-05-29">
       Initial release based on aws-iot-device-sdk-embedded-C v3.0.1
     </release>
