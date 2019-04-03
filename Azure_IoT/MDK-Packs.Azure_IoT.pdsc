@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<package schemaVersion="1.4" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd">
+<package schemaVersion="1.6" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd">
   <vendor>MDK-Packs</vendor>
   <name>Azure_IoT</name>
   <description>Microsoft Azure IoT SDKs and Libraries</description>
@@ -7,6 +7,10 @@
   <url>https://github.com/MDK-Packs/Pack/raw/master/Azure_IoT/</url>
   <license>LICENSE.txt</license>
   <releases>
+    <release version="1.0.1" date="2019-04-03">
+      Updated IoT Socket interface (API V1.1.0)
+      Updated mbedTLS configuration template (include path)
+    </release>
     <release version="1.0.0" date="2018-05-29">
       Initial release based on:
       - azure-iot-sdk-c 1.2.4
@@ -54,7 +58,7 @@
       <require Cclass="CMSIS" Cgroup="CORE" Cversion="5.0.1"/>
       <require Cclass="CMSIS" Cgroup="RTOS2"/>
       <require Cclass="Security" Cgroup="mbed TLS"/>
-      <require Cclass="IoT Utility" Cgroup="Socket" Capiversion="1.0.0"/>
+      <require Cclass="IoT Utility" Cgroup="Socket" Capiversion="1.1.0"/>
     </condition>
     <condition id="Azure MQTT">
       <description>Azure MQTT component</description>
