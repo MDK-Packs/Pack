@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<package schemaVersion="1.4" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd">
+<package schemaVersion="1.6" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd">
   <vendor>MDK-Packs</vendor>
   <name>Google_IoT_Device</name>
   <description>Google Cloud IoT Device Connector</description>
@@ -7,6 +7,9 @@
   <url>https://github.com/MDK-Packs/Pack/raw/master/Google_IoT_Device/</url>
   <license>LICENSE.txt</license>
   <releases>
+    <release version="1.0.2" date="2019-04-01">
+      Updated mbedTLS support (replaced deprecated mbedTLS.h header)
+    </release>
     <release version="1.0.1" date="2018-05-28">
       Updated "Simple Demo" template
     </release>
@@ -43,7 +46,7 @@
     </condition>
   </conditions>
   <components>
-    <component Cclass="IoT Client" Cgroup="Google" Cversion="1.0.0" condition="Google IoT Client">
+    <component Cclass="IoT Client" Cgroup="Google" Cversion="1.0.1" condition="Google IoT Client">
       <description>Google Cloud IoT Device Client</description>
       <RTE_Components_h>
         <!-- the following content goes into file 'RTE_Components.h' -->
