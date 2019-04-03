@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<package schemaVersion="1.4" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd">
+<package schemaVersion="1.6" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd">
   <vendor>MDK-Packs</vendor>
   <name>IoT_Socket</name>
   <description>Simple IP Socket (BSD like)</description>
@@ -7,12 +7,17 @@
   <url>https://github.com/MDK-Packs/Pack/raw/master/IoT_Socket/</url>
   <license>LICENSE.txt</license>
   <releases>
+    <release version="1.1.0" date="2019-04-02">
+      Updated IoT Socket API V1.1.0
+      Updated IoT Socket implementation with MDK Network
+      Added IoT Socket implementation with WiFi Driver
+    </release>
     <release version="1.0.0" date="2018-05-28">
       Initial release
     </release>
   </releases>
   <apis>
-    <api Cclass="IoT Utility" Cgroup="Socket" Capiversion="1.0.0" exclusive="1">
+    <api Cclass="IoT Utility" Cgroup="Socket" Capiversion="1.1.0" exclusive="1">
       <description>Simple IP Socket interface</description>
       <files>
         <file category="header" name="include/iot_socket.h"/>
@@ -34,17 +39,19 @@
       <accept Dcore="SC000"/>
       <accept Dcore="SC300"/>
     </condition>
-    <condition id="IoT Client MDK Network">
-      <description>IoT Client MDK Network component</description>
+    <condition id="MDK Network Socket">
+      <description>MDK Network Socket</description>
       <require condition="Cortex-M Device"/>
-      <require Cclass="CMSIS" Cgroup="CORE" Cversion="5.0.1"/>
-      <require Cclass="CMSIS" Cgroup="RTOS2"/>
       <require Cbundle="MDK-Pro" Cclass="Network" Cgroup="Socket"  Csub="BSD"        Cversion="7.9.0"/>
       <require Cbundle="MDK-Pro" Cclass="Network" Cgroup="Service" Csub="DNS Client" Cversion="7.9.0"/>
     </condition>
+    <condition id="WiFi Driver Socket">
+      <description>WiFi Driver Socket</description>
+      <require Cclass="CMSIS Driver" Cgroup="WiFi"/>
+    </condition>
   </conditions>
   <components>
-    <component Cclass="IoT Utility" Cgroup="Socket" Csub="MDK Network" Capiversion="1.0.0" Cversion="1.0.0" condition="IoT Client MDK Network">
+    <component Cclass="IoT Utility" Cgroup="Socket" Csub="MDK Network" Capiversion="1.1.0" Cversion="1.1.0" condition="MDK Network Socket">
       <description>IoT Socket implementation with MDK::Network</description>
       <RTE_Components_h>
         <!-- the following content goes into file 'RTE_Components.h' -->
@@ -53,6 +60,17 @@
       </RTE_Components_h>
       <files>
         <file category="source"  name="source/mdk_network/iot_socket.c"/>
+      </files>
+    </component>
+    <component Cclass="IoT Utility" Cgroup="Socket" Csub="WiFi" Capiversion="1.1.0" Cversion="1.0.0" condition="WiFi Driver Socket">
+      <description>IoT Socket implementation with WiFi Driver</description>
+      <RTE_Components_h>
+        <!-- the following content goes into file 'RTE_Components.h' -->
+        #define RTE_IoT_Socket                  /* IoT Socket */
+        #define RTE_IoT_Socket_WiFi             /* IoT Socket: WiFi */
+      </RTE_Components_h>
+      <files>
+        <file category="source"  name="source/wifi/iot_socket.c"/>
       </files>
     </component>
   </components>
