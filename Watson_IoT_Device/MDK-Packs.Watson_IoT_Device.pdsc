@@ -7,6 +7,9 @@
   <url>https://github.com/MDK-Packs/Pack/raw/master/Watson_IoT_Device/</url>
   <license>LICENSE.txt</license>
   <releases>
+    <release version="1.0.1" date="2019-04-03">
+      Updated mbedTLS support (replaced deprecated mbedTLS.h header)
+    </release>
     <release version="1.0.0" date="2018-05-29">
       Initial release based on ibm-watson-iot/iot-embeddedc 2018-01-24 (30f4ffb)
     </release>
