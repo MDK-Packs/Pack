@@ -7,19 +7,20 @@
   <url>https://github.com/MDK-Packs/Pack/raw/master/QCA400x_Host_Driver_SDK/</url>
   <license>license_terms.txt</license>
   <releases>
-    <release version="1.0.0-beta">
-      Beta release based on Qualcomm QCA4002/4 Host Driver SDK v3.3.6
+    <release version="1.0.0" date="2019-06-21">
+      Initial release based on Qualcomm QCA4002/4 Host Driver SDK v3.3.6
     </release>
   </releases>
   <conditions>
-    <condition id="CMSIS_RTOS2 CMSIS_Driver_SPI">
-      <description>QCA400x SDK component requires CMSIS RTOS2 and CMSIS SPI Driver</description>
+    <condition id="CMSIS_CORE CMSIS_RTOS2 CMSIS_Driver_SPI">
+      <description>QCA400x SDK component requires CMSIS Core with CMSIS RTOS2 and CMSIS SPI Driver</description>
+      <require Cclass="CMSIS"        Cgroup="CORE"/>
       <require Cclass="CMSIS"        Cgroup="RTOS2"/>
       <require Cclass="CMSIS Driver" Cgroup="SPI"  />
     </condition>
   </conditions>
   <components>
-    <component Cclass="Qualcomm" Cgroup="QCA400x" Csub="Host Driver SDK" Cvariant="SPI" Cversion="1.0.0-beta" condition="CMSIS_RTOS2 CMSIS_Driver_SPI">
+    <component Cclass="Qualcomm" Cgroup="QCA400x" Csub="Host Driver SDK" Cvariant="SPI" Cversion="1.0.0" condition="CMSIS_CORE CMSIS_RTOS2 CMSIS_Driver_SPI">
       <description>Qualcomm QCA400x Host Driver SDK (SPI)</description>
       <RTE_Components_h>
         <!-- the following content goes into file 'RTE_Components.h' -->
