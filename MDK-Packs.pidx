@@ -2,7 +2,7 @@
 <index schemaVersion="1.0.0" xs:noNamespaceSchemaLocation="PackIndex.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance">
   <vendor>MDK-Packs</vendor>
   <url>https://github.com/MDK-Packs/Pack/raw/master/</url>
-  <timestamp>2019-06-21T11:20:00</timestamp>
+  <timestamp>2019-06-27T10:55:00</timestamp>
   <pindex>
     <pdsc url="https://github.com/MDK-Packs/Pack/raw/master/AWS_IoT_Device/"          vendor="MDK-Packs" name="AWS_IoT_Device"          version="1.0.1"/>
     <pdsc url="https://github.com/MDK-Packs/Pack/raw/master/Azure_IoT/"               vendor="MDK-Packs" name="Azure_IoT"               version="1.0.1"/>
@@ -11,6 +11,7 @@
     <pdsc url="https://github.com/MDK-Packs/Pack/raw/master/IoT_Socket/"              vendor="MDK-Packs" name="IoT_Socket"              version="1.1.0"/>
     <pdsc url="https://github.com/MDK-Packs/Pack/raw/master/Paho_MQTT/"               vendor="MDK-Packs" name="Paho_MQTT"               version="1.0.2"/>
     <pdsc url="https://github.com/MDK-Packs/Pack/raw/master/QCA400x_Host_Driver_SDK/" vendor="MDK-Packs" name="QCA400x_Host_Driver_SDK" version="1.0.0"/>
+    <pdsc url="https://github.com/MDK-Packs/Pack/raw/master/QCA400x_WiFi_Driver/"     vendor="MDK-Packs" name="QCA400x_WiFi_Driver"     version="1.0.0"/>
     <pdsc url="https://github.com/MDK-Packs/Pack/raw/master/Watson_IoT_Device/"       vendor="MDK-Packs" name="Watson_IoT_Device"       version="1.0.1"/>
   </pindex>
 </index>
