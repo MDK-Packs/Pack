@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package schemaVersion="1.6" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd">
+  <vendor>MDK-Packs</vendor>
+  <name>QCA400x_WiFi_Driver</name>
+  <description>CMSIS WiFi Driver for Qualcomm QCA4002/4 based WiFi module</description>
+  <!-- web download link -->
+  <url>https://github.com/MDK-Packs/Pack/raw/master/QCA400x_WiFi_Driver/</url>
+  <license>LICENSE.txt</license>
+  <releases>
+    <release version="1.0.0" date="2019-06-27">
+      Initial release
+    </release>
+  </releases>
+  <requirements>
+    <packages>
+      <package vendor="ARM"       name="CMSIS"                   version="5.6.0-0"/>
+      <package vendor="MDK-Packs" name="QCA400x_Host_Driver_SDK" version="1.0.0"/>
+    </packages>
+  </requirements>
+  <conditions>
+    <condition id="QCA400x WiFi Driver">
+      <description>QCA400x WiFi Driver requirements</description>
+      <require Cclass="CMSIS"    Cgroup="CORE"/>
+      <require Cclass="CMSIS"    Cgroup="RTOS2"/>
+      <require Cclass="Qualcomm" Cgroup="QCA400x" Csub="Host Driver SDK"/>
+    </condition>
+  </conditions>
+  <components>
+    <component Cclass="CMSIS Driver" Cgroup="WiFi" Csub="QCA400x" Capiversion="1.0.0" Cversion="1.0.0" condition="QCA400x WiFi Driver">
+      <description>WiFi Qualcomm QCA400x Driver</description>
+      <RTE_Components_h>
+        <!-- the following content goes into file 'RTE_Components.h' -->
+        #define RTE_Drivers_WiFi_QCA400x        /* Driver WiFi QCA400x */
+      </RTE_Components_h>
+      <files>
+        <file category="header" name="Config/WiFi_QCA400x_Config.h" attr="config" version="1.0.0"/>
+        <file category="source" name="Source/WiFi_QCA400x.c"/>
+      </files>
+    </component>
+  </components>
+</package>
