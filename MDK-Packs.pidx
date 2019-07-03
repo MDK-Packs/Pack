@@ -9,6 +9,7 @@
     <pdsc url="https://github.com/MDK-Packs/Pack/raw/master/cJSON/"                   vendor="MDK-Packs" name="cJSON"                   version="1.0.0"/>
     <pdsc url="https://github.com/MDK-Packs/Pack/raw/master/Google_IoT_Device/"       vendor="MDK-Packs" name="Google_IoT_Device"       version="1.0.2"/>
     <pdsc url="https://github.com/MDK-Packs/Pack/raw/master/IoT_Socket/"              vendor="MDK-Packs" name="IoT_Socket"              version="1.1.0"/>
+    <pdsc url="https://github.com/MDK-Packs/Pack/raw/master/Jsmn/"                    vendor="MDK-Packs" name="Jsmn"                    version="1.0.0"/>
     <pdsc url="https://github.com/MDK-Packs/Pack/raw/master/Paho_MQTT/"               vendor="MDK-Packs" name="Paho_MQTT"               version="1.0.2"/>
     <pdsc url="https://github.com/MDK-Packs/Pack/raw/master/QCA400x_Host_Driver_SDK/" vendor="MDK-Packs" name="QCA400x_Host_Driver_SDK" version="1.0.0"/>
     <pdsc url="https://github.com/MDK-Packs/Pack/raw/master/QCA400x_WiFi_Driver/"     vendor="MDK-Packs" name="QCA400x_WiFi_Driver"     version="1.0.0"/>

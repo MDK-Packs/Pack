@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package schemaVersion="1.6" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd">
+  <vendor>MDK-Packs</vendor>
+  <name>Jsmn</name>
+  <description>Minimalistic JSON parser/tokenizer in C</description>
+  <!-- web download link -->
+  <url>https://github.com/MDK-Packs/Pack/raw/master/Jsmn/</url>
+  <license>LICENSE.txt</license>
+  <releases>
+    <release version="1.0.0" date="2019-07-03">
+      Initial release based on jsmn v1.0.0
+    </release>
+  </releases>
+  <taxonomy>
+    <description Cclass="Data Exchange">Software Components for Data Exchange</description>
+    <description Cclass="Data Exchange" Cgroup="JSON">JSON Software Components</description>
+  </taxonomy>
+  <components>
+    <component Cclass="Data Exchange" Cgroup="JSON" Csub="Jsmn" Cversion="1.0.0">
+      <description>Jsmn</description>
+      <RTE_Components_h>
+        <!-- the following content goes into file 'RTE_Components.h' -->
+        #define RTE_DataExchange_JSON_Jsmn     /* Jsmn */
+      </RTE_Components_h>
+      <files>
+        <file category="header"  name="jsmn.h"/>
+        <file category="source"  name="jsmn.c"/>
+      </files>
+    </component>
+  </components>
+</package>
