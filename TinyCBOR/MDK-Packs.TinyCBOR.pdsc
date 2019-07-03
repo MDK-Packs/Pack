@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package schemaVersion="1.6" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd">
+  <vendor>MDK-Packs</vendor>
+  <name>TinyCBOR</name>
+  <description>Concise Binary Object Representation (CBOR) Library</description>
+  <!-- web download link -->
+  <url>https://github.com/MDK-Packs/Pack/raw/master/TinyCBOR/</url>
+  <license>LICENSE.txt</license>
+  <releases>
+    <release version="1.0.0" date="2019-07-03">
+      Initial release based on TinyCBOR v0.5.2
+    </release>
+  </releases>
+  <taxonomy>
+    <description Cclass="Data Exchange">Software Components for Data Exchange</description>
+    <description Cclass="Data Exchange" Cgroup="CBOR">CBOR Software Components</description>
+  </taxonomy>
+  <components>
+    <component Cclass="Data Exchange" Cgroup="CBOR" Csub="TinyCBOR" Cversion="0.5.2">
+      <description>TinyCBOR</description>
+      <RTE_Components_h>
+        <!-- the following content goes into file 'RTE_Components.h' -->
+        #define RTE_DataExchange_CBOR_TinyCBOR
+      </RTE_Components_h>
+      <files>
+        <file category="header"  name="src/cbor.h"/>
+        <file category="source"  name="src/cborencoder.c"/>
+        <file category="source"  name="src/cborencoder_close_container_checked.c"/>
+        <file category="source"  name="src/cborerrorstrings.c"/>
+        <file category="source"  name="src/cborparser.c"/>
+        <file category="source"  name="src/cborparser_dup_string.c"/>
+        <file category="source"  name="src/cborpretty.c"/>
+      </files>
+    </component>
+  </components>
+</package>
