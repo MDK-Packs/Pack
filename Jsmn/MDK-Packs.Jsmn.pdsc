@@ -7,6 +7,9 @@
   <url>https://github.com/MDK-Packs/Pack/raw/master/Jsmn/</url>
   <license>LICENSE.txt</license>
   <releases>
+    <release version="1.1.0" date="2019-09-26">
+      Updated to jsmn v1.1.0
+    </release>
     <release version="1.0.0" date="2019-07-03">
       Initial release based on jsmn v1.0.0
     </release>
@@ -16,15 +19,14 @@
     <description Cclass="Data Exchange" Cgroup="JSON">JSON Software Components</description>
   </taxonomy>
   <components>
-    <component Cclass="Data Exchange" Cgroup="JSON" Csub="Jsmn" Cversion="1.0.0">
+    <component Cclass="Data Exchange" Cgroup="JSON" Csub="Jsmn" Cversion="1.1.0">
       <description>Jsmn</description>
       <RTE_Components_h>
         <!-- the following content goes into file 'RTE_Components.h' -->
         #define RTE_DataExchange_JSON_Jsmn     /* Jsmn */
       </RTE_Components_h>
       <files>
-        <file category="header"  name="jsmn.h"/>
-        <file category="source"  name="jsmn.c"/>
+        <file category="header" name="jsmn.h"/>
       </files>
     </component>
   </components>
