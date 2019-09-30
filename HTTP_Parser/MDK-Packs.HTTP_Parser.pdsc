@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package schemaVersion="1.6" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd">
+  <vendor>MDK-Packs</vendor>
+  <name>HTTP_Parser</name>
+  <description>HTTP request/response parser for C</description>
+  <!-- web download link -->
+  <url>https://github.com/MDK-Packs/Pack/raw/master/HTTP_Parser/</url>
+  <license>LICENSE-MIT.txt</license>
+  <repository type="git">https://github.com/MDK-Packs/HTTP_Parser.git</repository>
+  <releases>
+    <release version="1.0.0" date="2019-09-30" tag="v2.9.2" >
+      Initial release based on nodejs/http-parser v2.9.2
+    </release>
+  </releases>
+  <components>
+    <component Cclass="IoT Utility" Cgroup="http-parser" Cversion="2.9.2">
+      <description>HTTP Parser</description>
+      <RTE_Components_h>
+        <!-- the following content goes into file 'RTE_Components.h' -->
+        #define RTE_IoT_HTTP_PARSER             /* HTTP Parser */
+      </RTE_Components_h>
+      <files>
+	    <file category="doc"    name="doc/HTTP_Parser.html"/>
+        <file category="header" name="http_parser.h"/>
+        <file category="source" name="http_parser.c"/>
+      </files>
+    </component>
+  </components>
+</package>
