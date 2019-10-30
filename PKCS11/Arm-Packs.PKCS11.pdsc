@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package schemaVersion="1.6" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd">
+  <vendor>Arm-Packs</vendor>
+  <name>PKCS11</name>
+  <description>OASIS PKCS #11 Cryptographic Token Interface</description>
+  <!-- web download link -->
+  <url>https://github.com/MDK-Packs/Pack/raw/master/PKCS11/</url>
+  <license>LICENSE.txt</license>
+  <releases>
+    <release version="1.0.0" date="2019-10-25">
+      Initial release based on OASIS PKCS11 v2.40 Errata 01
+    </release>
+  </releases>
+  <apis>
+    <api Cclass="Security" Cgroup="PKCS11" Capiversion="2.4.0-errata1" exclusive="1">
+      <description>PKCS #11 Cryptographic Token Interface</description>
+      <files>
+        <file category="doc"    name="doc/pkcs11-base-v2.40-errata01-os-complete.html"/>
+        <file category="header" name="include/pkcs11.h"/>
+      </files>
+    </api>
+  </apis>
+</package>
