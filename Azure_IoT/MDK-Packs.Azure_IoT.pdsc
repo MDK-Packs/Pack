@@ -7,6 +7,9 @@
   <url>https://github.com/MDK-Packs/Pack/raw/master/Azure_IoT/</url>
   <license>LICENSE.txt</license>
   <releases>
+    <release version="1.0.2" date="2019-11-22">
+      Added support for Client Authentication with X.509 Certificate
+    </release>
     <release version="1.0.1" date="2019-04-03">
       Updated IoT Socket interface (API V1.1.0)
       Updated mbedTLS configuration template (include path)
