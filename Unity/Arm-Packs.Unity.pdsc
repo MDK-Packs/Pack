@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package schemaVersion="1.6" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd">
+  <vendor>Arm-Packs</vendor>
+  <name>Unity</name>
+  <description>Unit Testing for C (especially Embedded Software)</description>
+  <!-- web download link -->
+  <url>https://github.com/MDK-Packs/Pack/raw/master/Unity/</url>
+  <license>LICENSE.txt</license>
+  <releases>
+    <release version="1.0.0" date="2019-12-05">
+      Initial release based on Unity v2.5.0
+    </release>
+  </releases>
+  <taxonomy>
+    <description Cclass="Test">Software components for testing</description>
+  </taxonomy>
+  <components>
+    <component Cclass="Test" Cgroup="Unity" Cvariant="Classic" Cversion="2.5.0">
+      <description>Unity, unit testing for C</description>
+      <RTE_Components_h>
+        <!-- the following content goes into file 'RTE_Components.h' -->
+        #define RTE_Test_Unity_Classic        /* Unity Classic */
+      </RTE_Components_h>
+      <files>
+        <file category="doc"             name="docs/UnityAssertionsCheatSheetSuitableforPrintingandPossiblyFraming.pdf"/>
+        <file category="preIncludeLocal" name="rte/unity_preinclude.h"/> 
+        <file category="header"          name="src/unity.h"/>
+        <file category="source"          name="src/unity.c"/>
+        <file category="header"          name="extras/fixture/src/unity_fixture.h"/>
+        <file category="source"          name="extras/fixture/src/unity_fixture.c"/>
+        <file category="header"          name="extras/memory/src/unity_memory.h"/>
+        <file category="source"          name="extras/memory/src/unity_memory.c"/>
+      </files>
+    </component>
+  </components>
+  <examples>
+    <example name="Unity example_1" doc="readme.txt" folder="examples/example_1">
+      <description>Unity simple example</description>
+      <board name="uVision Simulator" vendor="Keil"/>
+      <project>
+        <environment name="uv" load="mdk/example_1.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="CMSIS"  Cgroup="CORE"/>
+        <component Cclass="Device" Cgroup="Startup"/>
+        <component Cclass="Test"   Cgroup="Unity"/>
+        <category>Getting Started</category>
+      </attributes>
+    </example>
+    <example name="Unity example_2" doc="readme.txt" folder="examples/example_2">
+      <description>Unity example using test fixture</description>
+      <board name="uVision Simulator" vendor="Keil"/>
+      <project>
+        <environment name="uv" load="mdk/example_2.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="CMSIS"  Cgroup="CORE"/>
+        <component Cclass="Device" Cgroup="Startup"/>
+        <component Cclass="Test"   Cgroup="Unity"/>
+        <category>Getting Started</category>
+      </attributes>
+    </example>
+  </examples>
+</package>
