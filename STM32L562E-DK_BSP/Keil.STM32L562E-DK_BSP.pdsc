@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd" schemaVersion="1.6.0">
+  <name>STM32L562E-DK_BSP</name>
+  <vendor>Keil</vendor>
+  <description>STMicroelectronics STM32L5 Series STM32L562E-DK Board Support Pack</description>
+  <url>https://github.com/MDK-Packs/Pack/raw/master/STM32L562E-DK_BSP/</url>
+  <repository type="git">https://github.com/MDK-Packs/STM32L562E-DK_BSP.git</repository>
+
+  <releases>
+    <release version="1.0.0" date="2020-05-18">
+      Initial public release.
+    </release>
+  </releases>
+
+  <requirements>
+    <packages>
+      <package vendor="Keil" name="STM32L5xx_DFP" version="1.2.0-0"/>
+    </packages>
+  </requirements>
+
+  <conditions>
+    <condition id="STM32L562">
+      <description>STMicroelectronics STM32L562 Devices</description>
+      <require Dvendor="STMicroelectronics:13" Dname="STM32L562*"/>
+    </condition>
+    
+    <!-- STM32L562E-DK BSP Conditions -->
+    <condition id="STM32L562E-DK BSP">
+      <description>STMicroelectronics STM32L562E-DK BSP</description>
+      <require condition="STM32L562"/>
+      <require Cclass="Device" Cgroup="STM32Cube HAL" Csub="Common"/>
+      <require Cclass="Device" Cgroup="STM32Cube HAL" Csub="GPIO"/>
+      <require Cclass="Device" Cgroup="STM32Cube HAL" Csub="EXTI"/>
+      <require Cclass="Device" Cgroup="STM32Cube HAL" Csub="UART"/>
+    </condition>
+    <condition id="STM32L562E-DK BSP Audio">
+      <description>STMicroelectronics STM32L562E-DK BSP Audio</description>
+      <require condition="STM32L562"/>
+      <require Cclass="Device" Cgroup="STM32Cube HAL" Csub="SAI"/>
+      <require Cclass="Device" Cgroup="STM32Cube HAL" Csub="DMA"/>
+      <require Cclass="Device" Cgroup="STM32Cube HAL" Csub="DFSDM"/>
+      <require Cclass="Board Support" Cgroup="Drivers" Csub="BUS"/>
+      <require Cclass="Board Support" Cgroup="Drivers" Csub="Basic I/O"/>
+    </condition>
+    <condition id="STM32L562E-DK BSP BUS">
+      <description>STMicroelectronics STM32L562E-DK BSP BUS</description>
+      <require condition="STM32L562"/>
+      <require Cclass="Device" Cgroup="STM32Cube HAL" Csub="I2C"/>
+      <require Cclass="Board Support" Cgroup="Drivers" Csub="Basic I/O"/>
+    </condition>
+    <condition id="STM32L562E-DK BSP IDD">
+      <description>STMicroelectronics STM32L562E-DK BSP IDD</description>
+      <require condition="STM32L562"/>
+      <require Cclass="Board Support" Cgroup="Drivers" Csub="Basic I/O"/>
+    </condition>
+    <condition id="STM32L562E-DK BSP LCD">
+      <description>STMicroelectronics STM32L562E-DK BSP LCD</description>
+      <require condition="STM32L562"/>
+      <require Cclass="Device" Cgroup="STM32Cube HAL" Csub="SRAM"/>
+      <require Cclass="Board Support" Cgroup="Drivers" Csub="Basic I/O"/>
+    </condition>
+    <condition id="STM32L562E-DK BSP MOTION SENSORS">
+      <description>STMicroelectronics STM32L562E-DK BSP MOTION SENSORS</description>
+      <require condition="STM32L562"/>
+      <require Cclass="Board Support" Cgroup="Drivers" Csub="BUS"/>
+      <require Cclass="Board Support" Cgroup="Drivers" Csub="Basic I/O"/>
+    </condition>
+    <condition id="STM32L562E-DK BSP OSPI">
+      <description>STMicroelectronics STM32L562E-DK BSP OSPI</description>
+      <require condition="STM32L562"/>
+      <require Cclass="Device" Cgroup="STM32Cube HAL" Csub="OSPI"/>
+      <require Cclass="Board Support" Cgroup="Drivers" Csub="Basic I/O"/>
+    </condition>
+    <condition id="STM32L562E-DK BSP SD">
+      <description>STMicroelectronics STM32L562E-DK BSP SD</description>
+      <require condition="STM32L562"/>
+      <require Cclass="Device" Cgroup="STM32Cube HAL" Csub="SD"/>
+      <require Cclass="Device" Cgroup="STM32Cube HAL" Csub="DMA"/>
+      <require Cclass="Board Support" Cgroup="Drivers" Csub="Basic I/O"/>
+    </condition>
+    <condition id="STM32L562E-DK BSP TS">
+      <description>STMicroelectronics STM32L562E-DK BSP TS</description>
+      <require condition="STM32L562"/>
+      <require Cclass="Board Support" Cgroup="Drivers" Csub="BUS"/>
+      <require Cclass="Board Support" Cgroup="Drivers" Csub="Basic I/O"/>
+    </condition>
+    <condition id="STM32L562E-DK BSP USB PD">
+      <description>STMicroelectronics STM32L562E-DK BSP USB PD</description>
+      <require condition="STM32L562"/>
+      <require Cclass="Board Support" Cgroup="Drivers" Csub="Basic I/O"/>
+    </condition>
+    <condition id="STM32L562E-DK VIO">
+      <description>Virtual I/O STM32L562E-DK</description>
+      <require condition="STM32L562"/>
+      <require Cclass="Board Support" Cgroup="Drivers" Csub="Motion Sensors"/>
+      <require Cclass="Board Support" Cgroup="Drivers" Csub="LCD"/>
+      <require Cclass="Board Support" Cgroup="Drivers" Csub="Basic I/O"/>
+    </condition>
+  </conditions>
+
+  <components>
+    <bundle Cbundle="STM32L562E-DK" Cclass="Board Support" Cversion="1.0.1">
+      <description>STMicroelectronics STM32L562E-DK Board</description>
+      <doc></doc>
+      <component Cgroup="Drivers" Csub="Basic I/O" condition="STM32L562E-DK BSP">
+        <description>LEDs, push-buttons and COM ports for STM32L562E-DK Board</description>
+        <files>
+          <file category="header" name="Drivers/Config/stm32l562e_discovery_conf.h"        attr="config" version="1.0.0"/>
+          <file category="header" name="Drivers/STM32L5xx_Discovery/stm32l562e_discovery.h"/>
+          <file category="source" name="Drivers/STM32L5xx_Discovery/stm32l562e_discovery.c"/>
+        </files>
+      </component>
+      <component Cgroup="Drivers" Csub="Audio" condition="STM32L562E-DK BSP Audio">
+        <description>Audio for STMicroelectronics STM32L562E-DK Board</description>
+        <files>
+          <file category="header" name="Drivers/STM32L5xx_Discovery/stm32l562e_discovery_audio.h"/>
+          <file category="source" name="Drivers/STM32L5xx_Discovery/stm32l562e_discovery_audio.c"/>
+          <file category="source" name="Drivers/Components/cs42l51/cs42l51.c"/>
+          <file category="source" name="Drivers/Components/cs42l51/cs42l51_reg.c"/>
+        </files>
+      </component>
+      <component Cgroup="Drivers" Csub="BUS" condition="STM32L562E-DK BSP BUS">
+        <description>BUS for STMicroelectronics STM32L562E-DK Board</description>
+        <files>
+          <file category="header" name="Drivers/STM32L5xx_Discovery/stm32l562e_discovery_bus.h"/>
+          <file category="source" name="Drivers/STM32L5xx_Discovery/stm32l562e_discovery_bus.c"/>
+        </files>
+      </component>
+      <component Cgroup="Drivers" Csub="IDD" condition="STM32L562E-DK BSP IDD">
+        <description>IDD for STMicroelectronics STM32L562E-DK Board</description>
+        <files>
+          <file category="header" name="Drivers/STM32L5xx_Discovery/stm32l562e_discovery_idd.h"/>
+          <file category="source" name="Drivers/STM32L5xx_Discovery/stm32l562e_discovery_idd.c"/>
+        </files>
+      </component>
+      <component Cgroup="Drivers" Csub="LCD" condition="STM32L562E-DK BSP LCD">
+        <description>LCD for STMicroelectronics STM32L562E-DK Board</description>
+        <files>
+          <file category="header" name="Drivers/STM32L5xx_Discovery/stm32l562e_discovery_lcd.h"/>
+          <file category="source" name="Drivers/STM32L5xx_Discovery/stm32l562e_discovery_lcd.c"/>
+          <file category="source" name="Drivers/Components/st7789h2/st7789h2.c"/>
+          <file category="source" name="Drivers/Components/st7789h2/st7789h2_reg.c"/>
+        </files>
+      </component>
+      <component Cgroup="Drivers" Csub="Motion Sensors" condition="STM32L562E-DK BSP MOTION SENSORS">
+        <description>Motion Sensors for STMicroelectronics STM32L562E-DK Board</description>
+        <files>
+          <file category="header" name="Drivers/STM32L5xx_Discovery/stm32l562e_discovery_motion_sensors.h"/>
+          <file category="source" name="Drivers/STM32L5xx_Discovery/stm32l562e_discovery_motion_sensors.c"/>
+          <file category="source" name="Drivers/Components/lsm6dso/lsm6dso.c"/>
+          <file category="source" name="Drivers/Components/lsm6dso/lsm6dso_reg.c"/>
+        </files>
+      </component>
+      <component Cgroup="Drivers" Csub="OSPI" condition="STM32L562E-DK BSP OSPI">
+        <description>OSPI for STMicroelectronics STM32L562E-DK Board</description>
+        <files>
+          <file category="header" name="Drivers/Config/mx25lm51245g_conf.h"        attr="config" version="1.0.0"/>
+          <file category="header" name="Drivers/STM32L5xx_Discovery/stm32l562e_discovery_ospi.h"/>
+          <file category="source" name="Drivers/STM32L5xx_Discovery/stm32l562e_discovery_ospi.c"/>
+          <file category="source" name="Drivers/Components/mx25lm51245g/mx25lm51245g.c"/>
+        </files>
+      </component>
+      <component Cgroup="Drivers" Csub="SD" condition="STM32L562E-DK BSP SD">
+        <description>SD for STMicroelectronics STM32L562E-DK Board</description>
+        <files>
+          <file category="header" name="Drivers/STM32L5xx_Discovery/stm32l562e_discovery_sd.h"/>
+          <file category="source" name="Drivers/STM32L5xx_Discovery/stm32l562e_discovery_sd.c"/>
+        </files>
+      </component>
+      <component Cgroup="Drivers" Csub="Touch Screen" condition="STM32L562E-DK BSP TS">
+        <description>Touch Screen for STMicroelectronics STM32L562E-DK Board</description>
+        <files>
+          <file category="header" name="Drivers/Config/ft6x06_conf.h"        attr="config" version="1.0.0"/>
+          <file category="header" name="Drivers/STM32L5xx_Discovery/stm32l562e_discovery_ts.h"/>
+          <file category="source" name="Drivers/STM32L5xx_Discovery/stm32l562e_discovery_ts.c"/>
+          <file category="source" name="Drivers/Components/ft6x06/ft6x06.c"/>
+          <file category="source" name="Drivers/Components/ft6x06/ft6x06_reg.c"/>
+        </files>
+      </component>
+      <component Cgroup="Drivers" Csub="USB PD" condition="STM32L562E-DK BSP USB PD">
+        <description>USB Type C power delivery for STMicroelectronics STM32L562E-DK Board</description>
+        <files>
+          <file category="header" name="Drivers/STM32L5xx_Discovery/stm32l562e_discovery_usbpd_pwr.h"/>
+          <file category="source" name="Drivers/STM32L5xx_Discovery/stm32l562e_discovery_usbpd_pwr.c"/>
+        </files>
+      </component>
+    </bundle>
+
+    <!-- VIO component for STM32L562E-DK -->
+    <component Cclass="CMSIS Driver" Cgroup="VIO" Csub="Board" Cvariant= "STM32L562E-DK" Cversion="1.0.0" Capiversion="0.1.0"   condition="STM32L562E-DK VIO">
+      <description>Virtual I/O implementation for STM32L562E-DK</description>
+      <RTE_Components_h>
+        #define RTE_VIO_BOARD
+        #define RTE_VIO_STM32L562E_DK
+      </RTE_Components_h>
+      <files>
+        <file category="header" name="Drivers/Components/Common/lcd.h"/>
+        <file category="header" name="Utilities/basic_gui/basic_gui.h"/>
+        <file category="source" name="Utilities/basic_gui/basic_gui.c"/>
+        <file category="source" name="Drivers/Platform/vio_STM32L562E-DK.c"/>
+      </files>
+    </component>
+  </components>
+
+  <boards>
+    <!-- STM32L562E-DK Board Support-->
+    <board vendor="STMicroelectronics" name="STM32L562E-DK" revision="Rev.C"
+           salesContact="https://www.st.com/content/st_com/en/contact-us.html"
+           orderForm   ="https://www.st.com/en/evaluation-tools/stm32l562e-dk.html">
+      <description>STM32 Discovery development board with STM32L562E MCU</description>
+      <image small="Images/Discovery_small.jpg"
+             large="Images/Discovery_large.jpg"/>
+      <book category="overview"  name="https://www.st.com/en/evaluation-tools/stm32l562e-dk.html" title="STM32 Discovery board"/>
+      <book category="overview"  name="Documents/DB3937.pdf"        title="Data brief"/>
+      <book category="overview"  name="Documents/stm32l562e-dk.pdf" title="Overview"/>
+      <book category="manual"    name="Documents/DM00635554.pdf"    title="User Manual"/>
+      <book category="manual"    name="Documents/DM00688718.pdf"    title="User Manual - STMod+"/>
+      <book category="schematic" name="Documents/MB1373.pdf"        title="Schematics"/>
+      <book category="schematic" name="Documents/MB1280.pdf"        title="Schematics - STMod+"/>
+      <mountedDevice    deviceIndex="0" Dvendor="STMicroelectronics:13" Dname="STM32L562QEIxQ"/> 
+      <compatibleDevice deviceIndex="0" Dvendor="STMicroelectronics:13" DsubFamily="STM32L5x2"/>
+      <feature type="ODbg"      n="1"                name="On-board ST-LINK-V3E"/>
+      <feature type="ROM"       n="1"                name="512-Mbit Octal-SPI Flash memory"/>
+      <feature type="MemCard"   n="1"                name="microSD card holder"/>
+      <feature type="PWR"       n="6"                name="USB Powered"/>
+      <feature type="PWR"       n="3"  m="5"         name="External Supply"/>
+      <feature type="USB"       n="1"                name="USB Type-C Sink device FS"/>
+      <feature type="GLCD"      n="1"  m="240.240"   name="1.54 inch color TFT LCD module with parallel interface and touch control panel"/>
+      <feature type="I2C"       n="1"                name="I2C extension connector"/>
+      <feature type="Button"    n="2"                name="Push-Buttons for Reset and User"/>
+      <feature type="LED"       n="7"                name="2 User LEDs"/>
+      <debugInterface adapter="ST-Link" connector="Mini-USB"/>
+    </board>
+  </boards>
+
+  <examples>
+    <example name="Blinky" doc="Abstract.txt" folder="Projects/Blinky">
+      <description>CMSIS-RTOS2 Blinky example with VIO</description>
+      <board name="STM32L562E-DK" vendor="STMicroelectronics"/>
+      <project>
+        <environment name="uv" load="Blinky.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="CMSIS" Cgroup="CORE"/>
+        <component Cclass="Device" Cgroup="Startup"/>
+        <component Cclass="CMSIS" Cgroup="RTOS"/>
+        <component Cclass="CMSIS Driver" Cgroup="VIO"/>
+        <category>Getting Started</category>
+      </attributes>
+    </example>
+
+    <example name="Platform" doc="Abstract.txt" folder="Projects/Platform">
+      <description>CMSIS-RTOS2 Platform example with VIO</description>
+      <board name="STM32L562E-DK" vendor="STMicroelectronics"/>
+      <project>
+        <environment name="uv" load="Platform.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="CMSIS" Cgroup="CORE"/>
+        <component Cclass="Device" Cgroup="Startup"/>
+        <component Cclass="CMSIS" Cgroup="RTOS"/>
+        <component Cclass="CMSIS Driver" Cgroup="VIO"/>
+        <category>Getting Started</category>
+      </attributes>
+    </example>
+  </examples>
+
+</package>
