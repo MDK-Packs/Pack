@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ Copyright (c) 2020, Arm Limited. All rights reserved.
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+ -->
+<package schemaVersion="1.6" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd">
+  <name>LPC55S6x_TFM-PF</name>
+  <description>NXP LPC55S6x MCU Family TF-M Platform Support</description>
+  <vendor>Keil</vendor>
+  <url>https://github.com/MDK-Packs/Pack/raw/master/LPC55S6x_TFM-PF/</url>
+  <repository type="git">https://github.com/MDK-Packs/LPC55S6x_TFM-PF.git</repository>
+
+  <releases>
+    <release version="1.0.0" date="2020-06-05">
+      TF-M Platform Support for LPC55S6x:
+        - Memory Map
+        - SPM HAL
+        - Boot HAL
+        - System Template
+        - Test
+      TF-M Project Template (LPCXpresso55S69 Development Board):
+        - without Bootloader
+        - with Bootloader
+      TF-M Regression Test (LPCXpresso55S69 Development Board):
+        - SFN (Secure Functions aka Library Mode)
+        - IPC Mode, Isolation Level 1
+        - IPC Mode, Isolation Level 2
+    </release>
+  </releases>
+
+  <requirements>
+    <packages>
+      <package vendor="ARM" name="TFM" version="2.0.0-0"/>
+    </packages>
+  </requirements>
+
+  <conditions>
+    <condition id="ARMCC6">
+      <accept Tcompiler="ARMCC" Toptions="AC6"/>
+      <accept Tcompiler="ARMCC" Toptions="AC6LTO"/>
+    </condition>
+    <condition id="GCC">
+      <require Tcompiler="GCC"/>
+    </condition>
+    <condition id="ARMCC6 GCC">
+      <accept condition="ARMCC6"/>
+      <accept condition="GCC"/>
+    </condition>
+    <condition id="LPC55S6x TZ Device">
+      <description>LPC55S6x TZ Device</description>
+      <require Dname="LPC55S6*" Dvendor="NXP:11"/>
+      <require Dtz="TZ"/>
+    </condition>
+    <condition id="TFM Platform LPC55S6x">
+      <description>TF-M Platform for NXP LPC55S6x</description>
+      <require condition="LPC55S6x TZ Device"/>
+      <require Dsecure="Secure"/>
+      <require condition="ARMCC6 GCC"/>
+      <require Cclass="CMSIS" Cgroup="CORE"/>
+    </condition>
+    <condition id="TFM Platform SPM HAL LPC55S6x">
+      <description>TF-M Platform SPM HAL for NXP LPC55S6x</description>
+      <require condition="TFM Platform LPC55S6x"/>
+      <require Cclass="TFM" Cgroup="Core"/>
+      <require Cclass="TFM Platform" Cgroup="Memory Map"/>
+      <require Cclass="Device" Cgroup="Startup"/>
+    </condition>
+    <condition id="TFM Platform System LPC55S6x">
+      <description>TF-M Platform System for NXP LPC55S6x</description>
+      <require condition="TFM Platform LPC55S6x"/>
+      <require Cclass="TFM" Cgroup="Core"/>
+    </condition>
+    <condition id="TFM Platform Test LPC55S6x">
+      <description>TF-M Platform Test for NXP LPC55S6x</description>
+      <require condition="TFM Platform LPC55S6x"/>
+      <require Cclass="TFM" Cgroup="Core"/>
+    </condition>
+  </conditions>
+
+  <components>
+    <component Cclass="TFM Platform" Cgroup="Memory Map" Cversion="1.0.0" condition="TFM Platform LPC55S6x">
+      <description>TF-M Platform Memory Map for NXP LPC55S6x</description>
+      <RTE_Components_h>
+        #define RTE_TFM_IF_PLATFORM_MEMORY_MAP  /* TF-M Platform Memory Map */
+      </RTE_Components_h>
+      <files>
+        <file category="header"  name="lpc55s6x/partition/mem_layout.h"   attr="config" version="1.0.0"/>
+        <file category="header"  name="lpc55s6x/partition/flash_layout.h" attr="config" version="1.0.0"/>
+        <file category="header"  name="lpc55s6x/partition/region_defs.h"  attr="config" version="1.0.0"/>
+      </files>
+    </component>
+    <component Cclass="TFM Platform" Cgroup="SPM HAL" Csub="Platform" Capiversion="1.0.0" Cversion="1.0.0" condition="TFM Platform SPM HAL LPC55S6x">
+      <description>TF-M Platform SPM HAL for NXP LPC55S6x</description>
+      <RTE_Components_h>
+        #define RTE_TFM_IF_PLATFORM_SPM_HAL     /* TF-M Platform SPM HAL */
+      </RTE_Components_h>
+      <files>
+        <file category="preIncludeLocal"
+                                 name="rte/preinclude.h"/>
+        <file category="include" name="lpc55s6x/"/>
+        <file category="include" name="lpc55s6x/driver/"/>
+        <file category="source"  name="lpc55s6x/driver/mpu_armv8m_drv.c"/>
+        <file category="source"  name="lpc55s6x/spm_hal.c"/>
+        <file category="header"  name="lpc55s6x/target_cfg.h"/>
+        <file category="source"  name="lpc55s6x/target_cfg.c"/>
+        <file category="header"  name="lpc55s6x/tz_config.h"   attr="config" version="1.0.0"/>
+        <file category="source"  name="lpc55s6x/tz_config.c"   attr="config" version="1.0.0"/>
+        <file category="source"  name="lpc55s6x/tz_sau_nvic.c" attr="config" version="1.0.0"/>
+        <file category="source"  name="lpc55s6x/tz_mpc_ppc.c"  attr="config" version="1.0.0"/>
+      </files>
+    </component>
+    <component Cclass="TFM Platform" Cgroup="System" Csub="Template" Capiversion="1.0.0" Cversion="1.0.0" condition="TFM Platform System LPC55S6x">
+      <description>TF-M Platform System Template for NXP LPC55S6x</description>
+      <RTE_Components_h>
+        #define RTE_TFM_PLATFORM_SYSTEM         /* TF-M Platform System */
+      </RTE_Components_h>
+      <files>
+        <file category="preIncludeLocal"
+                                 name="rte/preinclude.h"/>
+        <file category="source"  name="lpc55s6x/services/src/tfm_platform_system.c" attr="config" version="1.0.0"/>
+      </files>
+    </component>
+    <component Cclass="TFM Platform" Cgroup="Test" Csub="Platform" Capiversion="1.0.0" Cversion="1.0.0" condition="TFM Platform Test LPC55S6x">
+      <description>TF-M Platform Test for NXP LPC55S6x</description>
+      <RTE_Components_h>
+        #define RTE_TFM_PLATFORM_TEST           /* TF-M Platform Test */
+      </RTE_Components_h>
+      <files>
+        <file category="preIncludeLocal"
+                                 name="rte/preinclude.h"/>
+        <file category="source"  name="lpc55s6x/plat_test.c"/>
+      </files>
+    </component>
+    <component Cclass="TFM Platform" Cgroup="Boot HAL" Csub="Platform" Capiversion="1.0.0" Cversion="1.0.0" condition="TFM Platform LPC55S6x">
+      <description>TF-M Platform Boot HAL for NXP LPC55S6x</description>
+      <RTE_Components_h>
+        #define RTE_TFM_PLATFORM_BOOT_HAL       /* TF-M Platform Boot HAL */
+      </RTE_Components_h>
+      <files>
+        <file category="preIncludeLocal"
+                                 name="rte/preinclude.h"/>
+        <file category="source"  name="lpc55s6x/boot_hal.c" attr="config" version="1.0.0"/>
+      </files>
+    </component>
+  </components>
+
+  <examples>
+    <example name="TF-M" doc="Abstract.txt" folder="lpc55s6x/project/LPCXpresso55S69/tfm">
+      <description>TF-M Project Template</description>
+      <board name="LPCXpresso55S69" vendor="NXP"/>
+      <project>
+        <environment name="uv" load="tfm.uvmpw"/>
+      </project>
+      <attributes>
+        <component Cclass="TFM"/>
+        <component Cclass="TFM Platform"/>
+        <category>TF-M</category>
+      </attributes>
+    </example>
+    <example name="TF-M with Bootloader" doc="Abstract.txt" folder="lpc55s6x/project/LPCXpresso55S69/tfm_bl">
+      <description>TF-M with Bootloader Project Template</description>
+      <board name="LPCXpresso55S69" vendor="NXP"/>
+      <project>
+        <environment name="uv" load="tfm.uvmpw"/>
+      </project>
+      <attributes>
+        <component Cclass="TFM"/>
+        <component Cclass="TFM Platform"/>
+        <category>TF-M</category>
+      </attributes>
+    </example>
+    <example name="TF-M Test SFN" doc="Abstract.txt" folder="lpc55s6x/test/LPCXpresso55S69/sfn">
+      <description>TF-M Regression Test - SFN (Secure Functions aka Library Mode)</description>
+      <board name="LPCXpresso55S69" vendor="NXP"/>
+      <project>
+        <environment name="uv" load="tfm.uvmpw"/>
+      </project>
+      <attributes>
+        <component Cclass="TFM"/>
+        <component Cclass="TFM Platform"/>
+        <category>TF-M</category>
+      </attributes>
+    </example>
+    <example name="TF-M Test IPC Level 1" doc="Abstract.txt" folder="lpc55s6x/test/LPCXpresso55S69/ipc_l1">
+      <description>TF-M Regression Test - IPC Mode, Isolation Level 1</description>
+      <board name="LPCXpresso55S69" vendor="NXP"/>
+      <project>
+        <environment name="uv" load="tfm.uvmpw"/>
+      </project>
+      <attributes>
+        <component Cclass="TFM"/>
+        <component Cclass="TFM Platform"/>
+        <category>TF-M</category>
+      </attributes>
+    </example>
+    <example name="TF-M Test IPC Level 2" doc="Abstract.txt" folder="lpc55s6x/test/LPCXpresso55S69/ipc_l2">
+      <description>TF-M Regression Test - IPC Mode, Isolation Level 2</description>
+      <board name="LPCXpresso55S69" vendor="NXP"/>
+      <project>
+        <environment name="uv" load="tfm.uvmpw"/>
+      </project>
+      <attributes>
+        <component Cclass="TFM"/>
+        <component Cclass="TFM Platform"/>
+        <category>TF-M</category>
+      </attributes>
+    </example>
+  </examples>
+</package>
