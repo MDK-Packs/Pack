@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package schemaVersion="1.6" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd">
+  <vendor>ARM</vendor>
+  <name>mbedCrypto</name>
+  <description>ARM mbed Cryptographic library</description>
+  <!-- web download link -->
+  <url>https://github.com/MDK-Packs/Pack/raw/master/mbedCrypto/</url>
+  <repository type="git">https://github.com/MDK-Packs/mbedCrypto.git</repository>
+  <releases>
+    <release version="3.0.1" date="2020-06-05">
+      Release based on mbed-crypto V3.0.1
+    </release>
+  </releases>
+  <components>
+    <component Cclass="Security" Cgroup="mbed Crypto" Cversion="3.0.1">
+      <description>ARM mbed Cryptographic library</description>
+      <RTE_Components_h>
+        #define RTE_Security_mbedCrypto         /* Security mbed Crypto */
+      </RTE_Components_h>
+      <files>
+        <file category="include" name="include/"/>
+        <file category="header"  name="configs/mbedTLS_config.h" attr="config" version="1.0.0"/>
+        <file category="source"  name="library/aes.c"/>
+   <!-- <file category="source"  name="library/aesni.c"/> -->
+        <file category="source"  name="library/arc4.c"/>
+        <file category="source"  name="library/aria.c"/>
+        <file category="source"  name="library/asn1parse.c"/>
+        <file category="source"  name="library/asn1write.c"/>
+        <file category="source"  name="library/base64.c"/>
+        <file category="source"  name="library/bignum.c"/>
+        <file category="source"  name="library/blowfish.c"/>
+        <file category="source"  name="library/camellia.c"/>
+        <file category="source"  name="library/ccm.c"/>
+        <file category="source"  name="library/chacha20.c"/>
+        <file category="source"  name="library/chachapoly.c"/>
+        <file category="source"  name="library/cipher.c"/>
+        <file category="source"  name="library/cipher_wrap.c"/>
+        <file category="source"  name="library/cmac.c"/>
+        <file category="source"  name="library/ctr_drbg.c"/>
+        <file category="source"  name="library/des.c"/>
+        <file category="source"  name="library/dhm.c"/>
+        <file category="source"  name="library/ecdh.c"/>
+        <file category="source"  name="library/ecdsa.c"/>
+        <file category="source"  name="library/ecjpake.c"/>
+        <file category="source"  name="library/ecp.c"/>
+        <file category="source"  name="library/ecp_curves.c"/>
+        <file category="source"  name="library/entropy.c"/>
+        <file category="source"  name="library/entropy_poll.c"/>
+        <file category="source"  name="library/error.c"/>
+        <file category="source"  name="library/gcm.c"/>
+        <file category="source"  name="library/havege.c"/>
+        <file category="source"  name="library/hkdf.c"/>
+        <file category="source"  name="library/hmac_drbg.c"/>
+        <file category="source"  name="library/md.c"/>
+        <file category="source"  name="library/md2.c"/>
+        <file category="source"  name="library/md4.c"/>
+        <file category="source"  name="library/md5.c"/>
+        <file category="source"  name="library/memory_buffer_alloc.c"/>
+        <file category="source"  name="library/nist_kw.c"/>
+        <file category="source"  name="library/oid.c"/>
+   <!-- <file category="source"  name="library/padlock.c"/> -->
+        <file category="source"  name="library/pem.c"/>
+        <file category="source"  name="library/pk.c"/>
+        <file category="source"  name="library/pk_wrap.c"/>
+        <file category="source"  name="library/pkcs5.c"/>
+        <file category="source"  name="library/pkcs12.c"/>
+        <file category="source"  name="library/pkparse.c"/>
+        <file category="source"  name="library/pkwrite.c"/>
+        <file category="source"  name="library/platform.c"/>
+        <file category="source"  name="library/platform_util.c"/>
+        <file category="source"  name="library/poly1305.c"/>
+        <file category="source"  name="library/psa_crypto.c"/>
+        <file category="source"  name="library/psa_crypto_se.c"/>
+        <file category="source"  name="library/psa_crypto_slot_management.c"/>
+        <file category="source"  name="library/psa_crypto_storage.c"/>
+        <file category="source"  name="library/psa_its_file.c"/>
+        <file category="source"  name="library/ripemd160.c"/>
+        <file category="source"  name="library/rsa.c"/>
+        <file category="source"  name="library/rsa_internal.c"/>
+        <file category="source"  name="library/sha1.c"/>
+        <file category="source"  name="library/sha256.c"/>
+        <file category="source"  name="library/sha512.c"/>
+        <file category="source"  name="library/threading.c"/>
+        <file category="source"  name="library/timing.c"/>
+        <file category="source"  name="library/version.c"/>
+        <file category="source"  name="library/version_features.c"/>
+        <file category="source"  name="library/xtea.c"/>
+      </files>
+    </component>
+  </components>
+</package>
