@@ -7,6 +7,10 @@
   <url>https://github.com/MDK-Packs/Pack/raw/master/Watson_IoT_Device/</url>
   <license>LICENSE.txt</license>
   <releases>
+    <release version="1.0.2" date="2020-06-30">
+      Fixed potential Hard Fault when not using client side certificates (USE_CERT=0)
+      Added missing dependency on MQTTClient-C
+    </release>
     <release version="1.0.1" date="2019-04-03">
       Updated mbedTLS support (replaced deprecated mbedTLS.h header)
     </release>
@@ -43,11 +47,12 @@
       <require Cclass="Security" Cgroup="mbed TLS"/>
       <require Cclass="IoT Utility" Cgroup="Socket" Capiversion="1.0.0"/>
       <require Cclass="IoT Utility" Cgroup="MQTTPacket"/>
+      <require Cclass="IoT Client" Cgroup="MQTTClient-C"/>
       <require Cclass="Data Exchange" Cgroup="JSON" Csub="cJSON"/>
     </condition>
   </conditions>
   <components>
-    <component Cclass="IoT Client" Cgroup="Watson" Cversion="1.0.0" condition="Watson IoT Client">
+    <component Cclass="IoT Client" Cgroup="Watson" Cversion="1.0.1" condition="Watson IoT Client">
       <description>IBM Watson Cloud IoT Device Client</description>
       <RTE_Components_h>
         <!-- the following content goes into file 'RTE_Components.h' -->
