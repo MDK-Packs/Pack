@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd" schemaVersion="1.6.0">
+  <name>B-L475E-IOT01A_BSP</name>
+  <vendor>Keil</vendor>
+  <description>STMicroelectronics STM32L4 Series B-L475E-IOT01A Board Support Pack</description>
+  <url>https://github.com/MDK-Packs/Pack/raw/master/B-L475E-IOT01A_BSP/</url>
+  <repository type="git">https://github.com/MDK-Packs/B-L475E-IOT01A_BSP.git</repository>
+
+  <releases>
+    <release version="1.0.0" date="2020-07-03">
+      Initial public release
+    </release>
+  </releases>
+
+  <keywords>
+    <!-- keywords for indexing -->
+    <keyword>ST</keyword>
+    <keyword>Board Support Pack</keyword>
+    <keyword>STM32L4</keyword>
+    <keyword>B-L475E-IOT01A</keyword>
+  </keywords>
+
+  <requirements>
+    <packages>
+      <package vendor="Keil" name="STM32L4xx_DFP" version="2.4.0-0"/>
+    </packages>
+  </requirements>
+
+  <conditions>
+    <condition id="STM32L475">
+      <description>STMicroelectronics STM32L475 Devices</description>
+      <accept  Dvendor="STMicroelectronics:13" Dname="STM32L475*"/>
+    </condition>
+    
+    <!-- B-L475E-IOT01A BSP Conditions -->
+    <condition id="B-L475E-IOT01A BSP">
+      <description>STMicroelectronics B-L475E-IOT01A BSP</description>
+      <require condition="STM32L475"/>
+      <require Cclass="Device" Cgroup="STM32Cube HAL" Csub="Common"/>
+      <require Cclass="Device" Cgroup="STM32Cube HAL" Csub="GPIO"/>
+      <require Cclass="Device" Cgroup="STM32Cube HAL" Csub="I2C"/>
+      <require Cclass="Device" Cgroup="STM32Cube HAL" Csub="UART"/>
+    </condition>
+    <condition id="B-L475E-IOT01A BSP Accelerometer">
+      <description>STMicroelectronics B-L475E-IOT01A BSP Accelerometer</description>
+      <require condition="STM32L475"/>
+      <require Cclass="Board Support" Cgroup="Drivers" Csub="Basic I/O"/>
+    </condition>
+    <condition id="B-L475E-IOT01A BSP Gyroscope">
+      <description>STMicroelectronics B-L475E-IOT01A BSP Gyroscope</description>
+      <require condition="STM32L475"/>
+      <require Cclass="Board Support" Cgroup="Drivers" Csub="Basic I/O"/>
+    </condition>
+    <condition id="B-L475E-IOT01A BSP Humidity Sensor">
+      <description>STMicroelectronics B-L475E-IOT01A BSP Humidity Sensor</description>
+      <require condition="STM32L475"/>
+      <require Cclass="Board Support" Cgroup="Drivers" Csub="Basic I/O"/>
+    </condition>
+    <condition id="B-L475E-IOT01A BSP Magnetometer">
+      <description>STMicroelectronics B-L475E-IOT01A BSP Magnetometer</description>
+      <require condition="STM32L475"/>
+      <require Cclass="Board Support" Cgroup="Drivers" Csub="Basic I/O"/>
+    </condition>
+    <condition id="B-L475E-IOT01A BSP Pressure Sensor">
+      <description>STMicroelectronics B-L475E-IOT01A BSPP Pressure Sensor</description>
+      <require condition="STM32L475"/>
+      <require Cclass="Board Support" Cgroup="Drivers" Csub="Basic I/O"/>
+    </condition>
+    <condition id="B-L475E-IOT01A BSP Temperature Sensor">
+      <description>STMicroelectronics B-L475E-IOT01A BSP Temperature Sensor</description>
+      <require condition="STM32L475"/>
+      <require Cclass="Board Support" Cgroup="Drivers" Csub="Basic I/O"/>
+    </condition>
+    <condition id="B-L475E-IOT01A BSP QSPI">
+      <description>STMicroelectronics B-L475E-IOT01A BSP QSPI</description>
+      <require condition="STM32L475"/>
+      <require Cclass="Device" Cgroup="STM32Cube HAL" Csub="Common"/>
+      <require Cclass="Device" Cgroup="STM32Cube HAL" Csub="GPIO"/>
+      <require Cclass="Device" Cgroup="STM32Cube HAL" Csub="QSPI"/>
+    </condition>
+    <condition id="B-L475E-IOT01A VIO">
+      <description>Virtual I/O B-L475E-IOT01A</description>
+      <require condition="STM32L475"/>
+      <require Cclass="Board Support" Cgroup="Drivers" Csub="Accelerometer"/>
+      <require Cclass="Board Support" Cgroup="Drivers" Csub="Gyroscope"/>
+      <require Cclass="Board Support" Cgroup="Drivers" Csub="Humidity Sensor"/>
+      <require Cclass="Board Support" Cgroup="Drivers" Csub="Magnetometer"/>
+      <require Cclass="Board Support" Cgroup="Drivers" Csub="Pressure Sensor"/>
+      <require Cclass="Board Support" Cgroup="Drivers" Csub="Temperature Sensor"/>
+      <require Cclass="Board Support" Cgroup="Drivers" Csub="Basic I/O"/>
+    </condition>
+  </conditions>
+
+  <components>
+    <bundle Cbundle="B-L475E-IOT01A" Cclass="Board Support" Cversion="1.1.6">
+      <description>STMicroelectronics B-L475E-IOT01A Board</description>
+      <doc>Documents/b-l475e-iot01a.pdf</doc>
+      <component Cgroup="Drivers" Csub="Basic I/O" condition="B-L475E-IOT01A BSP">
+        <description>LEDs, push-buttons, COM ports, I2C, Sensor IO and NFC IO Drivers for STMicroelectronics B-L475E-IOT01A Board</description>
+        <files>
+          <file category="include" name="Drivers/Components/Common/"/>
+          <file category="header" name="Drivers/B-L475E-IOT01/stm32l475e_iot01.h"/>
+          <file category="source" name="Drivers/B-L475E-IOT01/stm32l475e_iot01.c"/>
+        </files>
+      </component>
+      <component Cgroup="Drivers" Csub="Accelerometer" condition="B-L475E-IOT01A BSP Accelerometer">
+        <description>Accelerometer Driver for STMicroelectronics B-L475E-IOT01A Board</description>
+        <files>
+          <file category="header" name="Drivers/B-L475E-IOT01/stm32l475e_iot01_accelero.h"/>
+          <file category="source" name="Drivers/B-L475E-IOT01/stm32l475e_iot01_accelero.c"/>
+          <file category="header" name="Drivers/Components/lsm6dsl/lsm6dsl.h"/>
+          <file category="source" name="Drivers/Components/lsm6dsl/lsm6dsl.c"/>
+        </files>
+      </component>
+      <component Cgroup="Drivers" Csub="Gyroscope" condition="B-L475E-IOT01A BSP Gyroscope">
+        <description>Gyroscope Driver for STMicroelectronics B-L475E-IOT01A Board</description>
+        <files>
+          <file category="header" name="Drivers/B-L475E-IOT01/stm32l475e_iot01_gyro.h"/>
+          <file category="source" name="Drivers/B-L475E-IOT01/stm32l475e_iot01_gyro.c"/>
+          <file category="header" name="Drivers/Components/lsm6dsl/lsm6dsl.h"/>
+          <file category="source" name="Drivers/Components/lsm6dsl/lsm6dsl.c"/>
+        </files>
+      </component>
+      <component Cgroup="Drivers" Csub="Humidity Sensor" condition="B-L475E-IOT01A BSP Humidity Sensor">
+        <description>Humidity Sensor Driver for STMicroelectronics B-L475E-IOT01A Board</description>
+        <files>
+          <file category="header" name="Drivers/B-L475E-IOT01/stm32l475e_iot01_hsensor.h"/>
+          <file category="source" name="Drivers/B-L475E-IOT01/stm32l475e_iot01_hsensor.c"/>
+          <file category="header" name="Drivers/Components/hts221/hts221.h"/>
+          <file category="source" name="Drivers/Components/hts221/hts221.c"/>
+        </files>
+      </component>
+      <component Cgroup="Drivers" Csub="Magnetometer" condition="B-L475E-IOT01A BSP Magnetometer">
+        <description>Magnetometer Driver for STMicroelectronics B-L475E-IOT01A Board</description>
+        <files>
+          <file category="header" name="Drivers/B-L475E-IOT01/stm32l475e_iot01_magneto.h"/>
+          <file category="source" name="Drivers/B-L475E-IOT01/stm32l475e_iot01_magneto.c"/>
+          <file category="header" name="Drivers/Components/lis3mdl/lis3mdl.h"/>
+          <file category="source" name="Drivers/Components/lis3mdl/lis3mdl.c"/>
+        </files>
+      </component>
+      <component Cgroup="Drivers" Csub="Pressure Sensor" condition="B-L475E-IOT01A BSP Pressure Sensor">
+        <description>Pressure Sensor Driver for STMicroelectronics B-L475E-IOT01A Board</description>
+        <files>
+          <file category="header" name="Drivers/B-L475E-IOT01/stm32l475e_iot01_psensor.h"/>
+          <file category="source" name="Drivers/B-L475E-IOT01/stm32l475e_iot01_psensor.c"/>
+          <file category="header" name="Drivers/Components/lps22hb/lps22hb.h"/>
+          <file category="source" name="Drivers/Components/lps22hb/lps22hb.c"/>
+        </files>
+      </component>
+      <component Cgroup="Drivers" Csub="Temperature Sensor" condition="B-L475E-IOT01A BSP Temperature Sensor">
+        <description>Temperature Sensor Driver for STMicroelectronics B-L475E-IOT01A Board</description>
+        <files>
+          <file category="header" name="Drivers/B-L475E-IOT01/stm32l475e_iot01_tsensor.h"/>
+          <file category="source" name="Drivers/B-L475E-IOT01/stm32l475e_iot01_tsensor.c"/>
+          <file category="header" name="Drivers/Components/lps22hb/lps22hb.h"/>
+          <file category="source" name="Drivers/Components/lps22hb/lps22hb.c"/>
+          <file category="header" name="Drivers/Components/hts221/hts221.h"/>
+          <file category="source" name="Drivers/Components/hts221/hts221.c"/>
+        </files>
+      </component>
+      <component Cgroup="Drivers" Csub="QSPI" condition="B-L475E-IOT01A BSP QSPI">
+        <description>QSPI Flash Driver for STMicroelectronics B-L475E-IOT01A Board</description>
+        <files>
+          <file category="header" name="Drivers/B-L475E-IOT01/stm32l475e_iot01_qspi.h"/>
+          <file category="source" name="Drivers/B-L475E-IOT01/stm32l475e_iot01_qspi.c"/>
+          <file category="header" name="Drivers/Components/mx25r6435f/mx25r6435f.h"/>
+        </files>
+      </component>
+    </bundle>
+
+    <!-- VIO component for B-L475E-IOT01A -->
+    <component Cclass="CMSIS Driver" Cgroup="VIO" Csub="Board" Cvariant= "B-L475E-IOT01A" Cversion="1.0.0" Capiversion="0.1.0" condition="B-L475E-IOT01A VIO">
+      <description>Virtual I/O implementation for STM32L562E-DK Board</description>
+      <RTE_Components_h>
+        #define RTE_VIO_BOARD
+        #define RTE_VIO_B_L475E_IOT01A
+      </RTE_Components_h>
+      <files>
+        <file category="source" name="Drivers/Platform/vio_B-L475E-IOT01A.c"/>
+      </files>
+    </component>
+  </components>
+
+  <boards>
+    <!-- B-L475E-IOT01A Board Support -->
+    <board vendor="STMicroelectronics" name="B-L475E-IOT01A" revision="1" salesContact="https://www.st.com/content/st_com/en/contact-us.html"
+           orderForm="https://www.st.com/en/evaluation-tools/b-l475e-iot01a.html">
+      <description>STMicroelectronics B-L475E-IOT01A</description>
+      <image small="Images/b-l475e-iot01ax-medium.jpg"
+             large="Images/b-l475e-iot01ax-large.jpg"/>
+      <book category="overview"  name="https://www.st.com/en/evaluation-tools/b-l475e-iot01a.html"  title="Web Page"/>
+      <book category="manual"    name="Documents/b-l475e-iot01a.pdf"                                title="Data brief"/>
+      <book category="manual"    name="Documents/DM00347848.pdf"                                    title="User Manual"/>
+      <book category="schematic" name="Documents/b-l475e-iot01a1_sch_revC.pdf"                      title="Schematics revC"/>
+      <book category="schematic" name="Documents/b-l475e-iot01a1_sch_revD-01.pdf"                   title="Schematics revD-01"/>
+      <mountedDevice    deviceIndex="0" Dvendor="STMicroelectronics:13" Dname="STM32L475VGTx"/>
+      <compatibleDevice deviceIndex="0" Dvendor="STMicroelectronics:13" DsubFamily="STM32L475"/>
+      <feature type="XTAL"          n="32768"/>
+      <feature type="ODbg"          n="1"                name="On-board ST-LINK/V2-1"/>
+      <feature type="ROM"           n="1"                name="64-Mbit Quad-SPI Flash memory"/>
+      <feature type="PWR"           n="5"                name="USB Powered"/>
+      <feature type="USB"           n="1"                name="USB OTG FS with Micro-AB connector"/>
+      <feature type="Other"         n="1"                name="Bluetooth v4.1 module"/>
+      <feature type="Other"         n="1"                name="Sub-GHz low-power RF module"/>
+      <feature type="Other"         n="1"                name="802.11 b/g/n compliant WiFi module"/>
+      <feature type="Other"         n="1"                name="Dynamic NFC tag based on M24SR"/>
+      <feature type="SensOther"     n="1"                name="3-axis Magnetometer"/>
+      <feature type="SensOther"     n="1"                name="260-1260 hPa absolute digital output Barometer"/>
+      <feature type="SensOther"     n="1"                name="Time-of-Flight and Gesture-detection sensor"/>
+      <feature type="MIC"           n="2"                name="Digital omnidirectional Microphone"/>
+      <feature type="TempSens"      n="1"/>
+      <feature type="Accelerometer" n="1"                name="3D Accelerometer and 3D Gyroscope"/>
+      <feature type="Button"        n="2"                name="Push-Buttons for Reset and User"/>
+      <feature type="LED"           n="2"                name="2 User LEDs"/>
+      <feature type="ArduinoFF"     n="1"/>
+      <debugInterface adapter="ST-Link" connector="Micro-USB"/>
+      <debugInterface adapter="SW"      connector="10 pin TAG"/>
+    </board>
+  </boards>
+
+  <examples>
+    <example name="Blinky" doc="README.md" folder="Projects/Blinky">
+      <description>CMSIS-RTOS2 Blinky example with VIO</description>
+      <board name="B-L475E-IOT01A" vendor="STMicroelectronics"/>
+      <project>
+        <environment name="uv" load="Blinky.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="CMSIS" Cgroup="CORE"/>
+        <component Cclass="Device" Cgroup="Startup"/>
+        <component Cclass="CMSIS" Cgroup="RTOS"/>
+        <component Cclass="CMSIS Driver" Cgroup="VIO"/>
+        <category>Getting Started</category>
+      </attributes>
+    </example>
+
+    <example name="Platform" doc="README.md" folder="Projects/Platform">
+      <description>CMSIS-RTOS2 Platform example with VIO</description>
+      <board name="B-L475E-IOT01A" vendor="STMicroelectronics"/>
+      <project>
+        <environment name="uv" load="Platform.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="CMSIS" Cgroup="CORE"/>
+        <component Cclass="Device" Cgroup="Startup"/>
+        <component Cclass="CMSIS" Cgroup="RTOS"/>
+        <component Cclass="CMSIS Driver" Cgroup="VIO"/>
+        <category>Getting Started</category>
+      </attributes>
+    </example>
+  </examples>
+</package>
