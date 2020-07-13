@@ -2,7 +2,7 @@
 <index schemaVersion="1.0.0" xs:noNamespaceSchemaLocation="PackIndex.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance">
   <vendor>MDK-Packs</vendor>
   <url>https://github.com/MDK-Packs/Pack/raw/master/</url>
-  <timestamp>2020-07-03T12:00:00</timestamp>
+  <timestamp>2020-07-13T12:00:00</timestamp>
   <pindex>
     <pdsc url="https://github.com/MDK-Packs/Pack/raw/master/AWS_IoT_Device/"          vendor="MDK-Packs" name="AWS_IoT_Device"          version="2.0.0-beta"/>
     <pdsc url="https://github.com/MDK-Packs/Pack/raw/master/Azure_IoT/"               vendor="MDK-Packs" name="Azure_IoT"               version="1.0.2"/>
@@ -10,7 +10,7 @@
     <pdsc url="https://github.com/MDK-Packs/Pack/raw/master/cJSON/"                   vendor="MDK-Packs" name="cJSON"                   version="1.0.0"/>
     <pdsc url="https://github.com/MDK-Packs/Pack/raw/master/Google_IoT_Device/"       vendor="MDK-Packs" name="Google_IoT_Device"       version="1.0.2"/>
     <pdsc url="https://github.com/MDK-Packs/Pack/raw/master/HTTP_Parser/"             vendor="MDK-Packs" name="HTTP_Parser"             version="1.0.0"/>
-    <pdsc url="https://github.com/MDK-Packs/Pack/raw/master/IoT_Socket/"              vendor="MDK-Packs" name="IoT_Socket"              version="1.2.0"/>
+    <pdsc url="https://github.com/MDK-Packs/Pack/raw/master/IoT_Socket/"              vendor="MDK-Packs" name="IoT_Socket"              version="1.2.1"/>
     <pdsc url="https://github.com/MDK-Packs/Pack/raw/master/Jsmn/"                    vendor="MDK-Packs" name="Jsmn"                    version="1.1.0"/>
     <pdsc url="https://github.com/MDK-Packs/Pack/raw/master/LPC55S6x_TFM-PF/"         vendor="Keil"      name="LPC55S6x_TFM-PF"         version="1.0.0"/>
     <pdsc url="https://github.com/MDK-Packs/Pack/raw/master/mbedCrypto/"              vendor="ARM"       name="mbedCrypto"              version="3.0.1"/>

@@ -7,6 +7,10 @@
   <url>https://github.com/MDK-Packs/Pack/raw/master/IoT_Socket/</url>
   <license>LICENSE.txt</license>
   <releases>
+    <release version="1.2.1" date="2020-07-13">
+      Updated IoT Socket implementation with lwIP:
+      - corrected iotSocketSend return value for non-blocking sockets
+    </release>
     <release version="1.2.0" date="2020-04-22">
       Updated IoT Socket API V1.2.0 (support for polling Socket Receive/Send)
       Updated IoT Socket implementation with MDK Network
@@ -68,7 +72,7 @@
         <file category="source"  name="source/mdk_network/iot_socket.c"/>
       </files>
     </component>
-    <component Cclass="IoT Utility" Cgroup="Socket" Csub="lwIP" Capiversion="1.2.0" Cversion="1.0.0" condition="lwIP Socket">
+    <component Cclass="IoT Utility" Cgroup="Socket" Csub="lwIP" Capiversion="1.2.0" Cversion="1.0.1" condition="lwIP Socket">
       <description>IoT Socket implementation with lwIP</description>
       <RTE_Components_h>
         <!-- the following content goes into file 'RTE_Components.h' -->
