@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<package xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd" schemaVersion="1.6.0">
+  <vendor>Keil</vendor>
+  <name>MIMXRT1064-EVK_BSP</name>
+  <description>NXP MIMXRT1064-EVK board support pack</description>
+  <url>https://github.com/MDK-Packs/Pack/raw/master/MIMXRT1064-EVK_BSP/</url>
+  <repository type="git">https://github.com/MDK-Packs/MIMXRT1064-EVK_BSP.git</repository>
+
+  <releases>
+    <release version="1.0.0" date="2020-07-15">
+      Board description and documentation for MIMXRT1064-EVK
+      Example projects:
+      - CMSIS-RTOS2 Blinky (verify the basic tool setup)
+      - CMSIS-RTOS2 Platform (configure the board hardware)
+    </release>
+  </releases>
+
+  <requirements>
+    <packages>
+      <package vendor="NXP" name="MIMXRT1064_DFP"     version="12.1.0-0"/>
+      <package vendor="NXP" name="EVK-MIMXRT1064_BSP" version="12.1.0-0"/>
+    </packages>
+  </requirements>
+
+  <keywords>
+    <!-- keywords for indexing -->
+    <keyword>NXP</keyword>
+    <keyword>iMXRT</keyword>
+    <keyword>iMXRT1064</keyword>
+    <keyword>MIMXRT</keyword>
+    <keyword>MIMXRT1064-EVK</keyword>
+  </keywords>
+
+  <conditions>
+    <condition id="MIMXRT1064 CMSIS">
+      <description>NXP i.MX RT 1064 device and CMSIS-CORE</description>
+      <require Dvendor="NXP:11" Dname="MIMXRT106*"/>
+      <require Cclass="CMSIS" Cgroup="CORE"/>
+    </condition>
+
+    <condition id="MIMXRT1064-EVK VIO">
+      <description>Virtual I/O MIMXRT1064-EVK</description>
+      <require condition="MIMXRT1064 CMSIS"/>
+      <require Cclass="Board Support" Cgroup="SDK Project Template"/>
+    </condition>
+  </conditions>
+
+  <components>
+    <!-- VIO component for MIMXRT1064-EVK -->
+    <component Cclass="CMSIS Driver" Cgroup="VIO" Csub="Board" Cvariant="MIMXRT1064-EVK" Cversion="1.0.0" Capiversion="0.1.0"   condition="MIMXRT1064-EVK VIO">
+      <description>Virtual I/O implementation for MIMXRT1064-EVK VIO</description>
+      <RTE_Components_h>
+        #define RTE_VIO_BOARD
+        #define RTE_VIO_MIMXRT1064_EVK
+      </RTE_Components_h>
+      <files>
+        <file category="source" name="Drivers/Platform/vio_MIMXRT1064-EVK.c"/>
+      </files>
+    </component>
+  </components>
+
+  <boards>
+    <board vendor="NXP" name="EVK-MIMXRT1064" revision="Rev.A"
+           salesContact="https://www.nxp.com/company/contact-us:CONTACTUS"
+           orderForm   ="https://www.nxp.com/part/MIMXRT1064-EVK#/">
+      <description>MIMXRT1064-EVK: EVK Development Platform for i.MX MIMXRT1064 MCUs</description>
+      <image small="Images/MIMXRT1064EVK_small.jpg"
+             large="Images/MIMXRT1064EVK_large.jpg"/>
+
+      <book category="overview"  name="https://www.nxp.com/design/development-boards/i-mx-evaluation-and-development-boards/mimxrt1064-evk-i-mx-rt1064-evaluation-kit:MIMXRT1064-EVK" title="i.MX RT1064 Evaluation Kit"/>
+      <book category="overview"  name="Documents/IMXRTPORTFS.pdf"      title="Fact Sheet"/>
+      <book category="overview"  name="Documents/IMXRT1064QSG.pdf"     title="Quick Start Guide"/>
+      <book category="manual"    name="Documents/MIMXRT1064EVKHUG.pdf" title="Board Hardware User's Guide"/>
+      <book category="schematic" name="Documents/SPF-32221_A.pdf"      title="Schematics"/>
+
+      <mountedDevice Dname="MIMXRT1064xxxxA" Dvendor="NXP:11"/>
+    </board>
+  </boards>
+
+  <examples>
+    <example name="Blinky" doc="README.md" folder="Projects/Blinky">
+      <description>CMSIS-RTOS2 Blinky example with VIO</description>
+      <board name="EVK-MIMXRT1064" vendor="NXP"/>
+      <project>
+        <environment name="uv" load="Blinky.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="CMSIS"  Cgroup="CORE"/>
+        <component Cclass="Device" Cgroup="Startup"/>
+        <component Cclass="CMSIS"  Cgroup="RTOS"/>
+        <component Cclass="CMSIS Driver" Cgroup="VIO"/>
+        <category>Getting Started</category>
+      </attributes>
+    </example>
+
+    <example name="Platform" doc="README.md" folder="Projects/Platform">
+      <description>CMSIS-RTOS2 Platform example with VIO</description>
+      <board name="EVK-MIMXRT1064" vendor="NXP"/>
+      <project>
+        <environment name="uv" load="Platform.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="CMSIS" Cgroup="CORE"/>
+        <component Cclass="Device" Cgroup="Startup"/>
+        <component Cclass="CMSIS" Cgroup="RTOS"/>
+        <component Cclass="CMSIS Driver" Cgroup="VIO"/>
+        <category>Getting Started</category>
+      </attributes>
+    </example>
+  </examples>
+</package>
