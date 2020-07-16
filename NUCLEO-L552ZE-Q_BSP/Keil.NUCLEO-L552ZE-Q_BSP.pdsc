@@ -2,15 +2,30 @@
 <package xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd" schemaVersion="1.6.0">
   <name>NUCLEO-L552ZE-Q_BSP</name>
   <vendor>Keil</vendor>
-  <description>STMicroelectronics STM32L5 Series NUCLEO-L552ZE-Q Board Support</description>
+  <description>STMicroelectronics STM32L5 Series NUCLEO-L552ZE-Q Board Support Pack</description>
   <url>https://github.com/MDK-Packs/Pack/raw/master/NUCLEO-L552ZE-Q_BSP/</url>
   <repository type="git">https://github.com/MDK-Packs/NUCLEO-L552ZE-Q_BSP.git</repository>
 
   <releases>
+    <release version="1.1.0" date="2020-07-16">
+      Drivers:
+      - Updated CMSIS-VIO driver
+      Example projects:
+      - Updated CMSIS-RTOS2 Blinky
+      - Updated CMSIS-RTOS2 Platform
+    </release>
     <release version="1.0.0" date="2020-05-18">
       Initial public release.
     </release>
   </releases>
+
+  <keywords>
+    <!-- keywords for indexing -->
+    <keyword>ST</keyword>
+    <keyword>Board Support Pack</keyword>
+    <keyword>STM32L5</keyword>
+    <keyword>NUCLEO-L552ZE-Q</keyword>
+  </keywords>
 
   <requirements>
     <packages>
@@ -52,7 +67,7 @@
       <component Cgroup="Drivers" Csub="Basic I/O" condition="NUCLEO-L552ZE-Q BSP">
         <description>LEDs, push-buttons and COM ports for NUCLEO-L552ZE Board</description>
         <files>
-          <file category="header" name="Drivers/Config/stm32l5xx_nucleo_conf.h"        attr="config" version="1.0.0"/>
+          <file category="header" name="Drivers/Config/stm32l5xx_nucleo_conf.h" attr="config" version="1.0.0"/>
           <file category="header" name="Drivers/STM32L5xx_Nucleo/stm32l5xx_nucleo.h"/>
           <file category="source" name="Drivers/STM32L5xx_Nucleo/stm32l5xx_nucleo.c"/>
         </files>
@@ -86,12 +101,12 @@
            orderForm   ="https://www.st.com/en/evaluation-tools/nucleo-l552ze-q.html">
       <description>STM32 Nucleo development board with NUCLEO-L552ZE MCU</description>
       <image small="Images/NUCLEO_small.jpg"
-             large="Images/NUCLEO_large.jpg"/>
+             large="Images/NUCLEO_large.jpg" public="true"/>
       <book category="overview"  name="https://www.st.com/en/evaluation-tools/nucleo-l552ze-q.html" title="STM32 Nucleo board"/>
-      <book category="overview"  name="Documents/nucleo-l552ze-q.pdf" title="Data brief"/>
-      <book category="setup"     name="Documents/DM00105928.pdf" title="Getting started"/>
-      <book category="manual"    name="Documents/DM00615305.pdf" title="User Manual"/>
-      <book category="schematic" name="Documents/MB1361.pdf"     title="Schematics"/>
+      <book category="overview"  name="Documents/nucleo-l552ze-q.pdf" title="Data brief" public="true"/>
+      <book category="setup"     name="Documents/DM00105928.pdf" title="Getting started" public="true"/>
+      <book category="manual"    name="Documents/DM00615305.pdf" title="User Manual" public="true"/>
+      <book category="schematic" name="Documents/MB1361.pdf"     title="Schematics" public="true"/>
       <mountedDevice    deviceIndex="0" Dvendor="STMicroelectronics:13" Dname="STM32L552ZETxQ"/> 
       <compatibleDevice deviceIndex="0" Dvendor="STMicroelectronics:13" DsubFamily="STM32L5x2"/>
         <feature type="ODbg"      n="1"              name="On-board ST-LINK/V2-1"/>
@@ -106,7 +121,7 @@
   </boards>
 
   <examples>
-    <example name="Blinky" doc="Abstract.txt" folder="Projects/Blinky">
+    <example name="Blinky" doc="README.md" folder="Projects/Blinky">
       <description>CMSIS-RTOS2 Blinky example with VIO</description>
       <board name="NUCLEO-L552ZE-Q" vendor="STMicroelectronics"/>
       <project>
@@ -121,7 +136,7 @@
       </attributes>
     </example>
 
-    <example name="Platform" doc="Abstract.txt" folder="Projects/Platform">
+    <example name="Platform" doc="README.md" folder="Projects/Platform">
       <description>CMSIS-RTOS2 Platform example with VIO</description>
       <board name="NUCLEO-L552ZE-Q" vendor="STMicroelectronics"/>
       <project>
@@ -136,5 +151,4 @@
       </attributes>
     </example>
   </examples>
-
 </package>
