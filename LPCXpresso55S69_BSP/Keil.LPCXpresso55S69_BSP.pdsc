@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd" schemaVersion="1.6.0">
+  <name>LPCXpresso55S69_BSP</name>
+  <vendor>Keil</vendor>
+  <description>NXP LPC55S69 Series LPCXpresso55S69 Board Support Pack</description>
+  <url>https://github.com/MDK-Packs/Pack/raw/master/LPCXpresso55S69_BSP/</url>
+  <repository type="git">https://github.com/MDK-Packs/LPCXpresso55S69_BSP.git</repository>
+
+  <releases>
+    <release version="1.0.0" date="2020-07-17">
+      Drivers:
+      - CMSIS-VIO driver
+      Example projects:
+      - CMSIS-RTOS2 Blinky (verify the basic tool setup)
+      - CMSIS-RTOS2 Platform (configure the board hardware)
+    </release>
+  </releases>
+
+  <keywords>
+    <!-- keywords for indexing -->
+    <keyword>NXP</keyword>
+    <keyword>Board Support Pack</keyword>
+    <keyword>LPC55S69</keyword>
+    <keyword>LPCXpresso55S69</keyword>
+  </keywords>
+
+  <requirements>
+    <packages>
+      <package vendor="NXP" name="LPC55S69_DFP"        version="12.1.1-0"/>
+      <package vendor="NXP" name="LPCXpresso55S69_BSP" version="12.1.1-0"/>
+    </packages>
+  </requirements>
+
+  <conditions>
+    <condition id="LPC55S69">
+      <description>NXP LPC55S69 Devices</description>
+      <require Dvendor="NXP:11" Dname="LPC55S69*"/>
+    </condition>
+    <condition id="LPCXpresso55S69 VIO">
+      <description>Virtual I/O driver</description>
+      <require condition="LPC55S69"/>
+      <require Cclass="Board Support" Cgroup="SDK Project Template" Csub="project_template" Cvariant="lpcxpresso55s69"/>
+      <require Cclass="Device"        Cgroup="SDK Drivers"          Csub="gpio"/>
+      <require Cclass="Device"        Cgroup="SDK Drivers"          Csub="iocon"/>
+      <require Cclass="Device"        Cgroup="Startup"/>
+    </condition>
+  </conditions>
+
+  <components>
+    <!-- VIO driver -->
+    <component Cclass="CMSIS Driver" Cgroup="VIO" Csub="Board" Cvariant="LPCXpresso55S69" Cversion="1.0.0" Capiversion="0.1.0" condition="LPCXpresso55S69 VIO">
+      <description>Virtual I/O implementation for NXP LPCXpresso55S69 Board</description>
+      <RTE_Components_h>
+        #define RTE_VIO_BOARD
+        #define RTE_VIO_LPCXPRESSO55S69
+      </RTE_Components_h>
+      <files>
+        <file category="source" name="Drivers/Platform/vio_LPCXpresso55S69.c"/>
+      </files>
+    </component>
+  </components>
+
+  <examples>
+    <example name="Blinky" doc="README.md" folder="Projects/Blinky">
+      <description>CMSIS-RTOS2 Blinky example with VIO</description>
+      <board name="LPCXpresso55S69" vendor="NXP"/>
+      <project>
+        <environment name="uv" load="Blinky.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="Device"       Cgroup="Startup"/>
+        <component Cclass="CMSIS"        Cgroup="CORE"/>
+        <component Cclass="CMSIS"        Cgroup="RTOS"/>
+        <component Cclass="CMSIS Driver" Cgroup="VIO"/>
+        <category>Getting Started</category>
+      </attributes>
+    </example>
+
+    <example name="Platform" doc="README.md" folder="Projects/Platform">
+      <description>CMSIS-RTOS2 Platform example with VIO</description>
+      <board name="LPCXpresso55S69" vendor="NXP"/>
+      <project>
+        <environment name="uv" load="Platform.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="Device"       Cgroup="Startup"/>
+        <component Cclass="CMSIS"        Cgroup="CORE"/>
+        <component Cclass="CMSIS"        Cgroup="RTOS"/>
+        <component Cclass="CMSIS Driver" Cgroup="VIO"/>
+        <category>Getting Started</category>
+      </attributes>
+    </example>
+  </examples>
+</package>
