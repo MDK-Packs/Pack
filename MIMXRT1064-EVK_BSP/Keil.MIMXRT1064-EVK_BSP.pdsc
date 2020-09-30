@@ -8,6 +8,14 @@
   <repository type="git">https://github.com/MDK-Packs/MIMXRT1064-EVK_BSP.git</repository>
 
   <releases>
+    <release version="1.1.0" date="2020-09-30">
+      Synchronized with NXP:MIMXRT1064_DFP 12.2.0 and NXP:EVK-MIMXRT1064_BSP 12.2.0
+      Renamed board to EVK-MIMXRT1064_MDK
+      Platform project update:
+      - New README.md format
+      - NVIC configuration added
+      - Fixed RAM section size used by Event Recorder
+    </release>
     <release version="1.0.0" date="2020-07-15">
       Board description and documentation for MIMXRT1064-EVK
       Example projects:
@@ -18,8 +26,9 @@
 
   <requirements>
     <packages>
-      <package vendor="NXP" name="MIMXRT1064_DFP"     version="12.1.0-0"/>
-      <package vendor="NXP" name="EVK-MIMXRT1064_BSP" version="12.1.0-0"/>
+      <package vendor="NXP" name="MIMXRT1064_DFP"     version="12.2.0-0"/>
+      <package vendor="NXP" name="EVK-MIMXRT1064_BSP" version="12.2.0-0"/>
+      <package vendor="ARM" name="CMSIS"              version="5.7.0"/>
     </packages>
   </requirements>
 
@@ -61,7 +70,7 @@
   </components>
 
   <boards>
-    <board vendor="NXP" name="EVK-MIMXRT1064" revision="Rev.A"
+    <board vendor="NXP" name="EVK-MIMXRT1064_MDK" revision="Rev.A"
            salesContact="https://www.nxp.com/company/contact-us:CONTACTUS"
            orderForm   ="https://www.nxp.com/part/MIMXRT1064-EVK#/">
       <description>MIMXRT1064-EVK: EVK Development Platform for i.MX MIMXRT1064 MCUs</description>
@@ -75,13 +84,14 @@
       <book category="schematic" name="Documents/SPF-32221_A.pdf"      title="Schematics" public="true"/>
 
       <mountedDevice Dname="MIMXRT1064xxxxA" Dvendor="NXP:11"/>
+      <debugProbe connector="Micro-USB" debugClock="10000000" debugLink="swd" name="DAP-Link" />
     </board>
   </boards>
 
   <examples>
     <example name="Blinky" doc="README.md" folder="Projects/Blinky">
       <description>CMSIS-RTOS2 Blinky example with VIO</description>
-      <board name="EVK-MIMXRT1064" vendor="NXP"/>
+      <board name="EVK-MIMXRT1064_MDK" vendor="NXP"/>
       <project>
         <environment name="uv" load="Blinky.uvprojx"/>
       </project>
@@ -96,7 +106,7 @@
 
     <example name="Platform" doc="README.md" folder="Projects/Platform">
       <description>CMSIS-RTOS2 Platform example with VIO</description>
-      <board name="EVK-MIMXRT1064" vendor="NXP"/>
+      <board name="EVK-MIMXRT1064_MDK" vendor="NXP"/>
       <project>
         <environment name="uv" load="Platform.uvprojx"/>
       </project>
