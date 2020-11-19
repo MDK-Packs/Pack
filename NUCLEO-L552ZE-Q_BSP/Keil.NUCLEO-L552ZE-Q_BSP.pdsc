@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<package xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd" schemaVersion="1.6.0">
+<package xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd" schemaVersion="1.7.0">
   <name>NUCLEO-L552ZE-Q_BSP</name>
   <vendor>Keil</vendor>
   <description>STMicroelectronics STM32L5 Series NUCLEO-L552ZE-Q Board Support Pack</description>
@@ -7,6 +7,15 @@
   <repository type="git">https://github.com/MDK-Packs/NUCLEO-L552ZE-Q_BSP.git</repository>
 
   <releases>
+    <release version="1.1.1" date="2020-11-19">
+      Synchronized with STM32CubeL5 Firmware Package version V1.3.1
+      Updated CubeMX examples
+      Platform project (synchronize with CB_Lab4Layer):
+      - Updated Peripheral Interrupts Priority
+      - Restructured README.md
+      - Added board selection to board layer
+      Updated board description (add debugProbe)
+    </release>
     <release version="1.1.0" date="2020-07-16">
       Drivers:
       - Updated CMSIS-VIO driver
@@ -29,7 +38,7 @@
 
   <requirements>
     <packages>
-      <package vendor="Keil" name="STM32L5xx_DFP" version="1.2.0-0"/>
+      <package vendor="Keil" name="STM32L5xx_DFP" version="1.3.0-0"/>
     </packages>
   </requirements>
 
@@ -61,7 +70,7 @@
   </conditions>
 
   <components>
-    <bundle Cbundle="NUCLEO-L552ZE-Q" Cclass="Board Support" Cversion="1.0.1">
+    <bundle Cbundle="NUCLEO-L552ZE-Q" Cclass="Board Support" Cversion="1.0.2">
       <description>STMicroelectronics NUCLEO-L552ZE-Q Board</description>
       <doc></doc>
       <component Cgroup="Drivers" Csub="Basic I/O" condition="NUCLEO-L552ZE-Q BSP">
@@ -109,14 +118,15 @@
       <book category="schematic" name="Documents/MB1361.pdf"     title="Schematics" public="true"/>
       <mountedDevice    deviceIndex="0" Dvendor="STMicroelectronics:13" Dname="STM32L552ZETxQ"/> 
       <compatibleDevice deviceIndex="0" Dvendor="STMicroelectronics:13" DsubFamily="STM32L5x2"/>
-        <feature type="ODbg"      n="1"              name="On-board ST-LINK/V2-1"/>
-        <feature type="PWR"       n="4"              name="USB VBUS, ext. VIN, ext. 5V, ext +3.3V"/>
-        <feature type="CustomFF"  n="2"              name="STMicroelectronics Morpho connector"/>
-        <feature type="ArduinoFF" n="2"              name="STMicroelectronics Arduino connector"/>
-        <feature type="USB"       n="1"              name="USB re-enumeration capability"/>
-        <feature type="Button"    n="2"              name="Push-buttons: User and Reset"/>
-        <feature type="LED"       n="5"              name="LEDs: COM, Power, User LEDs"/>
-      <debugInterface adapter="ST-Link" connector="Mini-USB"/>
+      <feature type="ODbg"      n="1"              name="On-board ST-LINK/V2-1"/>
+      <feature type="PWR"       n="4"              name="USB VBUS, ext. VIN, ext. 5V, ext +3.3V"/>
+      <feature type="CustomFF"  n="2"              name="STMicroelectronics Morpho connector"/>
+      <feature type="ArduinoFF" n="2"              name="STMicroelectronics Arduino connector"/>
+      <feature type="USB"       n="1"              name="USB re-enumeration capability"/>
+      <feature type="Button"    n="2"              name="Push-buttons: User and Reset"/>
+      <feature type="LED"       n="5"              name="LEDs: COM, Power, User LEDs"/>
+      <debugInterface adapter="ST-Link" connector="Micro-USB"/>
+      <debugProbe connector="Micro-USB" debugClock="10000000" debugLink="swd" name="ST-Link"/>
     </board>
   </boards>
 
