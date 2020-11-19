@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd" schemaVersion="1.7.0">
+  <name>STM32L552E-EV_BSP</name>
+  <vendor>Keil</vendor>
+  <description>STMicroelectronics STM32L5 Series STM32L552E-EV Board Support Pack</description>
+  <url>https://github.com/MDK-Packs/Pack/raw/master/STM32L552E-EV_BSP/</url>
+  <repository type="git">https://github.com/MDK-Packs/STM32L552E-EV_BSP.git</repository>
+
+  <releases>
+    <release version="1.0.0" date="2020-11-19">
+      Board description and documentation for STM32L552E-EV
+      Synchronized with STM32CubeL5 Firmware Package version V1.3.1
+      Drivers:
+      - Board Drivers, Components, Config files
+      - CMSIS-Driver VIO
+      Utilities:
+      - LCD Utility Drivers
+      Example projects:
+      - CMSIS-RTOS2 Blinky (verify the basic tool setup)
+      - CMSIS-RTOS2 Platform (configure the board hardware)
+      - Bare-metal secure/non-secure Blinky example without RTOS
+    </release>
+  </releases>
+
+  <keywords>
+    <!-- keywords for indexing -->
+    <keyword>ST</keyword>
+    <keyword>Board Support Pack</keyword>
+    <keyword>STM32L5</keyword>
+    <keyword>STM32L552E-EV</keyword>
+  </keywords>
+
+  <requirements>
+    <packages>
+      <package vendor="Keil" name="STM32L5xx_DFP" version="1.3.0-0"/>
+    </packages>
+  </requirements>
+
+  <conditions>
+    <condition id="STM32L552">
+      <description>STMicroelectronics STM32L552 Devices</description>
+      <require Dvendor="STMicroelectronics:13" Dname="STM32L552*"/>
+    </condition>
+
+    <!-- STM32L552E-EV BSP Conditions -->
+    <condition id="STM32L552E-EV BSP">
+      <description>STMicroelectronics STM32L552E-EV BSP</description>
+      <require condition="STM32L552"/>
+      <require Cclass="Device" Cgroup="STM32Cube HAL" Csub="Common"/>
+      <require Cclass="Device" Cgroup="STM32Cube HAL" Csub="ADC"/>
+      <require Cclass="Device" Cgroup="STM32Cube HAL" Csub="GPIO"/>
+      <require Cclass="Device" Cgroup="STM32Cube HAL" Csub="EXTI"/>
+      <require Cclass="Device" Cgroup="STM32Cube HAL" Csub="UART"/>
+      <require Cclass="Board Support" Cgroup="Drivers" Csub="IO"/>
+    </condition>
+    <condition id="STM32L552E-EV BSP Audio">
+      <description>STMicroelectronics STM32L552E-EV BSP Audio</description>
+      <require condition="STM32L552"/>
+      <require Cclass="Device" Cgroup="STM32Cube HAL" Csub="SAI"/>
+      <require Cclass="Device" Cgroup="STM32Cube HAL" Csub="DMA"/>
+      <require Cclass="Device" Cgroup="STM32Cube HAL" Csub="DFSDM"/>
+      <require Cclass="Board Support" Cgroup="Drivers" Csub="BUS"/>
+      <require Cclass="Board Support" Cgroup="Components" Csub="CS42L51"/>
+    </condition>
+    <condition id="STM32L552E-EV BSP BUS">
+      <description>STMicroelectronics STM32L552E-EV BSP BUS</description>
+      <require condition="STM32L552"/>
+      <require Cclass="Device" Cgroup="STM32Cube HAL" Csub="I2C"/>
+      <require Cclass="Board Support" Cgroup="Drivers" Csub="Basic I/O"/>
+    </condition>
+    <condition id="STM32L552E-EV BSP IDD">
+      <description>STMicroelectronics STM32L552E-EV BSP IDD</description>
+      <require condition="STM32L552"/>
+      <require Cclass="Board Support" Cgroup="Components" Csub="MFXSTM32L152"/>
+      <require Cclass="Board Support" Cgroup="Drivers" Csub="Basic I/O"/>
+    </condition>
+    <condition id="STM32L552E-EV BSP IO">
+      <description>STMicroelectronics STM32L552E-EV BSP IO</description>
+      <require condition="STM32L552"/>
+      <require Cclass="Board Support" Cgroup="Components" Csub="MFXSTM32L152"/>
+      <require Cclass="Board Support" Cgroup="Drivers" Csub="BUS"/>
+      <require Cclass="Board Support" Cgroup="Drivers" Csub="Basic I/O"/>
+    </condition>
+    <condition id="STM32L552E-EV BSP LCD">
+      <description>STMicroelectronics STM32L552E-EV BSP LCD</description>
+      <require condition="STM32L552"/>
+      <require Cclass="Device" Cgroup="STM32Cube HAL" Csub="SRAM"/>
+      <require Cclass="Board Support" Cgroup="Components" Csub="HX8347I"/>
+      <require Cclass="Board Support" Cgroup="Drivers" Csub="Basic I/O"/>
+    </condition>
+    <condition id="STM32L552E-EV BSP OSPI">
+      <description>STMicroelectronics STM32L552E-EV BSP OSPI</description>
+      <require condition="STM32L552"/>
+      <require Cclass="Board Support" Cgroup="Components" Csub="MX25LM51245G"/>
+      <require Cclass="Board Support" Cgroup="Components" Csub="ISS66WVH8M8"/>
+      <require Cclass="Board Support" Cgroup="Drivers" Csub="Basic I/O"/>
+    </condition>
+    <condition id="STM32L552E-EV BSP SD">
+      <description>STMicroelectronics STM32L552E-EV BSP SD</description>
+      <require condition="STM32L552"/>
+      <require Cclass="Device" Cgroup="STM32Cube HAL" Csub="SD"/>
+      <require Cclass="Device" Cgroup="STM32Cube HAL" Csub="DMA"/>
+      <require Cclass="Board Support" Cgroup="Drivers" Csub="Basic I/O"/>
+    </condition>
+    <condition id="STM32L552E-EV BSP SRAM">
+      <description>STMicroelectronics STM32L552E-EV BSP SRAM</description>
+      <require condition="STM32L552"/>
+      <require Cclass="Device" Cgroup="STM32Cube HAL" Csub="SRAM"/>
+      <require Cclass="Board Support" Cgroup="Drivers" Csub="Basic I/O"/>
+    </condition>
+    <condition id="STM32L552E-EV BSP TS">
+      <description>STMicroelectronics STM32L552E-EV BSP TS</description>
+      <require condition="STM32L552"/>
+      <require Cclass="Board Support" Cgroup="Drivers" Csub="BUS"/>
+      <require Cclass="Board Support" Cgroup="Components" Csub="STMPE811"/>
+      <require Cclass="Board Support" Cgroup="Drivers" Csub="Basic I/O"/>
+    </condition>
+    <condition id="STM32L552E-EV BSP USB PD">
+      <description>STMicroelectronics STM32L552E-EV BSP USB PD</description>
+      <require condition="STM32L552"/>
+      <require Cclass="Board Support" Cgroup="Drivers" Csub="Basic I/O"/>
+    </condition>
+    <condition id="STM32L552E-EV VIO">
+      <description>Virtual I/O STM32L552E-EV</description>
+      <require condition="STM32L552"/>
+      <require Cclass="Board Support" Cgroup="Drivers" Csub="LCD"/>
+      <require Cclass="Board Support" Cgroup="Drivers" Csub="Basic I/O"/>
+    </condition>
+    <condition id="STM32L552E-EV BSP MX25LM51245G">
+      <description>MX25LM51245G Octal SPI Driver</description>
+      <require condition="STM32L552"/>
+      <require Cclass="Device" Cgroup="STM32Cube HAL" Csub="OSPI"/>
+    </condition>	
+    <condition id="STM32L552E-EV BSP ADC">
+      <description>ADC Driver</description>
+      <require condition="STM32L552"/>
+      <require Cclass="Device" Cgroup="STM32Cube HAL" Csub="ADC"/>
+      <require Cclass="Device" Cgroup="STM32Cube HAL" Csub="GPIO"/>
+    </condition>
+  </conditions>
+
+  <components>
+    <bundle Cbundle="STM32L552E-EV" Cclass="Board Support" Cversion="1.0.2">
+      <description>STMicroelectronics STM32L552E-EV Board</description>
+      <doc></doc>
+      <component Cgroup="Drivers" Csub="Basic I/O" condition="STM32L552E-EV BSP">
+        <description>LEDs, push-buttons and COM ports for STM32L552E-EV Board</description>
+        <files>
+          <file category="header" name="Drivers/Config/stm32l552e_eval_conf.h" attr="config" version="1.0.1"/>
+          <file category="header" name="Drivers/STM32L552E-EV/stm32l552e_eval.h"/>
+          <file category="source" name="Drivers/STM32L552E-EV/stm32l552e_eval.c"/>
+        </files>
+      </component>
+      <component Cgroup="Drivers" Csub="Audio" condition="STM32L552E-EV BSP Audio">
+        <description>Audio for STMicroelectronics STM32L552E-EV Board</description>
+        <files>
+          <file category="header" name="Drivers/STM32L552E-EV/stm32l552e_eval_audio.h"/>
+          <file category="source" name="Drivers/STM32L552E-EV/stm32l552e_eval_audio.c"/>
+        </files>
+      </component>
+      <component Cgroup="Drivers" Csub="BUS" condition="STM32L552E-EV BSP BUS">
+        <description>BUS for STMicroelectronics STM32L552E-EV Board</description>
+        <files>
+          <file category="header" name="Drivers/STM32L552E-EV/stm32l552e_eval_bus.h"/>
+          <file category="source" name="Drivers/STM32L552E-EV/stm32l552e_eval_bus.c"/>
+        </files>
+      </component>
+      <component Cgroup="Drivers" Csub="IDD" condition="STM32L552E-EV BSP IDD">
+        <description>IDD for STMicroelectronics STM32L552E-EV Board</description>
+        <files>
+          <file category="header" name="Drivers/STM32L552E-EV/stm32l552e_eval_idd.h"/>
+          <file category="source" name="Drivers/STM32L552E-EV/stm32l552e_eval_idd.c"/>
+        </files>
+      </component>
+      <component Cgroup="Drivers" Csub="IO" condition="STM32L552E-EV BSP IO">
+        <description>IO for STMicroelectronics STM32L552E-EV Board</description>
+        <files>
+          <file category="header" name="Drivers/STM32L552E-EV/stm32l552e_eval_io.h"/>
+          <file category="source" name="Drivers/STM32L552E-EV/stm32l552e_eval_io.c"/>
+        </files>
+      </component>
+      <component Cgroup="Drivers" Csub="LCD" condition="STM32L552E-EV BSP LCD">
+        <description>LCD for STMicroelectronics STM32L552E-EV Board</description>
+        <files>
+          <file category="header" name="Drivers/STM32L552E-EV/stm32l552e_eval_lcd.h"/>
+          <file category="source" name="Drivers/STM32L552E-EV/stm32l552e_eval_lcd.c"/>
+        </files>
+      </component>
+      <component Cgroup="Drivers" Csub="OSPI" condition="STM32L552E-EV BSP OSPI">
+        <description>OSPI for STMicroelectronics STM32L552E-EV Board</description>
+        <files>
+          <file category="header" name="Drivers/STM32L552E-EV/stm32l552e_eval_ospi.h"/>
+          <file category="source" name="Drivers/STM32L552E-EV/stm32l552e_eval_ospi.c"/>
+        </files>
+      </component>
+      <component Cgroup="Drivers" Csub="SD" condition="STM32L552E-EV BSP SD">
+        <description>SD for STMicroelectronics STM32L552E-EV Board</description>
+        <files>
+          <file category="header" name="Drivers/STM32L552E-EV/stm32l552e_eval_sd.h"/>
+          <file category="source" name="Drivers/STM32L552E-EV/stm32l552e_eval_sd.c"/>
+        </files>
+      </component>
+      <component Cgroup="Drivers" Csub="SRAM" condition="STM32L552E-EV BSP SRAM">
+        <description>SRAM for STMicroelectronics STM32L552E-EV Board</description>
+        <files>
+          <file category="header" name="Drivers/STM32L552E-EV/stm32l552e_eval_sram.h"/>
+          <file category="source" name="Drivers/STM32L552E-EV/stm32l552e_eval_sram.c"/>
+        </files>
+      </component>
+      <component Cgroup="Drivers" Csub="Touch Screen" condition="STM32L552E-EV BSP TS">
+        <description>Touch Screen for STMicroelectronics STM32L552E-EV Board</description>
+        <files>
+          <file category="header" name="Drivers/STM32L552E-EV/stm32l552e_eval_ts.h"/>
+          <file category="source" name="Drivers/STM32L552E-EV/stm32l552e_eval_ts.c"/>
+        </files>
+      </component>
+      <component Cgroup="Drivers" Csub="USB PD" Cversion="1.0.0" condition="STM32L552E-EV BSP USB PD">
+        <description>USB Type C power delivery for STMicroelectronics STM32L552E-EV Board</description>
+        <files>
+          <file category="header" name="Drivers/STM32L552E-EV/stm32l552e_eval_usbpd_pwr.h"/>
+          <file category="source" name="Drivers/STM32L552E-EV/stm32l552e_eval_usbpd_pwr.c"/>
+        </files>
+      </component>
+      <component Cgroup="Components" Csub="MX25LM51245G" condition="STM32L552E-EV BSP MX25LM51245G" Cversion="2.0.3">
+        <description>MX25LM51245G Component Driver</description>
+        <files>
+          <file category="header" name="Drivers/Config/mx25lm51245g_conf.h" attr="config" version="1.0.0"/>
+          <file category="header" name="Drivers/Components/mx25lm51245g/mx25lm51245g.h"/>
+          <file category="source" name="Drivers/Components/mx25lm51245g/mx25lm51245g.c"/>
+        </files>
+      </component>
+      <component Cgroup="Components" Csub="CS42L51" condition="STM32L552" Cversion="2.0.1">
+        <description>CS42L51 Component Driver</description>
+        <files>
+          <file category="source" name="Drivers/Components/cs42l51/cs42l51.h"/>
+          <file category="source" name="Drivers/Components/cs42l51/cs42l51.c"/>
+          <file category="source" name="Drivers/Components/cs42l51/cs42l51_reg.h"/>
+          <file category="source" name="Drivers/Components/cs42l51/cs42l51_reg.c"/>
+        </files>
+      </component>
+      <component Cgroup="Components" Csub="MFXSTM32L152" condition="STM32L552" Cversion="3.0.2">
+        <description>MFXSTM32L152 Component Driver</description>
+        <files>
+          <file category="source" name="Drivers/Components/mfxstm32l152/mfxstm32l152.h"/>
+          <file category="source" name="Drivers/Components/mfxstm32l152/mfxstm32l152.c"/>
+          <file category="source" name="Drivers/Components/mfxstm32l152/mfxstm32l152_reg.h"/>
+          <file category="source" name="Drivers/Components/mfxstm32l152/mfxstm32l152_reg.c"/>
+        </files>
+      </component>
+      <component Cgroup="Components" Csub="HX8347I" condition="STM32L552" Cversion="2.0.1">
+        <description>HX8347I Component Driver</description>
+        <files>
+          <file category="source" name="Drivers/Components/hx8347i/hx8347i.h"/>
+          <file category="source" name="Drivers/Components/hx8347i/hx8347i.c"/>
+          <file category="source" name="Drivers/Components/hx8347i/hx8347i_reg.h"/>
+          <file category="source" name="Drivers/Components/hx8347i/hx8347i_reg.c"/>
+        </files>
+      </component>
+      <component Cgroup="Components" Csub="ISS66WVH8M8" condition="STM32L552" Cversion="2.0.0">
+        <description>ISS66WVH8M8 Component Driver</description>
+        <files>
+          <file category="header" name="Drivers/Config/iss66wvh8m8_conf.h" attr="config" version="1.0.0"/>
+          <file category="source" name="Drivers/Components/iss66wvh8m8/iss66wvh8m8.h"/>
+          <file category="source" name="Drivers/Components/iss66wvh8m8/iss66wvh8m8.c"/>
+        </files>
+      </component>
+      <component Cgroup="Components" Csub="STMPE811" condition="STM32L552" Cversion="3.0.0">
+        <description>STMPE811 TS Component Driver</description>
+        <files>
+          <file category="header" name="Drivers/Config/stmpe811_conf.h" attr="config" version="1.0.0"/>
+          <file category="header" name="Drivers/Components/stmpe811/stmpe811.h"/>
+          <file category="source" name="Drivers/Components/stmpe811/stmpe811.c"/>
+          <file category="header" name="Drivers/Components/stmpe811/stmpe811_reg.h"/>
+          <file category="source" name="Drivers/Components/stmpe811/stmpe811_reg.c"/>
+        </files>
+      </component>
+
+      <component Cgroup="A/D Converter" Capiversion="1.0.0" condition="STM32L552E-EV BSP ADC">
+        <description>A/D Converter Interface for STMicroelectronics STM32L552E-EV</description>
+        <files>
+          <file category="source" name="Drivers/Common/ADC_STM32L552E-EVAL.c"/>
+        </files>
+      </component>
+      <component Cgroup="Buttons" Capiversion="1.0.0" condition="STM32L552E-EV BSP">
+        <description>Buttons Interface for STMicroelectronics STM32L552E-EV</description>
+        <files>
+          <file category="source" name="Drivers/Common/Buttons_STM32L552E-EVAL.c"/>
+        </files>
+      </component>
+      <component Cgroup="Joystick" Capiversion="1.0.0" condition="STM32L552E-EV BSP">
+        <description>Joystick Interface for STMicroelectronics STM32L552E-EV</description>
+        <files>
+          <file category="source" name="Drivers/Common/Joystick_STM32L552E-EVAL.c"/>
+        </files>
+      </component>
+      <component Cgroup="LED" Capiversion="1.0.0" condition="STM32L552E-EV BSP">
+        <description>LED Interface for STMicroelectronics STM32L552E-EV</description>
+        <files>
+          <file category="source" name="Drivers/Common/LED_STM32L552E-EVAL.c"/>
+        </files>
+      </component>
+    </bundle>
+
+    <!-- VIO component for STM32L552E-EV -->
+    <component Cclass="CMSIS Driver" Cgroup="VIO" Csub="Board" Cvariant= "STM32L552E-EV" Cversion="1.1.0" Capiversion="0.1.0" condition="STM32L552E-EV VIO">
+      <description>Virtual I/O implementation for STM32L552E-EV</description>
+      <RTE_Components_h>
+        #define RTE_VIO_BOARD
+        #define RTE_VIO_STM32L552E_EV
+      </RTE_Components_h>
+      <files>
+        <file category="header" name="Drivers/Components/Common/lcd.h"/>
+        <file category="header" name="Utilities/lcd/stm32_lcd.h"/>
+        <file category="source" name="Utilities/lcd/stm32_lcd.c"/>
+        <file category="source" name="Drivers/Platform/vio_STM32L552E-EV.c"/>
+      </files>
+    </component>
+  </components>
+
+  <boards>
+    <!-- STM32L552E-EV Board Support -->
+    <board vendor="STMicroelectronics" name="STM32L552E-EV" revision="Rev.C02" 
+           salesContact="https://www.st.com/content/st_com/en/contact-us.html"
+           orderForm   ="https://www.st.com/en/evaluation-tools/stm32l552e-ev.html">
+      <description>STMicroelectronics STM32L552E-EVAL</description>
+      <image small="Images/Eval_small.jpg"
+             large="Images/Eval_large.jpg" public="true"/>
+      <book category="overview"  name="https://www.st.com/en/evaluation-tools/stm32l552e-ev.html" title="STM32 Eval board"/>
+      <book category="overview"  name="Documents/stm32l552e-ev.pdf" title="Overview" public="true"/>
+      <book category="manual"    name="Documents/DM00623588.pdf"    title="User Manual" public="true"/>
+      <book category="schematic" name="Documents/MB1372.pdf"        title="Schematics" public="true"/>
+      <mountedDevice    deviceIndex="0" Dvendor="STMicroelectronics:13" Dname="STM32L552ZETxQ"/>
+      <compatibleDevice deviceIndex="0" Dvendor="STMicroelectronics:13" DsubFamily="STM32L5x2"/>
+      <feature type="XTAL"            n="16000000"/>
+      <feature type="PWR"             n="5"              name="USB Powered"/>
+      <feature type="USB"             n="1"              name="USB 2.0 Full Speed"/>
+      <feature type="CAN"             n="1"/>
+      <feature type="RS232"           n="1"/>
+      <feature type="GLCD"            n="1"  m="240.320" name="2.8 inch Color QVGA TFT LCD with resistive touchscreen"/>
+      <feature type="Joystick"        n="1"              name="5-position Joystick"/>
+      <feature type="Poti"            n="1"              name="Analog Voltage Control for ADC Input (potentiometer)"/>
+      <feature type="Button"          n="4"              name="Push-Buttons for Reset, Tamper and User"/>
+      <feature type="LED"             n="4"              name="LEDs directly connected to port pins"/>
+      <debugInterface adapter="JTAG/SW" connector="20-pin JTAG (0.1 inch connector)"/>
+      <debugInterface adapter="JTAG/SW" connector="20-pin Cortex debug + ETM Trace (0.05 inch connector)"/>
+      <debugInterface adapter="ST-Link" connector="Micro-USB"/>
+      <debugProbe connector="Micro-USB" debugClock="10000000" debugLink="swd" name="ST-Link"/>
+    </board>
+  </boards>
+
+  <examples>
+    <example name="Blinky" doc="README.md" folder="Projects/Blinky">
+      <description>CMSIS-RTOS2 Blinky example with VIO</description>
+      <board name="STM32L552E-EV" vendor="STMicroelectronics"/>
+      <project>
+        <environment name="uv" load="Blinky.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="CMSIS" Cgroup="CORE"/>
+        <component Cclass="Device" Cgroup="Startup"/>
+        <component Cclass="CMSIS" Cgroup="RTOS"/>
+        <component Cclass="CMSIS Driver" Cgroup="VIO"/>
+        <category>Getting Started</category>
+      </attributes>
+    </example>
+
+    <example name="Platform" doc="README.md" folder="Projects/Platform">
+      <description>CMSIS-RTOS2 Platform example with VIO</description>
+      <board name="STM32L552E-EV" vendor="STMicroelectronics"/>
+      <project>
+        <environment name="uv" load="Platform.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="CMSIS" Cgroup="CORE"/>
+        <component Cclass="Device" Cgroup="Startup"/>
+        <component Cclass="CMSIS" Cgroup="RTOS"/>
+        <component Cclass="CMSIS Driver" Cgroup="VIO"/>
+        <category>Getting Started</category>
+      </attributes>
+    </example>
+
+    <example name="Secure/Non-Secure Blinky" doc="Abstract.txt" folder="Projects/S_NS_Blinky">
+      <description>Bare-metal secure/non-secure Blinky example without RTOS</description>
+      <board name="STM32L552E-EV" vendor="STMicroelectronics"/>
+      <project>
+        <environment name="uv" load="S_NS_Blinky.uvmpw"/>
+      </project>
+      <attributes>
+        <component Cclass="CMSIS" Cgroup="CORE"/>
+        <component Cclass="Device" Cgroup="Startup"/>
+        <category>Getting Started</category>
+      </attributes>
+    </example>
+  </examples>
+</package>

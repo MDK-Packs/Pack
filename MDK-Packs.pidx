@@ -2,7 +2,7 @@
 <index schemaVersion="1.0.0" xs:noNamespaceSchemaLocation="PackIndex.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance">
   <vendor>MDK-Packs</vendor>
   <url>https://github.com/MDK-Packs/Pack/raw/master/</url>
-  <timestamp>2020-11-19T08:30:00</timestamp>
+  <timestamp>2020-11-19T09:00:00</timestamp>
   <pindex>
     <pdsc url="https://github.com/MDK-Packs/Pack/raw/master/AWS_IoT_Device/"          vendor="MDK-Packs" name="AWS_IoT_Device"          version="2.0.0-beta"/>
     <pdsc url="https://github.com/MDK-Packs/Pack/raw/master/Azure_IoT/"               vendor="MDK-Packs" name="Azure_IoT"               version="1.0.2"/>
@@ -22,6 +22,7 @@
     <pdsc url="https://github.com/MDK-Packs/Pack/raw/master/QCA400x_Host_Driver_SDK/" vendor="MDK-Packs" name="QCA400x_Host_Driver_SDK" version="1.1.0"/>
     <pdsc url="https://github.com/MDK-Packs/Pack/raw/master/QCA400x_WiFi_Driver/"     vendor="MDK-Packs" name="QCA400x_WiFi_Driver"     version="1.1.0"/>
     <pdsc url="https://github.com/MDK-Packs/Pack/raw/master/STM32L5xx_TFM-PF/"        vendor="Keil"      name="STM32L5xx_TFM-PF"        version="1.0.0"/>
+    <pdsc url="https://github.com/MDK-Packs/Pack/raw/master/STM32L552E-EV_BSP/"       vendor="Keil"      name="STM32L552E-EV_BSP"       version="1.0.0"/>
     <pdsc url="https://github.com/MDK-Packs/Pack/raw/master/STM32L562E-DK_BSP/"       vendor="Keil"      name="STM32L562E-DK_BSP"       version="1.2.0"/>
     <pdsc url="https://github.com/MDK-Packs/Pack/raw/master/TinyCBOR/"                vendor="MDK-Packs" name="TinyCBOR"                version="1.0.0"/>
     <pdsc url="https://github.com/MDK-Packs/Pack/raw/master/Unity/"                   vendor="Arm-Packs" name="Unity"                   version="1.0.0"/>
