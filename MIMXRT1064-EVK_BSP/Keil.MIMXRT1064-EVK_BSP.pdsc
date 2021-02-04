@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<package xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd" schemaVersion="1.6.0">
+<package xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd" schemaVersion="1.7.1">
   <vendor>Keil</vendor>
   <name>MIMXRT1064-EVK_BSP</name>
   <description>NXP MIMXRT1064-EVK board support pack</description>
@@ -8,6 +7,9 @@
   <repository type="git">https://github.com/MDK-Packs/MIMXRT1064-EVK_BSP.git</repository>
 
   <releases>
+    <release version="1.2.0" date="2021-02-04">
+      Synchronized with NXP:MIMXRT1064_DFP 12.3.0 and NXP:EVK-MIMXRT1064_BSP 12.3.0
+    </release>
     <release version="1.1.0" date="2020-09-30">
       Synchronized with NXP:MIMXRT1064_DFP 12.2.0 and NXP:EVK-MIMXRT1064_BSP 12.2.0
       Renamed board to EVK-MIMXRT1064_MDK
@@ -26,8 +28,8 @@
 
   <requirements>
     <packages>
-      <package vendor="NXP" name="MIMXRT1064_DFP"     version="12.2.0-0"/>
-      <package vendor="NXP" name="EVK-MIMXRT1064_BSP" version="12.2.0-0"/>
+      <package vendor="NXP" name="MIMXRT1064_DFP"     version="12.3.0-0"/>
+      <package vendor="NXP" name="EVK-MIMXRT1064_BSP" version="12.3.0-0"/>
       <package vendor="ARM" name="CMSIS"              version="5.7.0"/>
     </packages>
   </requirements>
