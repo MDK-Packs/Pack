@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<package xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd" schemaVersion="1.6.0">
+<package xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd" schemaVersion="1.7.1">
   <name>LPCXpresso55S69_BSP</name>
   <vendor>Keil</vendor>
   <description>NXP LPC55S69 Series LPCXpresso55S69 Board Support Pack</description>
@@ -7,6 +7,11 @@
   <repository type="git">https://github.com/MDK-Packs/LPCXpresso55S69_BSP.git</repository>
 
   <releases>
+    <release version="1.1.0" date="2021-02-04">
+      Update examples to align with NXP LPC55S69_DFP v12.4.0 and NXP LPCXpresso55S69_BSP v12.4.0 packs
+      Update CMSIS-VIO driver: add vioBUTTON1 and vioBUTTON2
+      Add board selection to board layer in Platform project
+    </release>
     <release version="1.0.0" date="2020-07-17">
       Drivers:
       - CMSIS-VIO driver
@@ -26,8 +31,8 @@
 
   <requirements>
     <packages>
-      <package vendor="NXP" name="LPC55S69_DFP"        version="12.1.1-0"/>
-      <package vendor="NXP" name="LPCXpresso55S69_BSP" version="12.1.1-0"/>
+      <package vendor="NXP" name="LPC55S69_DFP"        version="12.4.0-0"/>
+      <package vendor="NXP" name="LPCXpresso55S69_BSP" version="12.4.0-0"/>
     </packages>
   </requirements>
 
