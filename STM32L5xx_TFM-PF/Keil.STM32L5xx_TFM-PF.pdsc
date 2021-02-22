@@ -14,7 +14,7 @@
  See the License for the specific language governing permissions and
  limitations under the License.
  -->
-<package schemaVersion="1.6" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd">
+<package schemaVersion="1.6.3" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd">
   <name>STM32L5xx_TFM-PF</name>
   <description>STMicroelectronics STM32L5 Series TF-M Platform Support</description>
   <vendor>Keil</vendor>
@@ -22,6 +22,9 @@
   <repository type="git">https://github.com/MDK-Packs/STM32L5xx_TFM-PF.git</repository>
 
   <releases>
+    <release version="1.1.0" date="2021-02-22">
+      Synchronized with TFM V2.1.0
+    </release>
     <release version="1.0.0" date="2020-06-05">
       TF-M Platform Support for STM32L5:
         - Memory Map
@@ -41,8 +44,8 @@
 
   <requirements>
     <packages>
-      <package vendor="ARM"  name="TFM"           version="2.0.0-0"/>
-      <package vendor="Keil" name="STM32L5xx_DFP" version="1.2.0-0"/>
+      <package vendor="ARM"  name="TFM"           version="2.1.0-0"/>
+      <package vendor="Keil" name="STM32L5xx_DFP" version="1.3.0-0"/>
     </packages>
   </requirements>
 
@@ -51,12 +54,10 @@
       <accept Tcompiler="ARMCC" Toptions="AC6"/>
       <accept Tcompiler="ARMCC" Toptions="AC6LTO"/>
     </condition>
-    <condition id="GCC">
-      <require Tcompiler="GCC"/>
-    </condition>
-    <condition id="ARMCC6 GCC">
+    <condition id="ARMCC6 GCC IAR">
       <accept condition="ARMCC6"/>
-      <accept condition="GCC"/>
+      <accept Tcompiler="GCC"/>
+      <accept Tcompiler="IAR"/>
     </condition>
     <condition id="STM32L5 TZ Device">
       <description>STM32L5 TZ Device</description>
@@ -67,7 +68,7 @@
       <description>TF-M Platform for ST STM32L5</description>
       <require condition="STM32L5 TZ Device"/>
       <require Dsecure="Secure"/>
-      <require condition="ARMCC6 GCC"/>
+      <require condition="ARMCC6 GCC IAR"/>
       <require Cclass="CMSIS" Cgroup="CORE"/>
     </condition>
     <condition id="TFM Platform SPM HAL STM32L5">
@@ -91,18 +92,18 @@
   </conditions>
 
   <components>
-    <component Cclass="TFM Platform" Cgroup="Memory Map" Cversion="1.0.0" condition="TFM Platform STM32L5">
+    <component Cclass="TFM Platform" Cgroup="Memory Map" Cversion="1.2.0" condition="TFM Platform STM32L5">
       <description>TF-M Platform Memory Map for STMicroelectronics STM32L5 Series</description>
       <RTE_Components_h>
         #define RTE_TFM_IF_PLATFORM_MEMORY_MAP  /* TF-M Platform Memory Map */
       </RTE_Components_h>
       <files>
-        <file category="header"  name="stm32l5xx/partition/mem_layout.h"   attr="config" version="1.0.0"/>
-        <file category="header"  name="stm32l5xx/partition/flash_layout.h" attr="config" version="1.0.0"/>
-        <file category="header"  name="stm32l5xx/partition/region_defs.h"  attr="config" version="1.0.0"/>
+        <file category="header"  name="stm32l5xx/partition/mem_layout.h"   attr="config" version="1.2.0"/>
+        <file category="header"  name="stm32l5xx/partition/flash_layout.h" attr="config" version="1.2.0"/>
+        <file category="header"  name="stm32l5xx/partition/region_defs.h"  attr="config" version="1.2.0"/>
       </files>
     </component>
-    <component Cclass="TFM Platform" Cgroup="SPM HAL" Csub="Platform" Capiversion="1.0.0" Cversion="1.0.0" condition="TFM Platform SPM HAL STM32L5">
+    <component Cclass="TFM Platform" Cgroup="SPM HAL" Csub="Platform" Capiversion="1.2.0" Cversion="1.2.0" condition="TFM Platform SPM HAL STM32L5">
       <description>TF-M Platform SPM HAL for STMicroelectronics STM32L5 Series</description>
       <RTE_Components_h>
         #define RTE_TFM_IF_PLATFORM_SPM_HAL     /* TF-M Platform SPM HAL */
@@ -114,12 +115,13 @@
         <file category="include" name="stm32l5xx/driver/"/>
         <file category="source"  name="stm32l5xx/driver/mpu_armv8m_drv.c"/>
         <file category="source"  name="stm32l5xx/spm_hal.c"/>
+        <file category="source"  name="stm32l5xx/tfm_hal_isolation.c"/>
         <file category="header"  name="stm32l5xx/target_cfg.h"/>
         <file category="source"  name="stm32l5xx/target_cfg.c"/>
         <file category="source"  name="stm32l5xx/sys_isolation_cfg.c" attr="config" version="1.0.0"/>
       </files>
     </component>
-    <component Cclass="TFM Platform" Cgroup="System" Csub="Template" Capiversion="1.0.0" Cversion="1.0.0" condition="TFM Platform System STM32L5">
+    <component Cclass="TFM Platform" Cgroup="System" Csub="Template" Capiversion="1.0.0" Cversion="1.2.0" condition="TFM Platform System STM32L5">
       <description>TF-M Platform System Template for STMicroelectronics STM32L5 Series</description>
       <RTE_Components_h>
         #define RTE_TFM_PLATFORM_SYSTEM         /* TF-M Platform System */
@@ -127,10 +129,10 @@
       <files>
         <file category="preIncludeLocal"
                                  name="rte/preinclude.h"/>
-        <file category="source"  name="stm32l5xx/services/src/tfm_platform_system.c" attr="config" version="1.0.0"/>
+        <file category="source"  name="stm32l5xx/services/src/tfm_platform_system.c" attr="config" version="1.2.0"/>
       </files>
     </component>
-    <component Cclass="TFM Platform" Cgroup="Test" Csub="Platform" Capiversion="1.0.0" Cversion="1.0.0" condition="TFM Platform Test STM32L5">
+    <component Cclass="TFM Platform" Cgroup="Test" Csub="Platform" Capiversion="1.0.0" Cversion="1.2.0" condition="TFM Platform Test STM32L5">
       <description>TF-M Platform Test for STMicroelectronics STM32L5 Series</description>
       <RTE_Components_h>
         #define RTE_TFM_PLATFORM_TEST           /* TF-M Platform Test */
@@ -141,7 +143,7 @@
         <file category="source"  name="stm32l5xx/plat_test.c"/>
       </files>
     </component>
-    <component Cclass="TFM Platform" Cgroup="Boot HAL" Csub="Platform" Capiversion="1.0.0" Cversion="1.0.0" condition="TFM Platform STM32L5">
+    <component Cclass="TFM Platform" Cgroup="Boot HAL" Csub="Platform" Capiversion="1.2.0" Cversion="1.2.0" condition="TFM Platform STM32L5">
       <description>TF-M Platform Boot HAL for STMicroelectronics STM32L5 Series</description>
       <RTE_Components_h>
         #define RTE_TFM_PLATFORM_BOOT_HAL       /* TF-M Platform Boot HAL */
@@ -149,7 +151,7 @@
       <files>
         <file category="preIncludeLocal"
                                  name="rte/preinclude.h"/>
-        <file category="source"  name="stm32l5xx/boot_hal.c" attr="config" version="1.0.0"/>
+        <file category="source"  name="stm32l5xx/boot_hal.c" attr="config" version="1.2.0"/>
       </files>
     </component>
   </components>
