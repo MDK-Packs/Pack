@@ -7,6 +7,10 @@
   <url>https://github.com/MDK-Packs/Pack/raw/master/QCA400x_Host_Driver_SDK/</url>
   <license>license_terms.txt</license>
   <releases>
+    <release version="1.1.1" date="2021-03-02">
+      - Added missing prototype for Custom_HW_SetClock function (by including custom_spi_api.h to hw_api.c)
+      - Corrected include filename capitalization (QCA400X.h -> QCA400x.h)
+    </release>
     <release version="1.1.0" date="2019-12-18">
       - Updated printing of assert and debug messages. Printing is done with the A_PRINTF() macro and is enabled by defining the A_PRINTF_ENABLED macro.
       - Corrected Custom_FreeRxRequest function in "pass-through" mode  (ENABLE_STACK_OFFLOAD = 0 and DRIVER_CONFIG_IMPLEMENT_RX_FREE_QUEUE = 1)
