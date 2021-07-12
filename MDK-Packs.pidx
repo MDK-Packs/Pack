@@ -13,7 +13,7 @@
     <pdsc url="https://github.com/MDK-Packs/Pack/raw/master/IoT_Socket/"              vendor="MDK-Packs" name="IoT_Socket"              version="1.2.1"/>
     <pdsc url="https://github.com/MDK-Packs/Pack/raw/master/Jsmn/"                    vendor="MDK-Packs" name="Jsmn"                    version="1.1.0"/>
     <pdsc url="https://github.com/MDK-Packs/Pack/raw/master/LPC55S6x_TFM-PF/"         vendor="Keil"      name="LPC55S6x_TFM-PF"         version="1.1.0"/>
-    <pdsc url="https://github.com/MDK-Packs/Pack/raw/master/LPCXpresso55S69_BSP/"     vendor="Keil"      name="LPCXpresso55S69_BSP"     version="1.1.0"/>
+    <pdsc url="https://github.com/MDK-Packs/Pack/raw/master/LPCXpresso55S69_BSP/"     vendor="Keil"      name="LPCXpresso55S69_BSP"     version="1.1.1"/>
     <pdsc url="https://github.com/MDK-Packs/Pack/raw/master/mbedCrypto/"              vendor="ARM"       name="mbedCrypto"              version="3.0.1"/>
     <pdsc url="https://github.com/MDK-Packs/Pack/raw/master/MIMXRT1064-EVK_BSP/"      vendor="Keil"      name="MIMXRT1064-EVK_BSP"      version="1.2.0"/>
     <pdsc url="https://github.com/MDK-Packs/Pack/raw/master/NUCLEO-L552ZE-Q_BSP/"     vendor="Keil"      name="NUCLEO-L552ZE-Q_BSP"     version="1.1.1"/>

@@ -7,6 +7,16 @@
   <repository type="git">https://github.com/MDK-Packs/LPCXpresso55S69_BSP.git</repository>
 
   <releases>
+    <release version="1.1.1" date="2021-07-12">
+      Drivers:
+      - VIO: update physical I/O mapping information
+      Blinky project:
+      - update RTX configuration (CMSIS 5.8.0)
+      Platform project (synchronize with CB_Lab4Layer):
+      - update RTX configuration (CMSIS 5.8.0)
+      - use packs with fixed version (reproducible build)
+      - compiler optimization -O1
+    </release>
     <release version="1.1.0" date="2021-02-04">
       Update examples to align with NXP LPC55S69_DFP v12.4.0 and NXP LPCXpresso55S69_BSP v12.4.0 packs
       Update CMSIS-VIO driver: add vioBUTTON1 and vioBUTTON2
@@ -53,7 +63,7 @@
 
   <components>
     <!-- VIO driver -->
-    <component Cclass="CMSIS Driver" Cgroup="VIO" Csub="Board" Cvariant="LPCXpresso55S69" Cversion="1.0.0" Capiversion="0.1.0" condition="LPCXpresso55S69 VIO">
+    <component Cclass="CMSIS Driver" Cgroup="VIO" Csub="Board" Cvariant="LPCXpresso55S69" Cversion="1.0.1" Capiversion="0.1.0" condition="LPCXpresso55S69 VIO">
       <description>Virtual I/O implementation for NXP LPCXpresso55S69 Board</description>
       <RTE_Components_h>
         #define RTE_VIO_BOARD
