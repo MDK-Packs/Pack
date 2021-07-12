@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<package xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd" schemaVersion="1.7.0">
+<package xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd" schemaVersion="1.7.1">
   <name>STM32L562E-DK_BSP</name>
   <vendor>Keil</vendor>
   <description>STMicroelectronics STM32L5 Series STM32L562E-DK Board Support Pack</description>
@@ -7,6 +7,16 @@
   <repository type="git">https://github.com/MDK-Packs/STM32L562E-DK_BSP.git</repository>
 
   <releases>
+    <release version="1.2.1" date="2021-07-12">
+      Drivers:
+      - VIO: update vioInit (LEDs pins initialization)
+      Blinky project:
+      - update RTX configuration (CMSIS 5.8.0)
+      Platform project (synchronize with CB_Lab4Layer):
+      - update RTX configuration (CMSIS 5.8.0)
+      - update App layer description
+      - compiler optimization -O1
+    </release>
     <release version="1.2.0" date="2020-11-19">
       Synchronized with STM32CubeL5 Firmware Package version V1.3.1
       Drivers:
@@ -257,7 +267,7 @@
     </bundle>
 
     <!-- VIO component for STM32L562E-DK -->
-    <component Cclass="CMSIS Driver" Cgroup="VIO" Csub="Board" Cvariant= "STM32L562E-DK" Cversion="1.1.0" Capiversion="0.1.0"   condition="STM32L562E-DK VIO">
+    <component Cclass="CMSIS Driver" Cgroup="VIO" Csub="Board" Cvariant= "STM32L562E-DK" Cversion="1.2.0" Capiversion="0.1.0"   condition="STM32L562E-DK VIO">
       <description>Virtual I/O implementation for STM32L562E-DK</description>
       <RTE_Components_h>
         #define RTE_VIO_BOARD
