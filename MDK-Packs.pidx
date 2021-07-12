@@ -22,7 +22,7 @@
     <pdsc url="https://github.com/MDK-Packs/Pack/raw/master/QCA400x_Host_Driver_SDK/" vendor="MDK-Packs" name="QCA400x_Host_Driver_SDK" version="1.1.1"/>
     <pdsc url="https://github.com/MDK-Packs/Pack/raw/master/QCA400x_WiFi_Driver/"     vendor="MDK-Packs" name="QCA400x_WiFi_Driver"     version="1.1.0"/>
     <pdsc url="https://github.com/MDK-Packs/Pack/raw/master/STM32L5xx_TFM-PF/"        vendor="Keil"      name="STM32L5xx_TFM-PF"        version="1.1.0"/>
-    <pdsc url="https://github.com/MDK-Packs/Pack/raw/master/STM32L552E-EV_BSP/"       vendor="Keil"      name="STM32L552E-EV_BSP"       version="1.0.0"/>
+    <pdsc url="https://github.com/MDK-Packs/Pack/raw/master/STM32L552E-EV_BSP/"       vendor="Keil"      name="STM32L552E-EV_BSP"       version="1.0.1"/>
     <pdsc url="https://github.com/MDK-Packs/Pack/raw/master/STM32L562E-DK_BSP/"       vendor="Keil"      name="STM32L562E-DK_BSP"       version="1.2.0"/>
     <pdsc url="https://github.com/MDK-Packs/Pack/raw/master/TinyCBOR/"                vendor="MDK-Packs" name="TinyCBOR"                version="1.0.0"/>
     <pdsc url="https://github.com/MDK-Packs/Pack/raw/master/Unity/"                   vendor="Arm-Packs" name="Unity"                   version="1.0.0"/>

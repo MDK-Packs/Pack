@@ -7,6 +7,12 @@
   <repository type="git">https://github.com/MDK-Packs/STM32L552E-EV_BSP.git</repository>
 
   <releases>
+    <release version="1.0.1" date="2021-07-12">
+      Example projects:
+      - update RTX configuration (CMSIS 5.8.0)
+      - change assembler option to armclang (Auto Select)
+      - add .dbgconf file
+    </release>
     <release version="1.0.0" date="2020-11-19">
       Board description and documentation for STM32L552E-EV
       Synchronized with STM32CubeL5 Firmware Package version V1.3.1
