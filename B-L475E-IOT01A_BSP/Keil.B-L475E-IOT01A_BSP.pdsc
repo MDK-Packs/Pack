@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<package xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd" schemaVersion="1.6.0">
+<package xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd" schemaVersion="1.7.1">
   <name>B-L475E-IOT01A_BSP</name>
   <vendor>Keil</vendor>
   <description>STMicroelectronics STM32L4 Series B-L475E-IOT01A Board Support Pack</description>
@@ -7,6 +7,22 @@
   <repository type="git">https://github.com/MDK-Packs/B-L475E-IOT01A_BSP.git</repository>
 
   <releases>
+    <release version="1.0.1" date="2021-07-12">
+      Drivers:
+      - VIO: update physical I/O mapping documentation
+      Blinky project:
+      - update RTX configuration (CMSIS 5.8.0)
+      - change assembler option to armclang (Auto Select)
+      - add .dbgconf file
+      Platform project (synchronize with CB_Lab4Layer):
+      - update RTX configuration (CMSIS 5.8.0)
+      - change assembler option to armclang (Auto Select)
+      - add .dbgconf file
+      - correct Arduino module
+      - new README.md format
+      - update layers description
+      - compiler optimization -O1
+    </release>
     <release version="1.0.0" date="2020-07-03">
       Initial public release
     </release>
@@ -188,12 +204,12 @@
            orderForm="https://www.st.com/en/evaluation-tools/b-l475e-iot01a.html">
       <description>STMicroelectronics B-L475E-IOT01A</description>
       <image small="Images/b-l475e-iot01ax-medium.jpg"
-             large="Images/b-l475e-iot01ax-large.jpg"/>
-      <book category="overview"  name="https://www.st.com/en/evaluation-tools/b-l475e-iot01a.html"  title="Web Page"/>
-      <book category="manual"    name="Documents/b-l475e-iot01a.pdf"                                title="Data brief"/>
-      <book category="manual"    name="Documents/DM00347848.pdf"                                    title="User Manual"/>
-      <book category="schematic" name="Documents/b-l475e-iot01a1_sch_revC.pdf"                      title="Schematics revC"/>
-      <book category="schematic" name="Documents/b-l475e-iot01a1_sch_revD-01.pdf"                   title="Schematics revD-01"/>
+             large="Images/b-l475e-iot01ax-large.jpg" public="true"/>
+      <book category="overview"  name="https://www.st.com/en/evaluation-tools/b-l475e-iot01a.html"  title="Web Page" public="true"/>
+      <book category="manual"    name="Documents/b-l475e-iot01a.pdf"                                title="Data brief" public="true"/>
+      <book category="manual"    name="Documents/DM00347848.pdf"                                    title="User Manual" public="true"/>
+      <book category="schematic" name="Documents/b-l475e-iot01a1_sch_revC.pdf"                      title="Schematics revC" public="true"/>
+      <book category="schematic" name="Documents/b-l475e-iot01a1_sch_revD-01.pdf"                   title="Schematics revD-01" public="true"/>
       <mountedDevice    deviceIndex="0" Dvendor="STMicroelectronics:13" Dname="STM32L475VGTx"/>
       <compatibleDevice deviceIndex="0" Dvendor="STMicroelectronics:13" DsubFamily="STM32L475"/>
       <feature type="XTAL"          n="32768"/>
