@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd" schemaVersion="1.7.2">
+  <name>NUCLEO-H743ZI_BSP</name>
+  <vendor>Keil</vendor>
+  <description>STMicroelectronics STM32H7 Series NUCLEO-H743ZI Board Support Pack</description>
+  <url>https://github.com/MDK-Packs/Pack/raw/master/NUCLEO-H743ZI_BSP/</url>
+  <repository type="git">https://github.com/MDK-Packs/NUCLEO-H743ZI_BSP.git</repository>
+
+  <releases>
+    <release version="1.0.0" date="2021-09-13">
+      Board description and documentation for NUCLEO-H743ZI
+      Synchronized with STM32CubeH7 Firmware Package version V1.9.0
+      Drivers:
+      - Board Drivers and Config files
+      - CMSIS-Driver VIO
+      Example projects:
+      - CMSIS-RTOS2 Blinky (verify the basic tool setup)
+      - CMSIS-RTOS2 Platform (configure the board hardware)
+    </release>
+  </releases>
+
+  <keywords>
+    <!-- keywords for indexing -->
+    <keyword>ST</keyword>
+    <keyword>Board Support Pack</keyword>
+    <keyword>STM32H7</keyword>
+    <keyword>NUCLEO-H743ZI</keyword>
+  </keywords>
+
+  <requirements>
+    <packages>
+      <package vendor="Keil" name="STM32H7xx_DFP" version="2.8.0-0"/>
+    </packages>
+  </requirements>
+
+  <conditions>
+    <condition id="STM32H743">
+      <description>STMicroelectronics STM32H743 Devices</description>
+      <require Dvendor="STMicroelectronics:13" Dname="STM32H743*"/>
+    </condition>
+    
+    <!-- NUCLEO-H743ZI BSP Conditions -->
+    <condition id="NUCLEO-H743ZI BSP">
+      <description>STMicroelectronics NUCLEO-H743ZI BSP</description>
+      <require condition="STM32H743"/>
+      <require Cclass="Device" Cgroup="STM32Cube HAL" Csub="Common"/>
+      <require Cclass="Device" Cgroup="STM32Cube HAL" Csub="GPIO"/>
+      <require Cclass="Device" Cgroup="STM32Cube HAL" Csub="EXTI"/>
+      <require Cclass="Device" Cgroup="STM32Cube HAL" Csub="UART"/>
+    </condition>
+    <condition id="NUCLEO-H743ZI VIO">
+      <description>Virtual I/O NUCLEO-H743ZI</description>
+      <require condition="STM32H743"/>
+      <require Cclass="Board Support" Cgroup="Drivers" Csub="Basic I/O"/>
+    </condition>
+  </conditions>
+
+  <components>
+    <bundle Cbundle="NUCLEO-H743ZI" Cclass="Board Support" Cversion="1.0.0">
+      <description>STMicroelectronics NUCLEO-H743ZI Board</description>
+      <doc></doc>
+      <component Cgroup="Drivers" Csub="Basic I/O" condition="NUCLEO-H743ZI BSP">
+        <description>LEDs, push-buttons and COM ports for NUCLEO-H743ZI Board</description>
+        <files>
+          <file category="header" name="Drivers/Config/stm32h7xx_nucleo_conf.h" attr="config" version="1.0.0"/>
+          <file category="header" name="Drivers/STM32H7xx_Nucleo/stm32h7xx_nucleo.h"/>
+          <file category="source" name="Drivers/STM32H7xx_Nucleo/stm32h7xx_nucleo.c"/>
+        </files>
+      </component>
+    </bundle>
+
+    <!-- VIO component for NUCLEO-H743ZI -->
+    <component Cclass="CMSIS Driver" Cgroup="VIO" Csub="Board" Cvariant= "NUCLEO-H743ZI" Cversion="1.0.0" Capiversion="0.1.0"   condition="NUCLEO-H743ZI VIO">
+      <description>Virtual I/O implementation for NUCLEO-H743ZI</description>
+      <RTE_Components_h>
+        #define RTE_VIO_BOARD
+        #define RTE_VIO_NUCLEO_H743ZI
+      </RTE_Components_h>
+      <files>
+        <file category="source" name="Drivers/Platform/vio_NUCLEO-H743ZI.c"/>
+      </files>
+    </component>
+  </components>
+
+  <boards>
+    <!-- NUCLEO-H743ZI Board Support -->
+    <board vendor="STMicroelectronics" name="NUCLEO-H743ZI" revision="Rev.E"
+           salesContact="https://www.st.com/content/st_com/en/contact-us.html"
+           orderForm   ="https://www.st.com/en/evaluation-tools/nucleo-h743zi.html">
+      <description>STM32 Nucleo development board with STM32H743 MCU</description>
+      <image small="Images/NUCLEO_small.jpg"
+             large="Images/NUCLEO_large.jpg" public="true"/>
+      <book category="overview"  name="https://www.st.com/en/evaluation-tools/nucleo-h743zi.html" title="STM32 Nucleo board"/>
+      <book category="overview"  name="https://www.st.com/resource/en/data_brief/nucleo-h743zi.pdf" title="Data brief" public="true"/>
+      <book category="setup"     name="https://www.st.com/resource/en/user_manual/um1727-getting-started-with-stm32-nucleo-board-software-development-tools-stmicroelectronics.pdf" title="Getting started" public="true"/>
+      <book category="manual"    name="https://www.st.com/resource/en/user_manual/um2407-stm32h7-nucleo144-boards-mb1364-stmicroelectronics.pdf" title="User Manual" public="true"/>
+      <book category="schematic" name="https://www.st.com/resource/en/schematic_pack/mb1364-h743zi-c01_schematic.pdf"     title="Schematics" public="true"/>
+      <book category="other"     name="Documents/README.md" title="Guide" public="true"/>
+      <mountedDevice    deviceIndex="0" Dvendor="STMicroelectronics:13" Dname="STM32H743ZITx"/> 
+      <compatibleDevice deviceIndex="0" Dvendor="STMicroelectronics:13" DsubFamily="STM32H743"/>
+      <feature type="ODbg"      n="1"              name="On-board ST-LINK-V3E"/>
+      <feature type="PWR"       n="4"              name="USB VBUS, ext. VIN, ext. 5V, ext +3.3V"/>
+      <feature type="CustomFF"  n="2"              name="STMicroelectronics Morpho connector"/>
+      <feature type="ArduinoFF" n="2"              name="STMicroelectronics Arduino connector"/>
+      <feature type="ETH"       n="1"              name="10/100 Ethernet Port"/>
+      <feature type="USB"       n="1"              name="USB re-enumeration capability"/>
+      <feature type="Button"    n="2"              name="Push-buttons: User and Reset"/>
+      <feature type="LED"       n="5"              name="LEDs: COM, Power, User LEDs"/>
+      <debugInterface adapter="ST-Link" connector="Micro-USB"/>
+      <debugProbe connector="Micro-USB" debugClock="10000000" debugLink="swd" name="ST-Link"/>
+    </board>
+  </boards>
+
+  <examples> 
+    <example name="Blinky" doc="README.md" folder="Projects/Blinky">
+      <description>CMSIS-RTOS2 Blinky example with VIO</description>
+      <board name="NUCLEO-H743ZI" vendor="STMicroelectronics"/>
+      <project>
+        <environment name="uv" load="Blinky.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="CMSIS" Cgroup="CORE"/>
+        <component Cclass="Device" Cgroup="Startup"/>
+        <component Cclass="CMSIS" Cgroup="RTOS"/>
+        <component Cclass="CMSIS Driver" Cgroup="VIO"/>
+        <category>Getting Started</category>
+      </attributes>
+    </example>
+
+    <example name="Platform" doc="README.md" folder="Projects/Platform">
+      <description>CMSIS-RTOS2 Platform example with VIO</description>
+      <board name="NUCLEO-H743ZI" vendor="STMicroelectronics"/>
+      <project>
+        <environment name="uv" load="Platform.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="CMSIS" Cgroup="CORE"/>
+        <component Cclass="Device" Cgroup="Startup"/>
+        <component Cclass="CMSIS" Cgroup="RTOS"/>
+        <component Cclass="CMSIS Driver" Cgroup="VIO"/>
+        <category>Getting Started</category>
+      </attributes>
+    </example>
+  </examples>
+</package>
