@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd" schemaVersion="1.7.2">
+  <name>STM32H735G-DK_BSP</name>
+  <vendor>Keil</vendor>
+  <description>STMicroelectronics STM32H7 Series STM32H735G-DK Board Support Pack</description>
+  <url>https://github.com/MDK-Packs/Pack/raw/master/STM32H735G-DK_BSP/</url>
+  <repository type="git">https://github.com/MDK-Packs/STM32H735G-DK_BSP.git</repository>
+
+  <releases>
+    <release version="1.0.0" date="2021-09-13">
+      Board description and documentation for STM32H735G-DK
+      Synchronized with STM32CubeH7 Firmware Package version V1.9.0
+      Drivers:
+      - Board Drivers, Components, Config files
+      - CMSIS-Driver VIO
+      Utilities:
+      - LCD Utility Drivers
+      Example projects:
+      - CMSIS-RTOS2 Blinky (verify the basic tool setup)
+      - CMSIS-RTOS2 Platform (configure the board hardware)
+    </release>
+  </releases>
+
+  <keywords>
+    <!-- keywords for indexing -->
+    <keyword>ST</keyword>
+    <keyword>Board Support Pack</keyword>
+    <keyword>STM32H7</keyword>
+    <keyword>STM32H735G-DK</keyword>
+  </keywords>
+
+  <requirements>
+    <packages>
+      <package vendor="Keil" name="STM32H7xx_DFP" version="2.8.0-0"/>
+    </packages>
+  </requirements>
+
+  <conditions>
+    <condition id="STM32H735">
+      <description>STMicroelectronics STM32H735 Devices</description>
+      <require Dvendor="STMicroelectronics:13" Dname="STM32H735*"/>
+    </condition>
+
+    <!-- Core + Compiler Conditions -->
+    <condition id="CM7_LE_ARMCC">
+      <description>Cortex-M7 processor based device in little endian mode for the ARM Compiler</description>
+      <require Dcore="Cortex-M7" Dfpu="NO_FPU" Dendian="Little-endian"/>
+      <require Tcompiler="ARMCC"/>
+    </condition>
+    <condition id="CM7F_LE_ARMCC">
+      <description>Cortex-M7 processor based device using Floating Point Unit in little endian mode for the ARM Compiler</description>
+      <accept Dcore="Cortex-M7" Dfpu="SP_FPU" Dendian="Little-endian"/>
+      <accept Dcore="Cortex-M7" Dfpu="DP_FPU" Dendian="Little-endian"/>
+      <require Tcompiler="ARMCC"/>
+    </condition>
+    <condition id="CM7_LE_GCC">
+      <description>Cortex-M7 processor based device in little endian mode for the GCC Compiler</description>
+      <require Dcore="Cortex-M7" Dfpu="NO_FPU" Dendian="Little-endian"/>
+      <require Tcompiler="GCC"/>
+    </condition>
+    <condition id="CM7F_LE_GCC">
+      <description>Cortex-M7 processor based device using Floating Point Unit in little endian mode for the GCC Compiler</description>
+      <accept Dcore="Cortex-M7" Dfpu="SP_FPU" Dendian="Little-endian"/>
+      <accept Dcore="Cortex-M7" Dfpu="DP_FPU" Dendian="Little-endian"/>
+      <require Tcompiler="GCC"/>
+    </condition>
+    <condition id="CM7_LE_IAR">
+      <description>Cortex-M7 processor based device in little endian mode for the IAR Compiler</description>
+      <require Dcore="Cortex-M7" Dfpu="NO_FPU" Dendian="Little-endian"/>
+      <require Tcompiler="IAR"/>
+    </condition>
+    <condition id="CM7F_LE_IAR">
+      <description>Cortex-M7 processor based device using Floating Point Unit in little endian mode for the IAR Compiler</description>
+      <accept Dcore="Cortex-M7" Dfpu="SP_FPU" Dendian="Little-endian"/>
+      <accept Dcore="Cortex-M7" Dfpu="DP_FPU" Dendian="Little-endian"/>
+      <require Tcompiler="IAR"/>
+    </condition>
+
+    <!-- STM32H735G-DK BSP Conditions -->
+    <condition id="STM32H735G-DK BSP">
+      <description>STMicroelectronics STM32H735G-DK BSP</description>
+      <require condition="STM32H735"/>
+      <require Cclass="Device" Cgroup="STM32Cube HAL" Csub="Common"/>
+      <require Cclass="Device" Cgroup="STM32Cube HAL" Csub="EXTI"/>
+      <require Cclass="Device" Cgroup="STM32Cube HAL" Csub="GPIO"/>
+      <require Cclass="Device" Cgroup="STM32Cube HAL" Csub="UART"/>
+    </condition>
+    <condition id="STM32H735G-DK BSP Audio">
+      <description>STMicroelectronics STM32H735G-DK BSP Audio</description>
+      <require condition="STM32H735"/>
+      <require Cclass="Device" Cgroup="STM32Cube HAL" Csub="SAI"/>
+      <require Cclass="Device" Cgroup="STM32Cube HAL" Csub="DMA"/>
+      <require Cclass="Device" Cgroup="STM32Cube HAL" Csub="DFSDM"/>
+      <require Cclass="Board Support" Cgroup="Drivers" Csub="BUS"/>
+      <require Cclass="Board Support" Cgroup="Components" Csub="WM8994"/>
+    </condition>
+    <condition id="STM32H735G-DK BSP BUS">
+      <description>STMicroelectronics STM32H735G-DK BSP BUS</description>
+      <require condition="STM32H735"/>
+      <require Cclass="Device" Cgroup="STM32Cube HAL" Csub="I2C"/>
+      <require Cclass="Board Support" Cgroup="Drivers" Csub="Basic I/O"/>
+    </condition>
+    <condition id="STM32H735G-DK BSP LCD">
+      <description>STMicroelectronics STM32H735G-DK BSP LCD</description>
+      <require condition="STM32H735"/>
+      <require Cclass="Device" Cgroup="STM32Cube HAL" Csub="DMA2D"/>
+      <require Cclass="Device" Cgroup="STM32Cube HAL" Csub="MDMA"/>
+      <require Cclass="Device" Cgroup="STM32Cube HAL" Csub="LTDC"/>
+      <require Cclass="Board Support" Cgroup="Drivers" Csub="Basic I/O"/>
+      <require Cclass="Board Support" Cgroup="Drivers" Csub="BUS"/>
+      <require Cclass="Board Support" Cgroup="Drivers" Csub="OSPI"/>
+	  <require Cclass="Board Support" Cgroup="Components" Csub="FT5336"/>
+      <require Cclass="Board Support" Cgroup="Components" Csub="RK043FN48H"/>
+    </condition>
+    <condition id="STM32H735G-DK BSP OSPI">
+      <description>STMicroelectronics STM32H735G-DK BSP OSPI</description>
+      <require condition="STM32H735"/>
+      <require Cclass="Board Support" Cgroup="Drivers" Csub="Basic I/O"/>
+      <require Cclass="Board Support" Cgroup="Components" Csub="MX25LM51245G"/>
+      <require Cclass="Board Support" Cgroup="Components" Csub="S70KL1281"/>
+    </condition>
+    <condition id="STM32H735G-DK BSP SD">
+      <description>STMicroelectronics STM32H735G-DK BSP SD</description>
+      <require condition="STM32H735"/>
+      <require Cclass="Device" Cgroup="STM32Cube HAL" Csub="DMA"/>
+      <require Cclass="Device" Cgroup="STM32Cube HAL" Csub="SD"/>
+      <require Cclass="Board Support" Cgroup="Drivers" Csub="Basic I/O"/>
+    </condition>
+    <condition id="STM32H735G-DK BSP TS">
+      <description>STMicroelectronics STM32H735G-DK BSP TS</description>
+      <require condition="STM32H735"/>
+      <require Cclass="Board Support" Cgroup="Drivers" Csub="Basic I/O"/>
+      <require Cclass="Board Support" Cgroup="Drivers" Csub="BUS"/>
+      <require Cclass="Board Support" Cgroup="Components" Csub="FT5336"/>
+    </condition>
+    <condition id="STM32H735G-DK VIO">
+      <description>Virtual I/O STM32H735G-DK</description>
+      <require condition="STM32H735"/>
+      <require Cclass="Board Support" Cgroup="Drivers" Csub="Basic I/O"/>
+      <require Cclass="Board Support" Cgroup="Drivers" Csub="LCD"/>
+    </condition>
+    <condition id="STM32H735G-DK BSP MX25LM51245G">
+      <description>MX25LM51245G Octal SPI Driver</description>
+      <require condition="STM32H735"/>
+      <require Cclass="Device" Cgroup="STM32Cube HAL" Csub="OSPI"/>
+    </condition>
+    <condition id="STM32H735G-DK BSP S70KL1281">
+      <description>S70KL1281 Octal SPI Driver</description>
+      <require condition="STM32H735"/>
+      <require Cclass="Device" Cgroup="STM32Cube HAL" Csub="OSPI"/>
+    </condition>
+  </conditions>
+
+  <components>
+    <bundle Cbundle="STM32H735G-DK" Cclass="Board Support" Cversion="1.2.0">
+      <description>STMicroelectronics NUCLEO-H743ZI Board</description>
+      <doc></doc>
+      <component Cgroup="Drivers" Csub="Basic I/O" condition="STM32H735G-DK BSP">
+        <description>LEDs, push-buttons and COM ports for STM32H735G-DK Board</description>
+        <files>
+          <file category="header" name="Drivers/Config/stm32h735g_discovery_conf.h" attr="config" version="1.0.0"/>
+          <file category="header" name="Drivers/STM32H735G-DK/stm32h735g_discovery.h"/>
+          <file category="source" name="Drivers/STM32H735G-DK/stm32h735g_discovery.c"/>
+        </files>
+      </component>
+      <component Cgroup="Drivers" Csub="Audio" condition="STM32H735G-DK BSP Audio">
+        <description>Audio for STMicroelectronics STM32H735G-DK Board</description>
+        <files>
+          <file category="header" name="Drivers/STM32H735G-DK/stm32h735g_discovery_audio.h"/>
+          <file category="source" name="Drivers/STM32H735G-DK/stm32h735g_discovery_audio.c"/>
+          <file category="library" condition="CM7_LE_ARMCC"  name="Middlewares/ST/STM32_Audio/Addons/PDM/Lib/libPDMFilter_CM7_Keil_wc16.lib"/>
+          <file category="library" condition="CM7F_LE_ARMCC" name="Middlewares/ST/STM32_Audio/Addons/PDM/Lib/libPDMFilter_CM7_Keil_wc16.lib"/>
+          <file category="library" condition="CM7_LE_GCC"    name="Middlewares/ST/STM32_Audio/Addons/PDM/Lib/libPDMFilter_CM7_GCC_wc32.a"/>
+          <file category="library" condition="CM7F_LE_GCC"   name="Middlewares/ST/STM32_Audio/Addons/PDM/Lib/libPDMFilter_CM7_GCC_wc32.a"/>
+          <file category="library" condition="CM7_LE_IAR"    name="Middlewares/ST/STM32_Audio/Addons/PDM/Lib/libPDMFilter_CM7_IAR_wc32.a"/>
+          <file category="library" condition="CM7F_LE_IAR"   name="Middlewares/ST/STM32_Audio/Addons/PDM/Lib/libPDMFilter_CM7_IAR_wc32.a"/>
+        </files>
+      </component>
+      <component Cgroup="Drivers" Csub="BUS" condition="STM32H735G-DK BSP BUS">
+        <description>BUS for STMicroelectronics STM32H735G-DK Board</description>
+        <files>
+          <file category="header" name="Drivers/STM32H735G-DK/stm32h735g_discovery_bus.h"/>
+          <file category="source" name="Drivers/STM32H735G-DK/stm32h735g_discovery_bus.c"/>
+        </files>
+      </component>
+      <component Cgroup="Drivers" Csub="LCD" condition="STM32H735G-DK BSP LCD">
+        <description>LCD for STMicroelectronics STM32H735G-DK Board</description>
+        <files>
+          <file category="header" name="Drivers/STM32H735G-DK/stm32h735g_discovery_lcd.h"/>
+          <file category="source" name="Drivers/STM32H735G-DK/stm32h735g_discovery_lcd.c"/>
+        </files>
+      </component>
+      <component Cgroup="Drivers" Csub="OSPI" condition="STM32H735G-DK BSP OSPI">
+        <description>OSPI for STMicroelectronics STM32H735G-DK Board</description>
+        <files>
+          <file category="header" name="Drivers/STM32H735G-DK/stm32h735g_discovery_ospi.h"/>
+          <file category="source" name="Drivers/STM32H735G-DK/stm32h735g_discovery_ospi.c"/>
+        </files>
+      </component>
+      <component Cgroup="Drivers" Csub="SD" condition="STM32H735G-DK BSP SD">
+        <description>SD for STMicroelectronics STM32H735G-DK Board</description>
+        <files>
+          <file category="header" name="Drivers/STM32H735G-DK/stm32h735g_discovery_sd.h"/>
+          <file category="source" name="Drivers/STM32H735G-DK/stm32h735g_discovery_sd.c"/>
+        </files>
+      </component>
+      <component Cgroup="Drivers" Csub="Touch Screen" condition="STM32H735G-DK BSP TS">
+        <description>Touch Screen for STMicroelectronics STM32H735G-DK Board</description>
+        <files>
+          <file category="header" name="Drivers/STM32H735G-DK/stm32h735g_discovery_ts.h"/>
+          <file category="source" name="Drivers/STM32H735G-DK/stm32h735g_discovery_ts.c"/>
+        </files>
+      </component>
+
+      <component Cgroup="Components" Csub="WM8994" condition="STM32H735" Cversion="3.0.2">
+        <description>WM8994 Component Driver</description>
+        <files>
+          <file category="source" name="Drivers/Components/wm8994/wm8994.h"/>
+          <file category="source" name="Drivers/Components/wm8994/wm8994.c"/>
+          <file category="source" name="Drivers/Components/wm8994/wm8994_reg.h"/>
+          <file category="source" name="Drivers/Components/wm8994/wm8994_reg.c"/>
+        </files>
+      </component>
+      <component Cgroup="Components" Csub="RK043FN48H" condition="STM32H735" Cversion="1.0.3">
+        <description>RK043FN48H Component Driver</description>
+        <files>
+          <file category="header" name="Drivers/Components/rk043fn48h/rk043fn48h.h"/>
+        </files>
+      </component>
+      <component Cgroup="Components" Csub="MX25LM51245G" condition="STM32H735G-DK BSP MX25LM51245G" Cversion="2.0.2">
+        <description>MX25LM51245G Component Driver</description>
+        <files>
+          <file category="header" name="Drivers/Config/mx25lm51245g_conf.h"        attr="config" version="1.0.0"/>
+          <file category="header" name="Drivers/Components/mx25lm51245g/mx25lm51245g.h"/>
+          <file category="source" name="Drivers/Components/mx25lm51245g/mx25lm51245g.c"/>
+        </files>
+      </component>
+      <component Cgroup="Components" Csub="S70KL1281" condition="STM32H735G-DK BSP S70KL1281" Cversion="1.0.0">
+        <description>S70KL1281 Component Driver</description>
+        <files>
+          <file category="header" name="Drivers/Config/s70kl1281_conf.h"        attr="config" version="1.0.0"/>
+          <file category="header" name="Drivers/Components/s70kl1281/s70kl1281.h"/>
+          <file category="source" name="Drivers/Components/s70kl1281/s70kl1281.c"/>
+        </files>
+      </component>
+      <component Cgroup="Components" Csub="FT5336" condition="STM32H735" Cversion="2.0.1">
+        <description>FT5336 TS Component Driver</description>
+        <files>
+          <file category="header" name="Drivers/Config/ft5336_conf.h"        attr="config" version="1.0.0"/>
+          <file category="header" name="Drivers/Components/ft5336/ft5336.h"/>
+          <file category="source" name="Drivers/Components/ft5336/ft5336.c"/>
+          <file category="header" name="Drivers/Components/ft5336/ft5336_reg.h"/>
+          <file category="source" name="Drivers/Components/ft5336/ft5336_reg.c"/>
+        </files>
+      </component>
+    </bundle>
+
+    <!-- VIO component for STM32H735G-DK -->
+    <component Cclass="CMSIS Driver" Cgroup="VIO" Csub="Board" Cvariant= "STM32H735G-DK" Cversion="1.0.1" Capiversion="0.1.0"   condition="STM32H735G-DK VIO">
+      <description>Virtual I/O implementation for STM32H735G-DK</description>
+      <RTE_Components_h>
+        #define RTE_VIO_BOARD
+        #define RTE_VIO_STM32H735G_DK
+      </RTE_Components_h>
+      <files>
+        <file category="header" name="Drivers/Components/Common/lcd.h"/>
+        <file category="header" name="Utilities/lcd/stm32_lcd.h"/>
+        <file category="source" name="Utilities/lcd/stm32_lcd.c"/>
+        <file category="source" name="Drivers/Platform/vio_STM32H735G-DK.c"/>
+      </files>
+    </component>
+  </components>
+
+  <boards>
+    <!-- STM32H735G-DK Board Support -->
+    <board vendor="STMicroelectronics" name="STM32H735G-DK" revision="Rev.B"
+           salesContact="https://www.st.com/content/st_com/en/contact-us.html"
+           orderForm   ="https://www.st.com/en/evaluation-tools/stm32h735g-dk.html">
+      <description>STM32 Discovery development board with STM32H735IG MCU</description>
+      <image small="Images/Discovery_small.jpg"
+             large="Images/Discovery_large.jpg" public="true"/>
+      <book category="overview"  name="https://www.st.com/en/evaluation-tools/stm32h735g-dk.html" title="STM32 Discovery board"/>
+      <book category="overview"  name="https://www.st.com/resource/en/data_brief/stm32h735g-dk.pdf" title="Data brief" public="true"/>
+      <book category="manual"    name="https://www.st.com/resource/en/user_manual/um2679-discovery-kit-with-stm32h735ig-mcu-stmicroelectronics.pdf" title="User Manual" public="true"/>
+      <book category="schematic" name="https://www.st.com/resource/en/schematic_pack/mb1520-h735i-b02_schematic.pdf"     title="Schematics" public="true"/>
+      <book category="other"     name="Documents/README.md" title="Guide" public="true"/>
+      <mountedDevice    deviceIndex="0" Dvendor="STMicroelectronics:13" Dname="STM32H735IGKx"/> 
+      <compatibleDevice deviceIndex="0" Dvendor="STMicroelectronics:13" DsubFamily="STM32H735"/>
+      <feature type="ODbg"      n="1"              name="On-board ST-LINK-V3E"/>
+      <feature type="PWR"       n="5"              name="USB VBUS, E5V, CHGR, STLK, POE5V"/>
+      <feature type="CustomFF"  n="2"              name="STMicroelectronics Pmod, STMod+ connector"/>
+      <feature type="ArduinoFF" n="1"              name="STMicroelectronics Arduino Uno connector"/>
+      <feature type="ETH"       n="1"              name="10/100 Ethernet Port"/>
+      <feature type="USB"       n="1"              name="USB OTG FS (Full speed) with micro-AB Connector"/>
+      <feature type="Button"    n="2"              name="Push-buttons: User and Reset"/>
+      <feature type="LED"       n="8"              name="LEDs: COM, Power, User LEDs"/>
+      <feature type="LineIn"    n="1"              name="Stereo Line IN headset jack"/>
+      <feature type="LineOut"   n="1"              name="Stereo Line OUT headset jack including analog microphone input"/>
+      <feature type="GLCD"      n="1"  m="480.272" name="4.3-inch 480x272 TFT color LCD with capacitive touch panel"/>
+      <feature type="MemCard"   n="1"              name="microSD card"/>
+      <debugInterface adapter="ST-Link" connector="Micro-USB"/>
+      <debugProbe connector="Micro-USB" debugClock="10000000" debugLink="swd" name="ST-Link"/>
+    </board>
+  </boards>
+ 
+  <examples> 
+    <example name="Blinky" doc="README.md" folder="Projects/Blinky">
+      <description>CMSIS-RTOS2 Blinky example with VIO</description>
+      <board name="STM32H735G-DK" vendor="STMicroelectronics"/>
+      <project>
+        <environment name="uv" load="Blinky.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="CMSIS" Cgroup="CORE"/>
+        <component Cclass="Device" Cgroup="Startup"/>
+        <component Cclass="CMSIS" Cgroup="RTOS"/>
+        <component Cclass="CMSIS Driver" Cgroup="VIO"/>
+        <category>Getting Started</category>
+      </attributes>
+    </example>
+
+    <example name="Platform" doc="README.md" folder="Projects/Platform">
+      <description>CMSIS-RTOS2 Platform example with VIO</description>
+      <board name="STM32H735G-DK" vendor="STMicroelectronics"/>
+      <project>
+        <environment name="uv" load="Platform.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="CMSIS" Cgroup="CORE"/>
+        <component Cclass="Device" Cgroup="Startup"/>
+        <component Cclass="CMSIS" Cgroup="RTOS"/>
+        <component Cclass="CMSIS Driver" Cgroup="VIO"/>
+        <category>Getting Started</category>
+      </attributes>
+    </example>
+  </examples> 
+</package>
