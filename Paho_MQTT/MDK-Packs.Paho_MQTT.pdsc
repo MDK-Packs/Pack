@@ -7,6 +7,10 @@
   <url>https://github.com/MDK-Packs/Pack/raw/master/Paho_MQTT/</url>
   <license>edl-v10.txt</license>
   <releases>
+    <release version="1.0.3" date="2021-09-16">
+      Updated MQTTClient-C Platform (corrected Network Initialization)
+      Components made available also for Cortex-M35P and Cortex-M55
+    </release>
     <release version="1.0.2" date="2019-04-03">
       Updated mbedTLS support (added missing include for mbedTLS debug)
     </release>
@@ -24,14 +28,17 @@
   </requirements>
   <conditions>
     <condition id="Cortex-M Device">
-      <description>Cortex-M processor based device: Cortex-M0, Cortex-M0+, Cortex-M3, Cortex-M4, Cortex-M7, Cortex-M23, Cortex-M33, SC000 or SC3000</description>
+      <description>Cortex-M processor based device: Cortex-M0, Cortex-M0+, Cortex-M1, Cortex-M3, Cortex-M4, Cortex-M7, Cortex-M23, Cortex-M33, Cortex-M35P, Cortex-M55, ARMV8MBL, ARMV8MML, SC000 or SC3000</description>
       <accept Dcore="Cortex-M0"/>
       <accept Dcore="Cortex-M0+"/>
+      <accept Dcore="Cortex-M1"/>
       <accept Dcore="Cortex-M3"/>
       <accept Dcore="Cortex-M4"/>
       <accept Dcore="Cortex-M7"/>
       <accept Dcore="Cortex-M23"/>
       <accept Dcore="Cortex-M33"/>
+      <accept Dcore="Cortex-M35P"/>
+      <accept Dcore="Cortex-M55"/>
       <accept Dcore="ARMV8MBL"/>
       <accept Dcore="ARMV8MML"/>
       <accept Dcore="SC000"/>
@@ -68,7 +75,7 @@
         <file category="source"  name="MQTTPacket/src/MQTTUnsubscribeServer.c"/>
       </files>
     </component>
-    <component Cclass="IoT Client" Cgroup="MQTTClient-C" Cversion="1.1.0" condition="MQTTClient-C">
+    <component Cclass="IoT Client" Cgroup="MQTTClient-C" Cversion="1.1.1" condition="MQTTClient-C">
       <description>Paho MQTTClient-C</description>
       <RTE_Components_h>
         <!-- the following content goes into file 'RTE_Components.h' -->
