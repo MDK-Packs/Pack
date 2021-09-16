@@ -7,6 +7,9 @@
   <url>https://github.com/MDK-Packs/Pack/raw/master/Azure_IoT/</url>
   <license>LICENSE.txt</license>
   <releases>
+    <release version="1.0.3" date="2021-09-16">
+      Components made available also for Cortex-M35P and Cortex-M55
+    </release>
     <release version="1.0.2" date="2019-11-22">
       Added support for Client Authentication with X.509 Certificate
     </release>
@@ -34,14 +37,17 @@
       <require Tcompiler="ARMCC"/>
     </condition>
     <condition id="Cortex-M Device">
-      <description>Cortex-M processor based device: Cortex-M0, Cortex-M0+, Cortex-M3, Cortex-M4, Cortex-M7, Cortex-M23, Cortex-M33, SC000 or SC3000</description>
+      <description>Cortex-M processor based device: Cortex-M0, Cortex-M0+, Cortex-M1, Cortex-M3, Cortex-M4, Cortex-M7, Cortex-M23, Cortex-M33, Cortex-M35P, Cortex-M55, ARMV8MBL, ARMV8MML, SC000 or SC3000</description>
       <accept Dcore="Cortex-M0"/>
       <accept Dcore="Cortex-M0+"/>
+      <accept Dcore="Cortex-M1"/>
       <accept Dcore="Cortex-M3"/>
       <accept Dcore="Cortex-M4"/>
       <accept Dcore="Cortex-M7"/>
       <accept Dcore="Cortex-M23"/>
       <accept Dcore="Cortex-M33"/>
+      <accept Dcore="Cortex-M35P"/>
+      <accept Dcore="Cortex-M55"/>
       <accept Dcore="ARMV8MBL"/>
       <accept Dcore="ARMV8MML"/>
       <accept Dcore="SC000"/>
