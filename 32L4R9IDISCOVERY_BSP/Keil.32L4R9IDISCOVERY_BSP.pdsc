@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd" schemaVersion="1.7.2">
+  <name>32L4R9IDISCOVERY_BSP</name>
+  <vendor>Keil</vendor>
+  <description>STMicroelectronics STM32L4 Series 32L4R9IDISCOVERY Board Support Pack</description>
+  <url>https://github.com/MDK-Packs/Pack/raw/master/32L4R9IDISCOVERY_BSP/</url>
+  <repository type="git">https://github.com/MDK-Packs/32L4R9IDISCOVERY_BSP.git</repository>
+
+  <releases>
+    <release version="1.0.0" date="2021-09-28">
+      Board description and documentation for 32L4R9IDISCOVERY
+      Synchronized with STM32CubeL4 Firmware Package version V1.17.0
+      Drivers:
+      - Board Drivers and Components
+      - CMSIS-Driver VIO
+      Example projects:
+      - CMSIS-RTOS2 Blinky (verify the basic tool setup)
+      - CMSIS-RTOS2 Platform (configure the board hardware)
+    </release>
+  </releases>
+
+  <keywords>
+    <!-- keywords for indexing -->
+    <keyword>ST</keyword>
+    <keyword>Board Support Pack</keyword>
+    <keyword>STM32L4</keyword>
+    <keyword>32L4R9IDISCOVERY</keyword>
+  </keywords>
+
+  <requirements>
+    <packages>
+      <package vendor="Keil" name="STM32L4xx_DFP" version="2.6.1-0"/>
+    </packages>
+  </requirements>
+
+  <conditions>
+    <condition id="STM32L4R9">
+      <description>STMicroelectronics STM32L4R9 Devices</description>
+      <require Dvendor="STMicroelectronics:13" Dname="STM32L4R9*"/>
+    </condition>
+
+    <!-- 32L4R9IDISCOVERY BSP Conditions -->
+    <condition id="32L4R9IDISCOVERY BSP">
+      <description>STMicroelectronics 32L4R9IDISCOVERY BSP</description>
+      <require condition="STM32L4R9"/>
+      <require Cclass="Device" Cgroup="STM32Cube HAL" Csub="Common"/>
+      <require Cclass="Device" Cgroup="STM32Cube HAL" Csub="GPIO"/>
+      <require Cclass="Device" Cgroup="STM32Cube HAL" Csub="I2C"/>
+      <require Cclass="Device" Cgroup="STM32Cube HAL" Csub="EXTI"/>
+      <require Cclass="Device" Cgroup="STM32Cube HAL" Csub="UART"/>
+      <require Cclass="Board Support" Cgroup="Drivers" Csub="I/O"/>
+    </condition>
+    <condition id="32L4R9IDISCOVERY BSP I/O">
+      <description>STMicroelectronics 32L4R9IDISCOVERY BSP I/O</description>
+      <require condition="STM32L4R9"/>
+      <require Cclass="Board Support" Cgroup="Drivers" Csub="Basic I/O"/>
+      <require Cclass="Board Support" Cgroup="Components" Csub="MFXSTM32L152"/>
+    </condition>
+    <condition id="32L4R9IDISCOVERY BSP Audio">
+      <description>STMicroelectronics 32L4R9IDISCOVERY BSP Audio</description>
+      <require condition="STM32L4R9"/>
+      <require Cclass="Device" Cgroup="STM32Cube HAL" Csub="SAI"/>
+      <require Cclass="Device" Cgroup="STM32Cube HAL" Csub="DMA"/>
+      <require Cclass="Device" Cgroup="STM32Cube HAL" Csub="DFSDM"/>
+      <require Cclass="Board Support" Cgroup="Drivers" Csub="Basic I/O"/>
+      <require Cclass="Board Support" Cgroup="Components" Csub="CS42L51"/>
+    </condition>
+    <condition id="32L4R9IDISCOVERY BSP Camera">
+      <description>STMicroelectronics 32L4R9IDISCOVERY BSP Camera</description>
+      <require condition="STM32L4R9"/>
+      <require Cclass="Device" Cgroup="STM32Cube HAL" Csub="GPIO"/>
+      <require Cclass="Device" Cgroup="STM32Cube HAL" Csub="DCMI"/>
+      <require Cclass="Device" Cgroup="STM32Cube HAL" Csub="DMA"/>
+      <require Cclass="Board Support" Cgroup="Drivers" Csub="Basic I/O"/>
+      <require Cclass="Board Support" Cgroup="Components" Csub="OV9655"/>
+    </condition>
+    <condition id="32L4R9IDISCOVERY BSP IDD">
+      <description>STMicroelectronics 32L4R9IDISCOVERY BSP IDD</description>
+      <require condition="STM32L4R9"/>
+      <require Cclass="Board Support" Cgroup="Drivers" Csub="Basic I/O"/>
+      <require Cclass="Board Support" Cgroup="Components" Csub="MFXSTM32L152"/>
+    </condition>
+    <condition id="32L4R9IDISCOVERY BSP LCD">
+      <description>STMicroelectronics 32L4R9IDISCOVERY BSP LCD</description>
+      <require condition="STM32L4R9"/>
+      <require Cclass="Device" Cgroup="STM32Cube HAL" Csub="LTDC"/>
+      <require Cclass="Device" Cgroup="STM32Cube HAL" Csub="DMA2D"/>
+      <require Cclass="Device" Cgroup="STM32Cube HAL" Csub="GFXMMU"/>
+	  <require Cclass="Device" Cgroup="STM32Cube HAL" Csub="DSI"/>
+	  <require Cclass="Board Support" Cgroup="Drivers" Csub="Basic I/O"/>
+    </condition>
+    <condition id="32L4R9IDISCOVERY BSP OSPI-NOR">
+      <description>STMicroelectronics 32L4R9IDISCOVERY BSP OSPI-NOR</description>
+      <require condition="STM32L4R9"/>
+      <require Cclass="Device" Cgroup="STM32Cube HAL" Csub="GPIO"/>
+      <require Cclass="Device" Cgroup="STM32Cube HAL" Csub="OSPI"/>
+      <require Cclass="Board Support" Cgroup="Drivers" Csub="Basic I/O"/>
+      <require Cclass="Board Support" Cgroup="Components" Csub="MX25LM51245G"/>
+    </condition>	
+    <condition id="32L4R9IDISCOVERY BSP PSRAM">
+      <description>STMicroelectronics 32L4R9IDISCOVERY BSP PSRAM</description>
+      <require condition="STM32L4R9"/>
+      <require Cclass="Device" Cgroup="STM32Cube HAL" Csub="GPIO"/>
+      <require Cclass="Device" Cgroup="STM32Cube HAL" Csub="SRAM"/>
+      <require Cclass="Device" Cgroup="STM32Cube HAL" Csub="DMA"/>
+      <require Cclass="Board Support" Cgroup="Drivers" Csub="Basic I/O"/>
+    </condition>
+    <condition id="32L4R9IDISCOVERY BSP SD">
+      <description>STMicroelectronics 32L4R9IDISCOVERY BSP SD</description>
+      <require condition="STM32L4R9"/>
+      <require Cclass="Device" Cgroup="STM32Cube HAL" Csub="SD"/>
+      <require Cclass="Device" Cgroup="STM32Cube HAL" Csub="DMA"/>
+      <require Cclass="Board Support" Cgroup="Drivers" Csub="Basic I/O"/>
+    </condition>	
+    <condition id="32L4R9IDISCOVERY BSP TS">
+      <description>STMicroelectronics 32L4R9IDISCOVERY BSP TS</description>
+      <require condition="STM32L4R9"/>
+      <require Cclass="Device" Cgroup="STM32Cube HAL" Csub="GPIO"/>
+      <require Cclass="Board Support" Cgroup="Drivers" Csub="Basic I/O"/>
+      <require Cclass="Board Support" Cgroup="Components" Csub="FT3X67"/>
+    </condition>	
+    <condition id="32L4R9IDISCOVERY VIO">
+      <description>Virtual I/O 32L4R9IDISCOVERY</description>
+      <require condition="STM32L4R9"/>
+      <require Cclass="Board Support" Cgroup="Drivers" Csub="LCD"/>
+      <require Cclass="Board Support" Cgroup="Drivers" Csub="Basic I/O"/>
+    </condition>
+    <condition id="32L4R9IDISCOVERY BSP CS42L51">
+      <description>CS42L51 Component Driver</description>
+      <require condition="STM32L4R9"/>
+      <require Cclass="Board Support" Cgroup="Drivers" Csub="Audio"/>
+    </condition>
+    <condition id="32L4R9IDISCOVERY BSP FT3X67">
+      <description>FT3X67 component Driver</description>
+      <require condition="STM32L4R9"/>
+      <require Cclass="Board Support" Cgroup="Drivers" Csub="Touch Screen"/>
+    </condition>
+    <condition id="32L4R9IDISCOVERY BSP MFXSTM32L152">
+      <description>MFXSTM32L152 component Driver</description>
+      <require condition="STM32L4R9"/>
+      <require Cclass="Board Support" Cgroup="Drivers" Csub="I/O"/>
+    </condition>
+    <condition id="32L4R9IDISCOVERY BSP OV9655">
+      <description>OV9655 component Driver</description>
+      <require condition="STM32L4R9"/>
+      <require Cclass="Board Support" Cgroup="Drivers" Csub="Camera"/>
+    </condition>
+  </conditions>
+
+  <components>
+    <bundle Cbundle="32L4R9IDISCOVERY" Cclass="Board Support" Cversion="1.1.1">
+      <description>STMicroelectronics 32L4R9IDISCOVERY Board</description>
+      <doc></doc>
+      <component Cgroup="Drivers" Csub="Basic I/O" condition="32L4R9IDISCOVERY BSP">
+        <description>LEDs, push-buttons and COM ports for 32L4R9IDISCOVERY Board</description>
+        <files>
+          <file category="include" name="Drivers/Components/Common/"/>
+          <file category="header" name="Drivers/STM32L4R9I-Discovery/stm32l4r9i_discovery.h"/>
+          <file category="source" name="Drivers/STM32L4R9I-Discovery/stm32l4r9i_discovery.c"/>
+        </files>
+      </component>
+      <component Cgroup="Drivers" Csub="I/O" condition="32L4R9IDISCOVERY BSP I/O">
+        <description>I/O for STMicroelectronics 32L4R9IDISCOVERY Board</description>
+        <files>
+          <file category="header" name="Drivers/STM32L4R9I-Discovery/stm32l4r9i_discovery_io.h"/>
+          <file category="source" name="Drivers/STM32L4R9I-Discovery/stm32l4r9i_discovery_io.c"/>
+        </files>
+      </component>
+      <component Cgroup="Drivers" Csub="Audio" condition="32L4R9IDISCOVERY BSP Audio">
+        <description>Audio for STMicroelectronics 32L4R9IDISCOVERY Board</description>
+        <files>
+          <file category="header" name="Drivers/STM32L4R9I-Discovery/stm32l4r9i_discovery_audio.h"/>
+          <file category="source" name="Drivers/STM32L4R9I-Discovery/stm32l4r9i_discovery_audio.c"/>
+        </files>
+      </component>
+      <component Cgroup="Drivers" Csub="Camera" condition="32L4R9IDISCOVERY BSP Camera">
+        <description>Camera for STMicroelectronics 32L4R9IDISCOVERY Board</description>
+        <files>
+          <file category="header" name="Drivers/STM32L4R9I-Discovery/stm32l4r9i_discovery_camera.h"/>
+          <file category="source" name="Drivers/STM32L4R9I-Discovery/stm32l4r9i_discovery_camera.c"/>
+        </files>
+      </component>
+      <component Cgroup="Drivers" Csub="IDD" condition="32L4R9IDISCOVERY BSP IDD">
+        <description>IDD for STMicroelectronics 32L4R9IDISCOVERY Board</description>
+        <files>
+          <file category="header" name="Drivers/STM32L4R9I-Discovery/stm32l4r9i_discovery_idd.h"/>
+          <file category="source" name="Drivers/STM32L4R9I-Discovery/stm32l4r9i_discovery_idd.c"/>
+        </files>
+      </component>
+      <component Cgroup="Drivers" Csub="LCD" condition="32L4R9IDISCOVERY BSP LCD">
+        <description>LCD for STMicroelectronics 32L4R9IDISCOVERY Board</description>
+        <files>
+          <file category="header" name="Drivers/STM32L4R9I-Discovery/stm32l4r9i_discovery_lcd.h"/>
+          <file category="source" name="Drivers/STM32L4R9I-Discovery/stm32l4r9i_discovery_lcd.c"/>
+        </files>
+      </component>
+      <component Cgroup="Drivers" Csub="OSPI-NOR" condition="32L4R9IDISCOVERY BSP OSPI-NOR">
+        <description>OSPI-NOR for STMicroelectronics 32L4R9IDISCOVERY Board</description>
+        <files>
+          <file category="header" name="Drivers/STM32L4R9I-Discovery/stm32l4r9i_discovery_ospi_nor.h"/>
+          <file category="source" name="Drivers/STM32L4R9I-Discovery/stm32l4r9i_discovery_ospi_nor.c"/>
+        </files>
+      </component>
+      <component Cgroup="Drivers" Csub="PSRAM" condition="32L4R9IDISCOVERY BSP PSRAM">
+        <description>PSRAM for STMicroelectronics 32L4R9IDISCOVERY Board</description>
+        <files>
+          <file category="header" name="Drivers/STM32L4R9I-Discovery/stm32l4r9i_discovery_psram.h"/>
+          <file category="source" name="Drivers/STM32L4R9I-Discovery/stm32l4r9i_discovery_psram.c"/>
+        </files>
+      </component>
+      <component Cgroup="Drivers" Csub="SD" condition="32L4R9IDISCOVERY BSP SD">
+        <description>SD for STMicroelectronics 32L4R9IDISCOVERY Board</description>
+        <files>
+          <file category="header" name="Drivers/STM32L4R9I-Discovery/stm32l4r9i_discovery_sd.h"/>
+          <file category="source" name="Drivers/STM32L4R9I-Discovery/stm32l4r9i_discovery_sd.c"/>
+        </files>
+      </component>	  
+      <component Cgroup="Drivers" Csub="Touch Screen" condition="32L4R9IDISCOVERY BSP TS">
+        <description>Touch Screen for STMicroelectronics 32L4R9IDISCOVERY Board</description>
+        <files>
+          <file category="header" name="Drivers/STM32L4R9I-Discovery/stm32l4r9i_discovery_ts.h"/>
+          <file category="source" name="Drivers/STM32L4R9I-Discovery/stm32l4r9i_discovery_ts.c"/>
+        </files>
+      </component>
+      <component Cgroup="Components" Csub="MFXSTM32L152" condition="32L4R9IDISCOVERY BSP MFXSTM32L152" Cversion="2.0.4">
+        <description>MFXSTM32L152 Component Driver</description>
+        <files>
+          <file category="header" name="Drivers/Components/mfxstm32l152/mfxstm32l152.h"/>
+          <file category="source" name="Drivers/Components/mfxstm32l152/mfxstm32l152.c"/>
+        </files>
+      </component>
+      <component Cgroup="Components" Csub="CS42L51" condition="32L4R9IDISCOVERY BSP CS42L51" Cversion="1.0.1">
+        <description>CS42L51 Component Driver</description>
+        <files>
+          <file category="header" name="Drivers/Components/cs42l51/cs42l51.h"/>
+          <file category="source" name="Drivers/Components/cs42l51/cs42l51.c"/>
+        </files>
+      </component>
+      <component Cgroup="Components" Csub="OV9655" condition="32L4R9IDISCOVERY BSP OV9655" Cversion="1.0.2">
+        <description>OV9655 Component Driver</description>
+        <files>
+          <file category="header" name="Drivers/Components/ov9655/ov9655.h"/>
+          <file category="source" name="Drivers/Components/ov9655/ov9655.c"/>
+        </files>
+      </component>
+      <component Cgroup="Components" Csub="MX25LM51245G" condition="STM32L4R9" Cversion="1.0.1">
+        <description>MX25LM51245G Component Driver</description>
+        <files>
+          <file category="header" name="Drivers/Components/mx25lm51245g/mx25lm51245g.h"/>
+        </files>
+      </component>
+      <component Cgroup="Components" Csub="FT3X67" condition="32L4R9IDISCOVERY BSP FT3X67" Cversion="1.0.1">
+        <description>FT3X67 Component Driver</description>
+        <files>
+          <file category="header" name="Drivers/Components/ft3x67/ft3x67.h"/>
+          <file category="source" name="Drivers/Components/ft3x67/ft3x67.c"/>
+        </files>
+      </component>
+    </bundle>
+
+    <!-- VIO component for 32L4R9IDISCOVERY -->
+    <component Cclass="CMSIS Driver" Cgroup="VIO" Csub="Board" Cvariant= "32L4R9IDISCOVERY" Cversion="1.0.0" Capiversion="0.1.0"   condition="32L4R9IDISCOVERY VIO">
+      <description>Virtual I/O implementation for 32L4R9IDISCOVERY</description>
+      <RTE_Components_h>
+        #define RTE_VIO_BOARD
+        #define RTE_VIO_32L4R9IDISCOVERY
+      </RTE_Components_h>
+      <files>
+        <file category="header" name="Drivers/Components/Common/lcd.h"/>
+        <file category="source" name="Drivers/Platform/vio_32L4R9IDISCOVERY.c"/>
+      </files>
+    </component>
+  </components>
+
+  <boards>
+    <!-- 32L4R9IDISCOVERY Board Support-->
+    <board vendor="STMicroelectronics" name="32L4R9IDISCOVERY" revision="Rev.C"
+           salesContact="https://www.st.com/content/st_com/en/contact-us.html"
+           orderForm   ="https://www.st.com/en/evaluation-tools/32l4r9idiscovery.html">
+      <description>STM32 Discovery development board with STM32L4R9A MCU</description>
+      <image small="Images/32L4R9IDISCOVERY_small.jpg"
+             large="Images/32L4R9IDISCOVERY_large.jpg" public="true"/>
+      <book category="overview"  name="https://www.st.com/en/evaluation-tools/32l4r9idiscovery.html" title="STM32 Discovery board"/>
+      <book category="overview"  name="https://www.st.com/resource/en/data_brief/32l4r9idiscovery.pdf"        title="Data brief" public="true"/>
+      <book category="manual"    name="https://www.st.com/resource/en/user_manual/um2271-discovery-kit-with-stm32l4r9ai-mcu-stmicroelectronics.pdf"    title="User Manual" public="true"/>
+      <book category="manual"    name="https://www.st.com/resource/en/user_manual/um2695-stmod-fanout-expansion-board-for-stm32-discovery-kits-and-evaluation-boards-stmicroelectronics.pdf"    title="User Manual - STMod+" public="true"/>
+      <book category="schematic" name="https://www.st.com/resource/en/schematic_pack/stm32l4r9i-disco_sch.zip"        title="Schematics" public="true"/>
+      <book category="schematic" name="https://www.st.com/resource/en/schematic_pack/mb1280-3v3-c01_schematic.pdf"        title="Schematics - STMod+" public="true"/>
+      <mountedDevice    deviceIndex="0" Dvendor="STMicroelectronics:13" Dname="STM32L4R9AIIx"/> 
+      <compatibleDevice deviceIndex="0" Dvendor="STMicroelectronics:13" DsubFamily="STM32L4R9"/>
+      <feature type="ODbg"      n="1"                name="On-board ST-LINK/V2-1"/>
+      <feature type="ROM"       n="1"                name="512-Mbit Octal-SPI Flash memory"/>
+      <feature type="PWR"       n="5"                name="USB VBUS, E5V, U5V, CHGR, STLK,"/>
+      <feature type="CustomFF"  n="2"                name="STMicroelectronics Pmod, STMod+ connector"/>
+      <feature type="ArduinoFF" n="1"                name="STMicroelectronics Arduino Uno connector"/>
+      <feature type="USB"       n="1"                name="USB OTG FS (Full speed) with micro-AB Connector"/>
+      <feature type="Button"    n="1"                name="Push-button: Reset"/>
+      <feature type="Joystick"  n="1"                name="4 direction-joystick with selection"/>
+      <feature type="LED"       n="8"                name="LEDs: COM, Power, User LEDs"/>
+      <feature type="LineOut"   n="1"                name="Stereo Line OUT headset jack including analog microphone input"/>
+      <feature type="I2C"       n="1"                name="I2C extension connector"/>
+      <feature type="MemCard"   n="1"                name="MicroSD card holder"/>
+      <feature type="GLCD"      n="1"  m="390.390"   name="1.2 inch AMOLED round display panel with MIPI DSI interface and capacitive touch panel"/>
+      <debugInterface adapter="ST-Link" connector="Micro-USB"/>
+      <debugProbe connector="Micro-USB" debugClock="10000000" debugLink="swd" name="ST-Link"/>
+    </board>
+  </boards>
+
+  <examples>
+    <example name="Blinky" doc="README.md" folder="Projects/Blinky">
+      <description>CMSIS-RTOS2 Blinky example with VIO</description>
+      <board name="32L4R9IDISCOVERY" vendor="STMicroelectronics"/>
+      <project>
+        <environment name="uv" load="Blinky.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="CMSIS" Cgroup="CORE"/>
+        <component Cclass="Device" Cgroup="Startup"/>
+        <component Cclass="CMSIS" Cgroup="RTOS"/>
+        <component Cclass="CMSIS Driver" Cgroup="VIO"/>
+        <category>Getting Started</category>
+      </attributes>
+    </example>
+
+    <example name="Platform" doc="README.md" folder="Projects/Platform">
+      <description>CMSIS-RTOS2 Platform example with VIO</description>
+      <board name="32L4R9IDISCOVERY" vendor="STMicroelectronics"/>
+      <project>
+        <environment name="uv" load="Platform.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="CMSIS" Cgroup="CORE"/>
+        <component Cclass="Device" Cgroup="Startup"/>
+        <component Cclass="CMSIS" Cgroup="RTOS"/>
+        <component Cclass="CMSIS Driver" Cgroup="VIO"/>
+        <category>Getting Started</category>
+      </attributes>
+    </example>
+  </examples>
+</package>
