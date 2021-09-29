@@ -7,6 +7,9 @@
   <repository type="git">https://github.com/MDK-Packs/IMXRT1050-EVKB_BSP.git</repository>
 
   <releases>
+    <release version="1.0.1" date="2021-09-29">
+      Added board features to board description
+    </release>
     <release version="1.0.0" date="2021-09-14">
       Board description and documentation for IMXRT1050-EVKB
       Synchronized with NXP MIMXRT1052_DFP 13.1.0 and NXP EVKB-IMXRT1050_BSP 13.1.0
@@ -68,17 +71,34 @@
            salesContact="https://www.nxp.com/company/contact-us:CONTACTUS"
            orderForm   ="https://www.nxp.com/part/IMXRT1050-EVKB#/">
       <description>Development Platform for i.MXRT1050 MCUs</description>
-      <image small="Images/IMXRT1050-EVKB_small.jpg"
-             large="Images/IMXRT1050-EVKB_large.jpg" public="true"/>
-
+      <feature type="PWRSock"       n="1" name="DC 5 V Coaxial Power Receptacle"/>
+      <feature type="RAM"           n="1" name="256 MB SDRAM"/>
+      <feature type="ROM"           n="1" name="512 MB Hyper Flash"/>
+      <feature type="ROM"           n="1" name="64 MB QSPI Flash"/>
+      <feature type="Accelerometer" n="1" name="FXOS8700CQ: Digital Motion Sensor"/>
+      <feature type="MemCard"       n="1" name="TF socket for SD card"/>
+      <feature type="USB"           n="2" name="Micro USB host and OTG connectors"/>
+      <feature type="ETH"           n="1" m="10000000" name="Ethernet (10/100T) connector"/>
+      <feature type="CAN"           n="1" name="CAN transceivers"/>
+      <feature type="ConnOther"     n="1" name="Arduino interface"/>
+      <feature type="LineOut"       n="1" name="4-pole audio headphone jack"/>
+      <feature type="MIC"           n="1" name="Microphone"/>
+      <feature type="Speaker"       n="1" name="External speaker connection"/>
+      <feature type="CustomFF"      n="100" m="150" name="IMXRT1050-EVKB"/>
+      <feature type="LED"           n="1" name="User LED"/>
+      <feature type="Button"        n="4" name="Push-buttons: ON/OFF, 2 x Reset, User"/>
+      <feature type="Camera"        n="1" name="Camera connector"/>
+      <feature type="ConnOther"     n="1" name="Parallel LCD connector"/>
+      <mountedDevice Dname="MIMXRT1052DVL6B" Dvendor="NXP:11"/>
+      <image small="Images/IMXRT1050-EVKB_small.jpg" large="Images/IMXRT1050-EVKB_large.jpg" public="true"/>
+      <debugInterface adapter="JTAG/SW" connector="20-pin Arm Standard JTAG Connector (0.1 inch connector)"/>
+      <debugInterface adapter="JTAG/SW" connector="10-pin Cortex Debug Connector (0.05 inch connector)"/>
       <book category="overview"  name="https://www.nxp.com/design/development-boards/i-mx-evaluation-and-development-boards/i-mx-rt1050-evaluation-kit:MIMXRT1050-EVK" title="i.MX RT1050 Evaluation Kit"/>
       <book category="overview"  name="https://www.nxp.com/document/guide/getting-started-with-the-mimxrt1050-evk-evaluation-board:GS-MIMXRT1050-EVK" title="Getting Started"/>
       <book category="overview"  name="Documents/IMXRT1050EVKQSG.pdf"  title="Quick Start Guide"           public="true"/>
       <book category="manual"    name="Documents/MIMXRT1050EVKHUG.pdf" title="Board Hardware User's Guide" public="true"/>
       <book category="schematic" name="Documents/SPF-30168_B1.pdf"     title="Schematics"                  public="true"/>
       <book category="other"     name="Documents/README.md"            title="Guide"                       public="true"/>
-
-      <mountedDevice Dname="MIMXRT1052DVL6B" Dvendor="NXP:11"/>
       <debugProbe connector="Micro-USB" debugClock="10000000" debugLink="swd" name="DAP-Link" />
     </board>
   </boards>
