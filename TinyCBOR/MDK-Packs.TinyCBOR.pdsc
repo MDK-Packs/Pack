@@ -7,6 +7,9 @@
   <url>https://github.com/MDK-Packs/Pack/raw/master/TinyCBOR/</url>
   <license>LICENSE.txt</license>
   <releases>
+    <release version="1.0.1" date="2021-11-03">
+      Update based on TinyCBOR v0.5.3
+    </release>
     <release version="1.0.0" date="2019-07-03">
       Initial release based on TinyCBOR v0.5.2
     </release>
@@ -16,7 +19,7 @@
     <description Cclass="Data Exchange" Cgroup="CBOR">CBOR Software Components</description>
   </taxonomy>
   <components>
-    <component Cclass="Data Exchange" Cgroup="CBOR" Csub="TinyCBOR" Cversion="0.5.2">
+    <component Cclass="Data Exchange" Cgroup="CBOR" Csub="TinyCBOR" Cversion="0.5.3">
       <description>TinyCBOR</description>
       <RTE_Components_h>
         <!-- the following content goes into file 'RTE_Components.h' -->
