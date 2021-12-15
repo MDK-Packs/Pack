@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<package xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd" schemaVersion="1.7.1">
+<package xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd" schemaVersion="1.7.2">
   <name>STM32L562E-DK_BSP</name>
   <vendor>Keil</vendor>
   <description>STMicroelectronics STM32L5 Series STM32L562E-DK Board Support Pack</description>
@@ -7,6 +7,15 @@
   <repository type="git">https://github.com/MDK-Packs/STM32L562E-DK_BSP.git</repository>
 
   <releases>
+    <release version="1.3.0" date="2021-12-15">
+      Synchronize with STM32CubeL5 Firmware Package version V1.4.0
+      Projects:
+      - Update CubeMX project
+      - Override default HAL_InitTick function
+      - Update Platform project: Blocking stdin_getchar in stdio retarget
+      Replace documentation files with links
+      Update schemaVersion (1.7.2)
+    </release>
     <release version="1.2.1" date="2021-07-12">
       Drivers:
       - VIO: update vioInit (LEDs pins initialization)
@@ -52,7 +61,7 @@
 
   <requirements>
     <packages>
-      <package vendor="Keil" name="STM32L5xx_DFP" version="1.3.0-0"/>
+      <package vendor="Keil" name="STM32L5xx_DFP" version="1.4.0-0"/>
     </packages>
   </requirements>
 
@@ -145,7 +154,7 @@
   </conditions>
 
   <components>
-    <bundle Cbundle="STM32L562E-DK" Cclass="Board Support" Cversion="1.1.0">
+    <bundle Cbundle="STM32L562E-DK" Cclass="Board Support" Cversion="1.1.1">
       <description>STMicroelectronics STM32L562E-DK Board</description>
       <doc></doc>
       <component Cgroup="Drivers" Csub="Basic I/O" condition="STM32L562E-DK BSP">
@@ -219,7 +228,7 @@
           <file category="source" name="Drivers/STM32L562E-DK/stm32l562e_discovery_usbpd_pwr.c"/>
         </files>
       </component>
-      <component Cgroup="Components" Csub="MX25LM51245G" condition="STM32L562E-DK BSP MX25LM51245G" Cversion="2.0.3">
+      <component Cgroup="Components" Csub="MX25LM51245G" condition="STM32L562E-DK BSP MX25LM51245G" Cversion="2.0.5">
         <description>MX25LM51245G Component Driver</description>
         <files>
           <file category="header" name="Drivers/Config/mx25lm51245g_conf.h"        attr="config" version="1.0.0"/>
@@ -227,7 +236,7 @@
           <file category="source" name="Drivers/Components/mx25lm51245g/mx25lm51245g.c"/>
         </files>
       </component>
-      <component Cgroup="Components" Csub="CS42L51" condition="STM32L562" Cversion="2.0.1">
+      <component Cgroup="Components" Csub="CS42L51" condition="STM32L562" Cversion="2.0.2">
         <description>CS42L51 Component Driver</description>
         <files>
           <file category="source" name="Drivers/Components/cs42l51/cs42l51.h"/>
@@ -236,7 +245,7 @@
           <file category="source" name="Drivers/Components/cs42l51/cs42l51_reg.c"/>
         </files>
       </component>
-      <component Cgroup="Components" Csub="ST7789H2" condition="STM32L562" Cversion="2.0.1">
+      <component Cgroup="Components" Csub="ST7789H2" condition="STM32L562" Cversion="2.0.2">
         <description>ST7789H2 Component Driver</description>
         <files>
           <file category="header" name="Drivers/Components/st7789h2/st7789h2.h"/>
@@ -291,12 +300,11 @@
       <image small="Images/Discovery_small.jpg"
              large="Images/Discovery_large.jpg" public="true"/>
       <book category="overview"  name="https://www.st.com/en/evaluation-tools/stm32l562e-dk.html" title="STM32 Discovery board"/>
-      <book category="overview"  name="Documents/DB3937.pdf"        title="Data brief" public="true"/>
-      <book category="overview"  name="Documents/stm32l562e-dk.pdf" title="Overview" public="true"/>
-      <book category="manual"    name="Documents/DM00635554.pdf"    title="User Manual" public="true"/>
-      <book category="manual"    name="Documents/DM00688718.pdf"    title="User Manual - STMod+" public="true"/>
-      <book category="schematic" name="Documents/MB1373.pdf"        title="Schematics" public="true"/>
-      <book category="schematic" name="Documents/MB1280.pdf"        title="Schematics - STMod+" public="true"/>
+      <book category="overview"  name="https://www.st.com/resource/en/data_brief/stm32l562e-dk.pdf" title="Data brief" public="true"/>
+      <book category="manual"    name="https://www.st.com/resource/en/user_manual/um2617-discovery-kit-with-stm32l562qe-mcu-stmicroelectronics.pdf" title="User Manual" public="true"/>
+      <book category="manual"    name="https://www.st.com/resource/en/user_manual/um2695-stmod-fanout-expansion-board-for-stm32-discovery-kits-and-evaluation-boards-stmicroelectronics.pdf" title="User Manual - STMod+" public="true"/>
+      <book category="schematic" name="https://www.st.com/resource/en/schematic_pack/mb1373-l562qeq-c01_schematic.pdf" title="Schematics" public="true"/>
+      <book category="schematic" name="https://www.st.com/resource/en/schematic_pack/mb1280-3v3-c01_schematic.pdf" title="Schematics - STMod+" public="true"/>
       <mountedDevice    deviceIndex="0" Dvendor="STMicroelectronics:13" Dname="STM32L562QEIxQ"/> 
       <compatibleDevice deviceIndex="0" Dvendor="STMicroelectronics:13" DsubFamily="STM32L5x2"/>
       <feature type="ODbg"      n="1"                name="On-board ST-LINK-V3E"/>
