@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<package xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd" schemaVersion="1.7.0">
+<package xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd" schemaVersion="1.7.2">
   <name>STM32L552E-EV_BSP</name>
   <vendor>Keil</vendor>
   <description>STMicroelectronics STM32L5 Series STM32L552E-EV Board Support Pack</description>
@@ -7,6 +7,17 @@
   <repository type="git">https://github.com/MDK-Packs/STM32L552E-EV_BSP.git</repository>
 
   <releases>
+    <release version="1.1.0" date="2021-12-15">
+      Synchronize with STM32CubeL5 Firmware Package version V1.4.0
+      Drivers:
+      - CMSIS-Driver VIO: Correct reading joystick
+      Projects:
+      - Update CubeMX project
+      - Override default HAL_InitTick function
+      - Update Platform project: Blocking stdin_getchar in stdio retarget
+      Replace documentation files with links
+      Update schemaVersion (1.7.2)
+    </release>
     <release version="1.0.1" date="2021-07-12">
       Example projects:
       - update RTX configuration (CMSIS 5.8.0)
@@ -38,7 +49,7 @@
 
   <requirements>
     <packages>
-      <package vendor="Keil" name="STM32L5xx_DFP" version="1.3.0-0"/>
+      <package vendor="Keil" name="STM32L5xx_DFP" version="1.4.0-0"/>
     </packages>
   </requirements>
 
@@ -146,7 +157,7 @@
   </conditions>
 
   <components>
-    <bundle Cbundle="STM32L552E-EV" Cclass="Board Support" Cversion="1.0.2">
+    <bundle Cbundle="STM32L552E-EV" Cclass="Board Support" Cversion="1.0.3">
       <description>STMicroelectronics STM32L552E-EV Board</description>
       <doc></doc>
       <component Cgroup="Drivers" Csub="Basic I/O" condition="STM32L552E-EV BSP">
@@ -227,7 +238,7 @@
           <file category="source" name="Drivers/STM32L552E-EV/stm32l552e_eval_usbpd_pwr.c"/>
         </files>
       </component>
-      <component Cgroup="Components" Csub="MX25LM51245G" condition="STM32L552E-EV BSP MX25LM51245G" Cversion="2.0.3">
+      <component Cgroup="Components" Csub="MX25LM51245G" condition="STM32L552E-EV BSP MX25LM51245G" Cversion="2.0.5">
         <description>MX25LM51245G Component Driver</description>
         <files>
           <file category="header" name="Drivers/Config/mx25lm51245g_conf.h" attr="config" version="1.0.0"/>
@@ -235,7 +246,7 @@
           <file category="source" name="Drivers/Components/mx25lm51245g/mx25lm51245g.c"/>
         </files>
       </component>
-      <component Cgroup="Components" Csub="CS42L51" condition="STM32L552" Cversion="2.0.1">
+      <component Cgroup="Components" Csub="CS42L51" condition="STM32L552" Cversion="2.0.2">
         <description>CS42L51 Component Driver</description>
         <files>
           <file category="source" name="Drivers/Components/cs42l51/cs42l51.h"/>
@@ -244,7 +255,7 @@
           <file category="source" name="Drivers/Components/cs42l51/cs42l51_reg.c"/>
         </files>
       </component>
-      <component Cgroup="Components" Csub="MFXSTM32L152" condition="STM32L552" Cversion="3.0.2">
+      <component Cgroup="Components" Csub="MFXSTM32L152" condition="STM32L552" Cversion="3.0.3">
         <description>MFXSTM32L152 Component Driver</description>
         <files>
           <file category="source" name="Drivers/Components/mfxstm32l152/mfxstm32l152.h"/>
@@ -253,7 +264,7 @@
           <file category="source" name="Drivers/Components/mfxstm32l152/mfxstm32l152_reg.c"/>
         </files>
       </component>
-      <component Cgroup="Components" Csub="HX8347I" condition="STM32L552" Cversion="2.0.1">
+      <component Cgroup="Components" Csub="HX8347I" condition="STM32L552" Cversion="2.0.2">
         <description>HX8347I Component Driver</description>
         <files>
           <file category="source" name="Drivers/Components/hx8347i/hx8347i.h"/>
@@ -270,7 +281,7 @@
           <file category="source" name="Drivers/Components/iss66wvh8m8/iss66wvh8m8.c"/>
         </files>
       </component>
-      <component Cgroup="Components" Csub="STMPE811" condition="STM32L552" Cversion="3.0.0">
+      <component Cgroup="Components" Csub="STMPE811" condition="STM32L552" Cversion="3.0.1">
         <description>STMPE811 TS Component Driver</description>
         <files>
           <file category="header" name="Drivers/Config/stmpe811_conf.h" attr="config" version="1.0.0"/>
@@ -308,7 +319,7 @@
     </bundle>
 
     <!-- VIO component for STM32L552E-EV -->
-    <component Cclass="CMSIS Driver" Cgroup="VIO" Csub="Board" Cvariant= "STM32L552E-EV" Cversion="1.1.0" Capiversion="0.1.0" condition="STM32L552E-EV VIO">
+    <component Cclass="CMSIS Driver" Cgroup="VIO" Csub="Board" Cvariant= "STM32L552E-EV" Cversion="1.1.1" Capiversion="0.1.0" condition="STM32L552E-EV VIO">
       <description>Virtual I/O implementation for STM32L552E-EV</description>
       <RTE_Components_h>
         #define RTE_VIO_BOARD
@@ -332,9 +343,9 @@
       <image small="Images/Eval_small.jpg"
              large="Images/Eval_large.jpg" public="true"/>
       <book category="overview"  name="https://www.st.com/en/evaluation-tools/stm32l552e-ev.html" title="STM32 Eval board"/>
-      <book category="overview"  name="Documents/stm32l552e-ev.pdf" title="Overview" public="true"/>
-      <book category="manual"    name="Documents/DM00623588.pdf"    title="User Manual" public="true"/>
-      <book category="schematic" name="Documents/MB1372.pdf"        title="Schematics" public="true"/>
+      <book category="overview"  name="https://www.st.com/resource/en/data_brief/stm32l552e-ev.pdf" title="Data brief" public="true"/>
+      <book category="manual"    name="https://www.st.com/resource/en/user_manual/um2597-evaluation-board-with-stm32l552ze-mcu-stmicroelectronics.pdf" title="User Manual" public="true"/>
+      <book category="schematic" name="https://www.st.com/resource/en/schematic_pack/mb1372-l552zeq-c02_schematic.pdf" title="Schematics" public="true"/>
       <mountedDevice    deviceIndex="0" Dvendor="STMicroelectronics:13" Dname="STM32L552ZETxQ"/>
       <compatibleDevice deviceIndex="0" Dvendor="STMicroelectronics:13" DsubFamily="STM32L5x2"/>
       <feature type="XTAL"            n="16000000"/>
