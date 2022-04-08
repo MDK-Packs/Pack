@@ -7,6 +7,21 @@
   <repository type="git">https://github.com/MDK-Packs/STM32H735G-DK_BSP.git</repository>
 
   <releases>
+    <release version="2.0.0" date="2022-04-08">
+      Synchronize with Keil:STM32H7xx_DFP.3.0.0
+      Drivers:
+      - CMSIS-Driver VIO:
+      -- Change driver location
+      -- Remove LCD support
+      Example projects:
+      - Migrate to new STM32CubeMX workflow concept
+      - Update Dynamic Memory size to default value
+      - Add MPU configuration
+      - Update linker scatter file
+      - Platform:
+      -- Add define DATA_IN_D2_SRAM
+      -- Update blocking stdin_getchar in stdio retarget
+    </release>
     <release version="1.0.0" date="2021-09-13">
       Board description and documentation for STM32H735G-DK
       Synchronized with STM32CubeH7 Firmware Package version V1.9.0
@@ -31,7 +46,7 @@
 
   <requirements>
     <packages>
-      <package vendor="Keil" name="STM32H7xx_DFP" version="2.8.0-0"/>
+      <package vendor="Keil" name="STM32H7xx_DFP" version="3.0.0"/>
     </packages>
   </requirements>
 
@@ -137,7 +152,6 @@
       <description>Virtual I/O STM32H735G-DK</description>
       <require condition="STM32H735"/>
       <require Cclass="Board Support" Cgroup="Drivers" Csub="Basic I/O"/>
-      <require Cclass="Board Support" Cgroup="Drivers" Csub="LCD"/>
     </condition>
     <condition id="STM32H735G-DK BSP MX25LM51245G">
       <description>MX25LM51245G Octal SPI Driver</description>
@@ -213,7 +227,7 @@
       </component>
 
       <component Cgroup="Components" Csub="WM8994" condition="STM32H735" Cversion="3.0.2">
-        <description>WM8994 Component Driver</description>
+        <description>Audio WM8994 Component Driver</description>
         <files>
           <file category="source" name="Drivers/Components/wm8994/wm8994.h"/>
           <file category="source" name="Drivers/Components/wm8994/wm8994.c"/>
@@ -222,13 +236,13 @@
         </files>
       </component>
       <component Cgroup="Components" Csub="RK043FN48H" condition="STM32H735" Cversion="1.0.3">
-        <description>RK043FN48H Component Driver</description>
+        <description>4.3-inch TFT RK043FN48H Component Driver</description>
         <files>
           <file category="header" name="Drivers/Components/rk043fn48h/rk043fn48h.h"/>
         </files>
       </component>
       <component Cgroup="Components" Csub="MX25LM51245G" condition="STM32H735G-DK BSP MX25LM51245G" Cversion="2.0.2">
-        <description>MX25LM51245G Component Driver</description>
+        <description>CMOS Octaflash Memory MX25LM51245G Component Driver</description>
         <files>
           <file category="header" name="Drivers/Config/mx25lm51245g_conf.h"        attr="config" version="1.0.0"/>
           <file category="header" name="Drivers/Components/mx25lm51245g/mx25lm51245g.h"/>
@@ -236,7 +250,7 @@
         </files>
       </component>
       <component Cgroup="Components" Csub="S70KL1281" condition="STM32H735G-DK BSP S70KL1281" Cversion="1.0.0">
-        <description>S70KL1281 Component Driver</description>
+        <description>OSPI memory S70KL1281 Component Driver</description>
         <files>
           <file category="header" name="Drivers/Config/s70kl1281_conf.h"        attr="config" version="1.0.0"/>
           <file category="header" name="Drivers/Components/s70kl1281/s70kl1281.h"/>
@@ -244,7 +258,7 @@
         </files>
       </component>
       <component Cgroup="Components" Csub="FT5336" condition="STM32H735" Cversion="2.0.1">
-        <description>FT5336 TS Component Driver</description>
+        <description>TS FT5336 Component Driver</description>
         <files>
           <file category="header" name="Drivers/Config/ft5336_conf.h"        attr="config" version="1.0.0"/>
           <file category="header" name="Drivers/Components/ft5336/ft5336.h"/>
@@ -256,17 +270,14 @@
     </bundle>
 
     <!-- VIO component for STM32H735G-DK -->
-    <component Cclass="CMSIS Driver" Cgroup="VIO" Csub="Board" Cvariant= "STM32H735G-DK" Cversion="1.0.1" Capiversion="0.1.0"   condition="STM32H735G-DK VIO">
+    <component Cclass="CMSIS Driver" Cgroup="VIO" Csub="Board" Cvariant= "STM32H735G-DK" Cversion="1.1.0" Capiversion="0.1.0"   condition="STM32H735G-DK VIO">
       <description>Virtual I/O implementation for STM32H735G-DK</description>
       <RTE_Components_h>
         #define RTE_VIO_BOARD
         #define RTE_VIO_STM32H735G_DK
       </RTE_Components_h>
       <files>
-        <file category="header" name="Drivers/Components/Common/lcd.h"/>
-        <file category="header" name="Utilities/lcd/stm32_lcd.h"/>
-        <file category="source" name="Utilities/lcd/stm32_lcd.c"/>
-        <file category="source" name="Drivers/Platform/vio_STM32H735G-DK.c"/>
+        <file category="source" name="CMSIS/Driver/vio_STM32H735G-DK.c"/>
       </files>
     </component>
   </components>
@@ -282,7 +293,7 @@
       <book category="overview"  name="https://www.st.com/en/evaluation-tools/stm32h735g-dk.html" title="STM32 Discovery board"/>
       <book category="overview"  name="https://www.st.com/resource/en/data_brief/stm32h735g-dk.pdf" title="Data brief" public="true"/>
       <book category="manual"    name="https://www.st.com/resource/en/user_manual/um2679-discovery-kit-with-stm32h735ig-mcu-stmicroelectronics.pdf" title="User Manual" public="true"/>
-      <book category="schematic" name="https://www.st.com/resource/en/schematic_pack/mb1520-h735i-b02_schematic.pdf"     title="Schematics" public="true"/>
+      <book category="schematic" name="https://www.st.com/resource/en/schematic_pack/mb1520-h735i-b02_schematic.pdf" title="Schematics" public="true"/>
       <book category="other"     name="Documents/README.md" title="Guide" public="true"/>
       <mountedDevice    deviceIndex="0" Dvendor="STMicroelectronics:13" Dname="STM32H735IGKx"/> 
       <compatibleDevice deviceIndex="0" Dvendor="STMicroelectronics:13" DsubFamily="STM32H735"/>
