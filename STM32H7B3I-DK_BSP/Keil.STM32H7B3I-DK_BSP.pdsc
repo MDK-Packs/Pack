@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd" schemaVersion="1.7.2">
+  <name>STM32H7B3I-DK_BSP</name>
+  <vendor>Keil</vendor>
+  <description>STMicroelectronics STM32H7B3I-DK Board Support Pack</description>
+  <url>https://github.com/MDK-Packs/Pack/raw/master/STM32H7B3I-DK_BSP/</url>
+  <repository type="git">https://github.com/MDK-Packs/STM32H7B3I-DK_BSP.git</repository>
+
+  <releases>
+    <release version="1.0.0" date="2022-04-08">
+      Board description and documentation for STM32H7B3I-DK
+      Synchronize with Keil:STM32H7xx_DFP.3.0.0
+      CMSIS:
+      - CMSIS-VIO driver
+      Drivers:
+      - Board Drivers, Components, Config files
+      Utilities:
+      - LCD Utility Drivers
+      Example projects:
+      - CMSIS-RTOS2 Blinky (verify the basic tool setup)
+      - CMSIS-RTOS2 Platform (configure the board hardware)
+    </release>
+  </releases>
+
+  <requirements>
+    <packages>
+      <package vendor="Keil" name="STM32H7xx_DFP" version="3.0.0"/>
+    </packages>
+  </requirements>
+
+  <keywords>
+    <!-- keywords for indexing -->
+    <keyword>ST</keyword>
+    <keyword>STMicroelectronics</keyword>
+    <keyword>BSP</keyword>
+    <keyword>Board Support Pack</keyword>
+    <keyword>STM32H7</keyword>
+    <keyword>STM32H7B3I</keyword>
+    <keyword>STM32H7B3I-DK</keyword>
+  </keywords>
+
+  <conditions>
+    <condition id="STM32H7B3">
+      <description>STMicroelectronics STM32H7B3 devices</description>
+      <require Dvendor="STMicroelectronics:13" Dname="STM32H7B3*"/>
+    </condition>
+    <condition id="STM32H7B3 CMSIS">
+      <description>STMicroelectronics STM32H7B3 device and CMSIS-CORE</description>
+      <require condition="STM32H7B3"/>
+      <require Cclass="CMSIS" Cgroup="CORE"/>
+    </condition>
+    <condition id="STM32H7B3I-DK">
+      <description>STMicroelectronics STM32H7B3I-DK Board Basic I/O</description>
+      <require condition="STM32H7B3"/>
+      <require Cclass="Device"        Cgroup="STM32Cube HAL" Csub="Common"/>
+      <require Cclass="Device"        Cgroup="STM32Cube HAL" Csub="EXTI"/>
+      <require Cclass="Device"        Cgroup="STM32Cube HAL" Csub="GPIO"/>
+      <require Cclass="Device"        Cgroup="STM32Cube HAL" Csub="RCC"/>
+      <require Cclass="Device"        Cgroup="STM32Cube HAL" Csub="UART"/>
+    </condition>
+    <condition id="STM32H7B3I-DK Audio">
+      <description>STMicroelectronics STM32H7B3I-DK Board Audio</description>
+      <require condition="STM32H7B3"/>
+      <require Cclass="Device"        Cgroup="STM32Cube HAL" Csub="DFSDM"/>
+      <require Cclass="Device"        Cgroup="STM32Cube HAL" Csub="DMA"/>
+      <require Cclass="Device"        Cgroup="STM32Cube HAL" Csub="I2S"/>
+      <require Cclass="Device"        Cgroup="STM32Cube HAL" Csub="SAI"/>
+      <require Cclass="Board Support" Cgroup="Drivers"       Csub="Basic I/O"/>
+      <require Cclass="Board Support" Cgroup="Drivers"       Csub="BUS"/>
+      <require Cclass="Board Support" Cgroup="Components"    Csub="CS42L51"/>
+    </condition>
+    <condition id="STM32H7B3I-DK BUS">
+      <description>STMicroelectronics STM32H7B3I-DK Board External Bus</description>
+      <require condition="STM32H7B3"/>
+      <require Cclass="Device"        Cgroup="STM32Cube HAL" Csub="I2C"/>
+      <require Cclass="Board Support" Cgroup="Drivers"       Csub="Basic I/O"/>
+    </condition>
+    <condition id="STM32H7B3I-DK Camera">
+      <description>STMicroelectronics STM32H7B3I-DK Board Camera</description>
+      <require condition="STM32H7B3"/>
+      <require Cclass="Device"        Cgroup="STM32Cube HAL" Csub="DCMI"/>
+      <require Cclass="Board Support" Cgroup="Drivers"       Csub="Basic I/O"/>
+      <require Cclass="Board Support" Cgroup="Components"    Csub="OV9655"/>
+    </condition>
+    <condition id="STM32H7B3I-DK EEPROM">
+      <description>STMicroelectronics STM32H7B3I-DK Board EEPROM</description>
+      <require condition="STM32H7B3"/>
+      <require Cclass="Board Support" Cgroup="Drivers"       Csub="Basic I/O"/>
+      <require Cclass="Board Support" Cgroup="Drivers"       Csub="BUS"/>
+      <require Cclass="Board Support" Cgroup="Components"    Csub="M24LR64"/>
+    </condition>
+    <condition id="STM32H7B3I-DK LCD">
+      <description>STMicroelectronics STM32H7B3I-DK Board LCD</description>
+      <require condition="STM32H7B3"/>
+      <require Cclass="Device"        Cgroup="STM32Cube HAL" Csub="DMA2D"/>
+      <require Cclass="Device"        Cgroup="STM32Cube HAL" Csub="LTDC"/>
+      <require Cclass="Device"        Cgroup="STM32Cube HAL" Csub="TIM"/>
+      <require Cclass="Board Support" Cgroup="Drivers"       Csub="Basic I/O"/>
+      <require Cclass="Board Support" Cgroup="Drivers"       Csub="BUS"/>
+      <require Cclass="Board Support" Cgroup="Drivers"       Csub="Touch Screen"/>
+      <require Cclass="Board Support" Cgroup="Drivers"       Csub="SDRAM"/>
+      <require Cclass="Board Support" Cgroup="Components"    Csub="RK043FN48H"/>
+    </condition>
+    <condition id="STM32H7B3I-DK OSPI">
+      <description>STMicroelectronics STM32H7B3I-DK Board Octo-SPI NOR Flash</description>
+      <require condition="STM32H7B3"/>
+      <require Cclass="Device"        Cgroup="STM32Cube HAL" Csub="OSPI"/>
+      <require Cclass="Board Support" Cgroup="Drivers"       Csub="Basic I/O"/>
+      <require Cclass="Board Support" Cgroup="Components"    Csub="MX25LM51245G"/>
+    </condition>
+    <condition id="STM32H7B3I-DK SD">
+      <description>STMicroelectronics STM32H7B3I-DK Board SD Card</description>
+      <require condition="STM32H7B3"/>
+      <require Cclass="Device"        Cgroup="STM32Cube HAL" Csub="SD"/>
+      <require Cclass="Device"        Cgroup="STM32Cube HAL" Csub="DMA"/>
+      <require Cclass="Board Support" Cgroup="Drivers"       Csub="Basic I/O"/>
+    </condition>
+    <condition id="STM32H7B3I-DK SDRAM">
+      <description>STMicroelectronics STM32H7B3I-DK Board SDRAM</description>
+      <require condition="STM32H7B3"/>
+      <require Cclass="Device"        Cgroup="STM32Cube HAL" Csub="SDRAM"/>
+      <require Cclass="Device"        Cgroup="STM32Cube HAL" Csub="DMA"/>
+      <require Cclass="Board Support" Cgroup="Drivers"       Csub="Basic I/O"/>
+      <require Cclass="Board Support" Cgroup="Components"    Csub="IS42S16800J"/>
+    </condition>
+    <condition id="STM32H7B3I-DK TS">
+      <description>STMicroelectronics STM32H7B3I-DK Board Touch Screen</description>
+      <require condition="STM32H7B3"/>
+      <require Cclass="Board Support" Cgroup="Drivers"       Csub="Basic I/O"/>
+      <require Cclass="Board Support" Cgroup="Drivers"       Csub="BUS"/>
+      <require Cclass="Board Support" Cgroup="Components"    Csub="FT5336"/>
+    </condition>
+    <condition id="STM32H7B3I-DK MX25LM51245G">
+      <description>STMicroelectronics STM32H7B3I-DK Board MX25LM51245G (OSPI)</description>
+      <require condition="STM32H7B3"/>
+      <require Cclass="Device"        Cgroup="STM32Cube HAL" Csub="OSPI"/>
+    </condition>
+    <condition id="STM32H7B3I-DK IS42S16800J">
+      <description>STMicroelectronics STM32H7B3I-DK Board IS42S16800J (SDRAM)</description>
+      <require condition="STM32H7B3"/>
+      <require Cclass="Device"        Cgroup="STM32Cube HAL" Csub="SDRAM"/>
+    </condition>
+    <condition id="STM32H7B3-DK VIO">
+      <description>STMicroelectronics STM32H7B3I-DK Board Virtual I/O</description>
+      <require condition="STM32H7B3 CMSIS"/>
+    </condition>
+  </conditions>
+
+  <components>
+    <bundle Cbundle="STM32H7B3I-DK" Cclass="Board Support" Cversion="2.3.0">
+      <description>STMicroelectronics STM32H7B3I-DK Board</description>
+      <doc></doc>
+
+      <!-- STM32H7B3I-DK Board board-specific components -->
+      <component Cgroup="Drivers" Csub="Basic I/O" condition="STM32H7B3I-DK">
+        <description>STMicroelectronics STM32H7B3I-DK Board LEDs, push-buttons and COM ports drivers</description>
+        <files>
+          <file category="include" name="Drivers/Components/Common/"/>
+          <file category="header" name="Drivers/Config/stm32h7b3i_discovery_conf.h" attr="config" version="1.0.0"/>
+          <file category="header" name="Drivers/STM32H7B3I-DK/stm32h7b3i_discovery.h"/>
+          <file category="source" name="Drivers/STM32H7B3I-DK/stm32h7b3i_discovery.c"/>
+        </files>
+      </component>
+      <component Cgroup="Drivers" Csub="Audio" condition="STM32H7B3I-DK Audio">
+        <description>STMicroelectronics STM32H7B3I-DK Board Audio driver</description>
+        <files>
+          <file category="header" name="Drivers/STM32H7B3I-DK/stm32h7b3i_discovery_audio.h"/>
+          <file category="source" name="Drivers/STM32H7B3I-DK/stm32h7b3i_discovery_audio.c"/>
+        </files>
+      </component>
+      <component Cgroup="Drivers" Csub="BUS" condition="STM32H7B3I-DK BUS">
+        <description>STMicroelectronics STM32H7B3I-DK Board external Bus driver</description>
+        <files>
+          <file category="header" name="Drivers/STM32H7B3I-DK/stm32h7b3i_discovery_bus.h"/>
+          <file category="source" name="Drivers/STM32H7B3I-DK/stm32h7b3i_discovery_bus.c"/>
+        </files>
+      </component>
+      <component Cgroup="Drivers" Csub="Camera" condition="STM32H7B3I-DK Camera">
+        <description>STMicroelectronics STM32H7B3I-DK Board Camera driver</description>
+        <files>
+          <file category="header" name="Drivers/STM32H7B3I-DK/stm32h7b3i_discovery_camera.h"/>
+          <file category="source" name="Drivers/STM32H7B3I-DK/stm32h7b3i_discovery_camera.c"/>
+        </files>
+      </component>
+      <component Cgroup="Drivers" Csub="EEPROM" condition="STM32H7B3I-DK EEPROM">
+        <description>STMicroelectronics STM32H7B3I-DK Board EEPROM driver</description>
+        <files>
+          <file category="header" name="Drivers/STM32H7B3I-DK/stm32h7b3i_discovery_eeprom.h"/>
+          <file category="source" name="Drivers/STM32H7B3I-DK/stm32h7b3i_discovery_eeprom.c"/>
+        </files>
+      </component>
+      <component Cgroup="Drivers" Csub="LCD" condition="STM32H7B3I-DK LCD">
+        <description>STMicroelectronics STM32H7B3I-DK Board LCD driver</description>
+        <files>
+          <file category="header" name="Drivers/STM32H7B3I-DK/stm32h7b3i_discovery_lcd.h"/>
+          <file category="source" name="Drivers/STM32H7B3I-DK/stm32h7b3i_discovery_lcd.c"/>
+        </files>
+      </component>
+      <component Cgroup="Drivers" Csub="OSPI" condition="STM32H7B3I-DK OSPI">
+        <description>STMicroelectronics STM32H7B3I-DK Board Octo-SPI NOR Flash driver</description>
+        <files>
+          <file category="header" name="Drivers/STM32H7B3I-DK/stm32h7b3i_discovery_ospi.h"/>
+          <file category="source" name="Drivers/STM32H7B3I-DK/stm32h7b3i_discovery_ospi.c"/>
+        </files>
+      </component>
+      <component Cgroup="Drivers" Csub="SD" condition="STM32H7B3I-DK SD">
+        <description>STMicroelectronics STM32H7B3I-DK Board SD Card driver</description>
+        <files>
+          <file category="header" name="Drivers/STM32H7B3I-DK/stm32h7b3i_discovery_sd.h"/>
+          <file category="source" name="Drivers/STM32H7B3I-DK/stm32h7b3i_discovery_sd.c"/>
+        </files>
+      </component>
+      <component Cgroup="Drivers" Csub="SDRAM" condition="STM32H7B3I-DK SDRAM">
+        <description>STMicroelectronics STM32H7B3I-DK Board SDRAM driver</description>
+        <files>
+          <file category="header" name="Drivers/STM32H7B3I-DK/stm32h7b3i_discovery_sdram.h"/>
+          <file category="source" name="Drivers/STM32H7B3I-DK/stm32h7b3i_discovery_sdram.c"/>
+        </files>
+      </component>
+      <component Cgroup="Drivers" Csub="Touch Screen" condition="STM32H7B3I-DK TS">
+        <description>STMicroelectronics STM32H7B3I-DK Board Touch Screen driver</description>
+        <files>
+          <file category="header" name="Drivers/STM32H7B3I-DK/stm32h7b3i_discovery_ts.h"/>
+          <file category="source" name="Drivers/STM32H7B3I-DK/stm32h7b3i_discovery_ts.c"/>
+        </files>
+      </component>
+
+      <!-- STM32H7B3I-DK Board generic components -->
+      <component Cgroup="Components" Csub="CS42L51" Cversion="2.0.1" condition="STM32H7B3">
+        <description>Stereo CODEC with Headphone Amp (CS42L51) Component Driver</description>
+        <files>
+          <file category="header" name="Drivers/Components/cs42l51/cs42l51.h"/>
+          <file category="source" name="Drivers/Components/cs42l51/cs42l51.c"/>
+          <file category="header" name="Drivers/Components/cs42l51/cs42l51_reg.h"/>
+          <file category="source" name="Drivers/Components/cs42l51/cs42l51_reg.c"/>
+        </files>
+      </component>
+      <component Cgroup="Components" Csub="OV9655" Cversion="2.2.0" condition="STM32H7B3 CMSIS">
+        <description>Camera Board (OV9655) Component Driver</description>
+        <files>
+          <file category="header" name="Drivers/Components/ov9655/ov9655.h"/>
+          <file category="source" name="Drivers/Components/ov9655/ov9655.c"/>
+          <file category="header" name="Drivers/Components/ov9655/ov9655_reg.h"/>
+          <file category="source" name="Drivers/Components/ov9655/ov9655_reg.c"/>
+        </files>
+      </component>
+      <component Cgroup="Components" Csub="M24LR64" Cversion="1.0.0" condition="STM32H7B3">
+        <description>EEPROM (M24LR64) Component Driver</description>
+        <files>
+          <file category="header" name="Drivers/Components/m24lr64/m24lr64.h"/>
+          <file category="source" name="Drivers/Components/m24lr64/m24lr64.c"/>
+        </files>
+      </component>
+      <component Cgroup="Components" Csub="RK043FN48H" Cversion="1.0.3" condition="STM32H7B3">
+        <description>4.3 inch TFT (RK043FN48H) Component Driver</description>
+        <files>
+          <file category="header" name="Drivers/Components/rk043fn48h/rk043fn48h.h"/>
+        </files>
+      </component>
+      <component Cgroup="Components" Csub="MX25LM51245G" Cversion="2.0.2" condition="STM32H7B3I-DK MX25LM51245G">
+        <description>CMOS Octaflash Memory (MX25LM51245G) Component Driver</description>
+        <files>
+          <file category="header" name="Drivers/Config/mx25lm51245g_conf.h" attr="config" version="1.0.0"/>
+          <file category="header" name="Drivers/Components/mx25lm51245g/mx25lm51245g.h"/>
+          <file category="source" name="Drivers/Components/mx25lm51245g/mx25lm51245g.c"/>
+        </files>
+      </component>
+      <component Cgroup="Components" Csub="IS42S16800J" Cversion="1.0.0" condition="STM32H7B3I-DK IS42S16800J">
+        <description>Synchronous DRAM (IS42S16800J) Component Driver</description>
+        <files>
+          <file category="header" name="Drivers/Config/is42s16800j_conf.h" attr="config" version="1.0.0"/>
+          <file category="header" name="Drivers/Components/is42s16800j/is42s16800j.h"/>
+          <file category="source" name="Drivers/Components/is42s16800j/is42s16800j.c"/>
+        </files>
+      </component>
+      <component Cgroup="Components" Csub="FT5336" Cversion="2.0.1" condition="STM32H7B3">
+        <description>Multi-Touch Capacitive Touch Panel Controller (FT5336) Component Driver</description>
+        <files>
+          <file category="header" name="Drivers/Config/ft5336_conf.h" attr="config" version="1.0.0"/>
+          <file category="header" name="Drivers/Components/ft5336/ft5336.h"/>
+          <file category="source" name="Drivers/Components/ft5336/ft5336.c"/>
+          <file category="header" name="Drivers/Components/ft5336/ft5336_reg.h"/>
+          <file category="source" name="Drivers/Components/ft5336/ft5336_reg.c"/>
+        </files>
+      </component>
+    </bundle>
+
+    <!-- STM32H7B3I-DK Board VIO driver -->
+    <component Cclass="CMSIS Driver" Cgroup="VIO" Csub="Board" Cvariant="STM32H7B3I-DK" Cversion="1.0.0" Capiversion="0.1.0" condition="STM32H7B3-DK VIO">
+      <description>STMicroelectronics STM32H7B3I-DK Board Virtual I/O driver</description>
+      <RTE_Components_h>
+        #define RTE_VIO_BOARD
+        #define RTE_VIO_STM32H7B3I_DK
+      </RTE_Components_h>
+      <files>
+        <file category="source" name="CMSIS/Driver/vio_STM32H7B3I-DK.c"/>
+      </files>
+    </component>
+  </components>
+
+  <boards>
+    <!-- STMicroelectronics STM32H7B3I-DK Board -->
+    <board vendor="STMicroelectronics" name="STM32H7B3I-DK" revision="Rev.C"
+           salesContact="https://www.st.com/content/st_com/en/contact-us.html"
+           orderForm   ="https://www.st.com/en/evaluation-tools/stm32h7b3i-dk.html">
+      <description>STMicroelectronics STM32H7B3I-DK Board</description>
+      <image small="Images/STM32H7B3I-DK_small.jpg" public="true"/>
+      <book category="overview"  name="https://www.st.com/en/evaluation-tools/stm32h7b3i-dk.html" title="Discovery kit with STM32H7B3LI MCU"/>
+      <book category="overview"  name="https://www.st.com/resource/en/data_brief/stm32h7b3i-dk.pdf" title="Overview" public="true"/>
+      <book category="manual"    name="https://www.st.com/resource/en/user_manual/um2569-discovery-kit-with-stm32h7b3li-mcu-stmicroelectronics.pdf" title="User Manual" public="true"/>
+      <book category="manual"    name="https://www.st.com/resource/en/user_manual/um2695-stmod-fanout-expansion-board-for-stm32-discovery-kits-and-evaluation-boards-stmicroelectronics.pdf" title="User Manual - STMod+" public="true"/>
+      <book category="schematic" name="https://www.st.com/resource/en/schematic_pack/mb1332-h7b3i-c01_schematic.pdf" title="Schematics" public="true"/>
+      <book category="schematic" name="https://www.st.com/resource/en/schematic_pack/mb1280-3v3-c01_schematic.pdf" title="Schematics - STMod+" public="true"/>
+      <book category="other"     name="Documents/README.md"            title="Guide"                public="true"/>
+      <mountedDevice    deviceIndex="0" Dvendor="STMicroelectronics:13" Dname="STM32H7B3LIHxQ"/> 
+      <compatibleDevice deviceIndex="0" Dvendor="STMicroelectronics:13" DsubFamily="STM32H7B3x"/>
+      <feature type="ODbg"         n="1"              name="On-board ST-LINK-V3E"/>
+      <feature type="XTAL"         n="32768"          name="32.768 kHz Crystal Oscillator"/>
+      <feature type="XTAL"         n="24000000"       name="24 MHz Crystal Oscillator"/>
+      <feature type="PWR"          n="5" m="5"        name="USB ST-Link"/>
+      <feature type="PWR"          n="5" m="5"        name="External Supply (E5V)"/>
+      <feature type="PWR"          n="5" m="5"        name="USB HS"/>
+      <feature type="PWR"          n="7" m="12"       name="External Supply (VIN)"/>
+      <feature type="PWR"          n="5" m="5"        name="USB charger"/>
+      <feature type="ROM"          n="1"              name="512-Mbit Octal-SPI NOR Flash memory"/>
+      <feature type="RAM"          n="1"              name="128-MBit SDRAM"/>
+      <feature type="MemCard"      n="1"              name="microSD Card Holder"/>
+      <feature type="USB"          n="1"              name="USB OTG HS with Micro-AB connector"/>
+      <feature type="I2C"          n="1"              name="8-Pin socket, 2.54 mm pitch"/>
+      <feature type="CAN"          n="1"              name="2-Pin header, 2.54 mm pitch"/>
+      <feature type="LineIn"       n="1"              name="3.5 mm Stereo jack"/>
+      <feature type="LineOut"      n="1"              name="3.5 mm Stereo jack"/>
+      <feature type="Button"       n="2"              name="Push-buttons: User and Reset"/>
+      <feature type="CustomFF"                        name="STMod+ connector"/>
+      <feature type="ArduinoFF"    n="1"              name="Arduino Uno V3 connector"/>
+      <feature type="LED"          n="2"              name="2 User LEDs"/>
+      <feature type="GLCD"         n="1" m="480.272"  name="480 x 272 Pixel 4.3 inch Color TFT LCD with capacitive touchscreen "/>
+      <feature type="Other"        n="1"              name="802.11 b/g/n compliant WiFi module"/>
+      <feature type="ConnOther"    n="1"              name="30-pin Camera connector"/>
+      <feature type="ConnOther"    n="1"              name="2 x 10 pin male 1.27 mm-pitch Audio connector"/>
+      <feature type="ConnOther"    n="1"              name="50-pin TFT LCD touchscreen connector"/>
+      <debugInterface adapter="ST-Link" connector="Micro-USB"/>
+      <debugInterface adapter="JTAG/SW" connector="10-pin Cortex Debug connector (0.05 inch connector)"/>
+      <debugInterface adapter="JTAG/SW" connector="10 pin Cortex Debug connector (TAG-Connect footprint)"/>
+      <debugProbe connector="Micro-USB" debugClock="10000000" debugLink="swd" name="ST-Link"/>
+    </board>
+  </boards>
+
+  <examples>
+    <!-- STMicroelectronics STM32H7B3I-DK Examples -->
+    <example name="Blinky" doc="README.md" folder="Projects/Blinky">
+      <description>CMSIS-RTOS2 Blinky example with VIO</description>
+      <board name="STM32H7B3I-DK" vendor="STMicroelectronics"/>
+      <project>
+        <environment name="uv" load="Blinky.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="CMSIS"        Cgroup="CORE"/>
+        <component Cclass="Device"       Cgroup="Startup"/>
+        <component Cclass="CMSIS"        Cgroup="RTOS"/>
+        <component Cclass="CMSIS Driver" Cgroup="VIO"/>
+        <category>Getting Started</category>
+      </attributes>
+    </example>
+
+    <example name="Platform" doc="README.md" folder="Projects/Platform">
+      <description>CMSIS-RTOS2 Platform example with VIO</description>
+      <board name="STM32H7B3I-DK" vendor="STMicroelectronics"/>
+      <project>
+        <environment name="uv" load="Platform.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="CMSIS"        Cgroup="CORE"/>
+        <component Cclass="Device"       Cgroup="Startup"/>
+        <component Cclass="CMSIS"        Cgroup="RTOS"/>
+        <component Cclass="CMSIS Driver" Cgroup="VIO"/>
+        <category>Getting Started</category>
+      </attributes>
+    </example>
+  </examples>
+</package>
