@@ -1,0 +1,484 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd" schemaVersion="1.7.2">
+  <name>B-U585I-IOT02A_BSP</name>
+  <vendor>Keil</vendor>
+  <description>STMicroelectronics STM32U5 Series B-U585I-IOT02A Board Support Pack</description>
+  <url>https://github.com/MDK-Packs/Pack/raw/master/B-U585I-IOT02A_BSP/</url>
+  <repository type="git">https://github.com/MDK-Packs/B-U585I-IOT02A_BSP.git</repository>
+
+  <releases>
+    <release version="1.0.0" date="2022-05-30">
+      Board description and documentation for B-U585I-IOT02A
+      Synchronized with STM32CubeU5 Firmware Package version V1.1.0
+      Drivers:
+      - Board Drivers and Config files
+      - CMSIS WiFi Driver for on-board MXCHIP EMW3080 (SPI only)
+      - CMSIS-Driver VIO
+      Example projects:
+      - CMSIS-RTOS2 Blinky (verify the basic tool setup)
+      - CMSIS-RTOS2 Platform (configure the board hardware)
+    </release>
+  </releases>
+
+  <keywords>
+    <!-- keywords for indexing -->
+    <keyword>ST</keyword>
+    <keyword>Board Support Pack</keyword>
+    <keyword>STM32U5</keyword>
+    <keyword>B-U585I-IOT02A</keyword>
+  </keywords>
+
+  <requirements>
+    <packages>
+      <package vendor="Keil" name="STM32U5xx_DFP" version="2.0.0-0"/>
+      <package vendor="ARM"  name="CMSIS"         version="5.8.0-0"/>
+    </packages>
+  </requirements>
+
+  <conditions>
+    <condition id="STM32U585">
+      <description>STMicroelectronics STM32U585 Devices</description>
+      <require Dvendor="STMicroelectronics:13" Dname="STM32U585*"/>
+    </condition>
+
+    <!-- B-U585I-IOT02A BSP Conditions -->
+    <condition id="B-U585I-IOT02A BSP">
+      <description>STMicroelectronics B-U585I-IOT02A BSP</description>
+      <require condition="STM32U585"/>
+      <require Cclass="Device"        Cgroup="STM32Cube HAL" Csub="Common"/>
+      <require Cclass="Device"        Cgroup="STM32Cube HAL" Csub="EXTI"/>
+      <require Cclass="Device"        Cgroup="STM32Cube HAL" Csub="GPIO"/>
+      <require Cclass="Device"        Cgroup="STM32Cube HAL" Csub="UART"/>
+    </condition>
+    <condition id="B-U585I-IOT02A BSP Audio">
+      <description>STMicroelectronics B-U585I-IOT02A BSP Audio</description>
+      <require condition="STM32U585"/>
+      <require Cclass="Device"        Cgroup="STM32Cube HAL" Csub="MDF"/>
+      <require Cclass="Device"        Cgroup="STM32Cube HAL" Csub="SAI"/>
+      <require Cclass="Device"        Cgroup="STM32Cube HAL" Csub="DMA"/>
+      <require Cclass="Board Support" Cgroup="Drivers"       Csub="BUS"/>
+    </condition>
+    <condition id="B-U585I-IOT02A BSP BUS">
+      <description>STMicroelectronics B-U585I-IOT02A BSP BUS</description>
+      <require condition="STM32U585"/>
+      <require Cclass="Device"        Cgroup="STM32Cube HAL" Csub="I2C"/>
+      <require Cclass="Board Support" Cgroup="Drivers"       Csub="Basic I/O"/>
+    </condition>
+    <condition id="B-U585I-IOT02A BSP Camera">
+      <description>STMicroelectronics B-U585I-IOT02A BSP IDD</description>
+      <require condition="STM32U585"/>
+      <require Cclass="Device"        Cgroup="STM32Cube HAL" Csub="DCMI"/>
+      <require Cclass="Device"        Cgroup="STM32Cube HAL" Csub="DMA"/>
+      <require Cclass="Board Support" Cgroup="Drivers"       Csub="Basic I/O"/>
+      <require Cclass="Board Support" Cgroup="Drivers"       Csub="BUS"/>
+      <require Cclass="Board Support" Cgroup="Components"    Csub="OV5640"/>
+    </condition>
+    <condition id="B-U585I-IOT02A BSP EEPROM">
+      <description>STMicroelectronics B-U585I-IOT02A BSP EEPROM</description>
+      <require condition="STM32U585"/>
+      <require Cclass="Board Support" Cgroup="Drivers"       Csub="Basic I/O"/>
+      <require Cclass="Board Support" Cgroup="Drivers"       Csub="BUS"/>
+      <require Cclass="Board Support" Cgroup="Components"    Csub="M24LR64"/>
+    </condition>
+    <condition id="B-U585I-IOT02A BSP ENV SENSORS">
+      <description>STMicroelectronics B-U585I-IOT02A BSP SD</description>
+      <require condition="STM32U585"/>
+      <require Cclass="Board Support" Cgroup="Drivers"       Csub="Basic I/O"/>
+      <require Cclass="Board Support" Cgroup="Drivers"       Csub="BUS"/>
+      <require Cclass="Board Support" Cgroup="Components"    Csub="LPS22HH"/>
+      <require Cclass="Board Support" Cgroup="Components"    Csub="HTS221"/>
+    </condition>
+    <condition id="B-U585I-IOT02A BSP LIGHT SENSOR">
+      <description>STMicroelectronics B-U585I-IOT02A BSP LIGHT SENSOR</description>
+      <require condition="STM32U585"/>
+      <require Cclass="Board Support" Cgroup="Drivers"       Csub="Basic I/O"/>
+      <require Cclass="Board Support" Cgroup="Drivers"       Csub="BUS"/>
+      <require Cclass="Board Support" Cgroup="Components"    Csub="VEML6030"/>
+    </condition>
+    <condition id="B-U585I-IOT02A BSP MOTION SENSORS">
+      <description>STMicroelectronics B-U585I-IOT02A BSP MOTION SENSORS</description>
+      <require condition="STM32U585"/>
+      <require Cclass="Board Support" Cgroup="Drivers"       Csub="Basic I/O"/>
+      <require Cclass="Board Support" Cgroup="Drivers"       Csub="BUS"/>
+      <require Cclass="Board Support" Cgroup="Components"    Csub="IIS2MDC"/>
+      <require Cclass="Board Support" Cgroup="Components"    Csub="ISM330DHCX"/>
+    </condition>
+    <condition id="B-U585I-IOT02A BSP OSPI">
+      <description>STMicroelectronics B-U585I-IOT02A BSP OSPI</description>
+      <require condition="STM32U585"/>
+      <require Cclass="Board Support" Cgroup="Drivers"       Csub="Basic I/O"/>
+      <require Cclass="Board Support" Cgroup="Components"    Csub="MX25LM51245G"/>
+      <require Cclass="Board Support" Cgroup="Components"    Csub="APS6408"/>
+    </condition>
+    <condition id="B-U585I-IOT02A BSP RANGING SENSOR">
+      <description>STMicroelectronics B-U585I-IOT02A BSP RANGING SENSOR</description>
+      <require condition="STM32U585"/>
+      <require Cclass="Board Support" Cgroup="Drivers"       Csub="Basic I/O"/>
+      <require Cclass="Board Support" Cgroup="Drivers"       Csub="BUS"/>
+      <require Cclass="Board Support" Cgroup="Components"    Csub="VL53l5CX"/>
+    </condition>
+    <condition id="B-U585I-IOT02A BSP USB PD">
+      <description>STMicroelectronics B-U585I-IOT02A BSP USB PD</description>
+      <require condition="STM32U585"/>
+      <require Cclass="Board Support" Cgroup="Drivers"       Csub="Basic I/O"/>
+      <require Cclass="Board Support" Cgroup="Components"    Csub="TCPP0203"/>
+    </condition>
+    <condition id="B-U585I-IOT02A BSP APS6408">
+      <description>Octo-SPI PSRAM Component Driver (APS6408)</description>
+      <require condition="STM32U585"/>
+      <require Cclass="Device"        Cgroup="STM32Cube HAL" Csub="OSPI"/>
+    </condition>
+    <condition id="B-U585I-IOT02A BSP EMW3080">
+      <description>MXCHIP EMW3080 WiFi Module Component Driver (mx_wifi)</description>
+      <require condition="STM32U585"/>
+      <require Cclass="CMSIS"         Cgroup="CORE"/>
+      <require Cclass="CMSIS"         Cgroup="RTOS2"/>
+      <require Cclass="Device"        Cgroup="STM32Cube HAL" Csub="SPI"/>
+    </condition>
+    <condition id="B-U585I-IOT02A BSP MX25LM51245G">
+      <description>512-MB Octo-SPI Flash Component Driver (MX25LM51245G)</description>
+      <require condition="STM32U585"/>
+      <require Cclass="Device"        Cgroup="STM32Cube HAL" Csub="OSPI"/>
+    </condition>
+    <condition id="B-U585I-IOT02A VIO">
+      <description>Virtual I/O B-U585I-IOT02A</description>
+      <require condition="STM32U585"/>
+      <require Cclass="Board Support" Cgroup="Drivers"       Csub="Basic I/O"/>
+      <require Cclass="Board Support" Cgroup="Drivers"       Csub="Motion Sensors"/>
+    </condition>
+    <condition id="B-U585I-IOT02A WIFI EMW3080">
+      <description>WiFi MXCHIP EMW3080 Driver (SPI)</description>
+      <require condition="STM32U585"/>
+      <require Cclass="Board Support" Cgroup="Components"    Csub="EMW3080"/>
+    </condition>
+  </conditions>
+
+  <components>
+    <bundle Cbundle="B-U585I-IOT02A" Cclass="Board Support" Cversion="1.1.0">
+      <description>STMicroelectronics B-U585I-IOT02A Board</description>
+      <doc></doc>
+      <component Cgroup="Drivers" Csub="Basic I/O" condition="B-U585I-IOT02A BSP">
+        <description>LEDs, push-buttons and COM ports for B-U585I-IOT02A Board</description>
+        <files>
+          <file category="header" name="Drivers/Config/b_u585i_iot02a_conf.h" attr="config" version="1.0.0"/>
+          <file category="include" name="Drivers/Components/Common/"/>
+          <file category="header" name="Drivers/B-U585I-IOT02A/b_u585i_iot02a.h"/>
+          <file category="source" name="Drivers/B-U585I-IOT02A/b_u585i_iot02a.c"/>
+        </files>
+      </component>
+      <component Cgroup="Drivers" Csub="Audio" condition="B-U585I-IOT02A BSP Audio">
+        <description>Audio for STMicroelectronics B-U585I-IOT02A Board</description>
+        <files>
+          <file category="header" name="Drivers/B-U585I-IOT02A/b_u585i_iot02a_audio.h"/>
+          <file category="source" name="Drivers/B-U585I-IOT02A/b_u585i_iot02a_audio.c"/>
+        </files>
+      </component>
+      <component Cgroup="Drivers" Csub="BUS" condition="B-U585I-IOT02A BSP BUS">
+        <description>BUS for STMicroelectronics B-U585I-IOT02A Board</description>
+        <files>
+          <file category="header" name="Drivers/B-U585I-IOT02A/b_u585i_iot02a_bus.h"/>
+          <file category="source" name="Drivers/B-U585I-IOT02A/b_u585i_iot02a_bus.c"/>
+        </files>
+      </component>
+      <component Cgroup="Drivers" Csub="Camera" condition="B-U585I-IOT02A BSP Camera">
+        <description>Camera for STMicroelectronics B-U585I-IOT02A Board</description>
+        <files>
+          <file category="header" name="Drivers/B-U585I-IOT02A/b_u585i_iot02a_camera.h"/>
+          <file category="source" name="Drivers/B-U585I-IOT02A/b_u585i_iot02a_camera.c"/>
+        </files>
+      </component>
+      <component Cgroup="Drivers" Csub="EEPROM" condition="B-U585I-IOT02A BSP EEPROM">
+        <description>EERPOM for STMicroelectronics B-U585I-IOT02A Board</description>
+        <files>
+          <file category="header" name="Drivers/B-U585I-IOT02A/b_u585i_iot02a_eeprom.h"/>
+          <file category="source" name="Drivers/B-U585I-IOT02A/b_u585i_iot02a_eeprom.c"/>
+        </files>
+      </component>
+      <component Cgroup="Drivers" Csub="Environmental Sensors" condition="B-U585I-IOT02A BSP ENV SENSORS">
+        <description>Environmental Sensors for STMicroelectronics B-U585I-IOT02A Board</description>
+        <files>
+          <file category="header" name="Drivers/B-U585I-IOT02A/b_u585i_iot02a_env_sensors.h"/>
+          <file category="source" name="Drivers/B-U585I-IOT02A/b_u585i_iot02a_env_sensors.c"/>
+        </files>
+      </component>
+      <component Cgroup="Drivers" Csub="Light Sensor" condition="B-U585I-IOT02A BSP LIGHT SENSOR">
+        <description>Light Sensor for STMicroelectronics B-U585I-IOT02A Board</description>
+        <files>
+          <file category="header" name="Drivers/B-U585I-IOT02A/b_u585i_iot02a_light_sensor.h"/>
+          <file category="source" name="Drivers/B-U585I-IOT02A/b_u585i_iot02a_light_sensor.c"/>
+        </files>
+      </component>
+      <component Cgroup="Drivers" Csub="Motion Sensors" condition="B-U585I-IOT02A BSP MOTION SENSORS">
+        <description>Motion Sensors for STMicroelectronics B-U585I-IOT02A Board</description>
+        <files>
+          <file category="header" name="Drivers/B-U585I-IOT02A/b_u585i_iot02a_motion_sensors.h"/>
+          <file category="source" name="Drivers/B-U585I-IOT02A/b_u585i_iot02a_motion_sensors.c"/>
+        </files>
+      </component>
+      <component Cgroup="Drivers" Csub="OSPI" condition="B-U585I-IOT02A BSP OSPI">
+        <description>OSPI for STMicroelectronics B-U585I-IOT02A Board</description>
+        <files>
+          <file category="header" name="Drivers/B-U585I-IOT02A/b_u585i_iot02a_ospi.h"/>
+          <file category="source" name="Drivers/B-U585I-IOT02A/b_u585i_iot02a_ospi.c"/>
+        </files>
+      </component>
+      <component Cgroup="Drivers" Csub="Ranging Sensor" condition="B-U585I-IOT02A BSP RANGING SENSOR">
+        <description>Ranging Sensor for STMicroelectronics B-U585I-IOT02A Board</description>
+        <files>
+          <file category="header" name="Drivers/B-U585I-IOT02A/b_u585i_iot02a_ranging_sensor.h"/>
+          <file category="source" name="Drivers/B-U585I-IOT02A/b_u585i_iot02a_ranging_sensor.c"/>
+        </files>
+      </component>
+      <component Cgroup="Drivers" Csub="USB PD" condition="B-U585I-IOT02A BSP USB PD">
+        <description>USB Type C power delivery for STMicroelectronics B-U585I-IOT02A Board</description>
+        <files>
+          <file category="header" name="Drivers/B-U585I-IOT02A/b_u585i_iot02a_usbpd_pwr.h"/>
+          <file category="source" name="Drivers/B-U585I-IOT02A/b_u585i_iot02a_usbpd_pwr.c"/>
+        </files>
+      </component>
+      <component Cgroup="Components" Csub="APS6408" condition="B-U585I-IOT02A BSP APS6408" Cversion="1.0.1">
+        <description>Octo-SPI PSRAM Component Driver (APS6408)</description>
+        <files>
+          <file category="header" name="Drivers/Config/aps6408_conf.h" attr="config" version="1.0.0"/>
+          <file category="header" name="Drivers/Components/aps6408/aps6408.h"/>
+          <file category="source" name="Drivers/Components/aps6408/aps6408.c"/>
+        </files>
+      </component>
+      <component Cgroup="Components" Csub="HTS221" condition="STM32U585" Cversion="5.3.2">
+        <description>Capacitive Digital Sensor for relative humidity and temperature Component Driver (HTS221)</description>
+        <files>
+          <file category="header" name="Drivers/Components/hts221/hts221.h"/>
+          <file category="source" name="Drivers/Components/hts221/hts221.c"/>
+          <file category="header" name="Drivers/Components/hts221/hts221_reg.h"/>
+          <file category="source" name="Drivers/Components/hts221/hts221_reg.c"/>
+        </files>
+      </component>
+      <component Cgroup="Components" Csub="IIS2MDC" condition="STM32U585" Cversion="1.1.2">
+        <description>3-axis Magnetometer Component Driver (IIS2MDC)</description>
+        <files>
+          <file category="header" name="Drivers/Components/iis2mdc/iis2mdc.h"/>
+          <file category="source" name="Drivers/Components/iis2mdc/iis2mdc.c"/>
+          <file category="header" name="Drivers/Components/iis2mdc/iis2mdc_reg.h"/>
+          <file category="source" name="Drivers/Components/iis2mdc/iis2mdc_reg.c"/>
+        </files>
+      </component>
+      <component Cgroup="Components" Csub="ISM330DHCX" condition="STM32U585" Cversion="1.1.3">
+        <description>3D Accelerometer and 3D Gyroscope Component Driver (ISM330DHCX)</description>
+        <files>
+          <file category="header" name="Drivers/Components/ism330dhcx/ism330dhcx.h"/>
+          <file category="source" name="Drivers/Components/ism330dhcx/ism330dhcx.c"/>
+          <file category="header" name="Drivers/Components/ism330dhcx/ism330dhcx_reg.h"/>
+          <file category="source" name="Drivers/Components/ism330dhcx/ism330dhcx_reg.c"/>
+        </files>
+      </component>
+      <component Cgroup="Components" Csub="LPS22HH" condition="STM32U585" Cversion="1.2.2">
+        <description>MEMS Nano Pressure Sensor Component Driver (LPS22HH)</description>
+        <files>
+          <file category="header" name="Drivers/Components/lps22hh/lps22hh.h"/>
+          <file category="source" name="Drivers/Components/lps22hh/lps22hh.c"/>
+          <file category="header" name="Drivers/Components/lps22hh/lps22hh_reg.h"/>
+          <file category="source" name="Drivers/Components/lps22hh/lps22hh_reg.c"/>
+        </files>
+      </component>
+      <component Cgroup="Components" Csub="M24LR64" condition="STM32U585" Cversion="1.0.2">
+        <description>EEPROM Component Driver (M24LR64)</description>
+        <files>
+          <file category="header" name="Drivers/Components/m24lr64/m24lr64.h"/>
+          <file category="source" name="Drivers/Components/m24lr64/m24lr64.c"/>
+        </files>
+      </component>
+      <component Cgroup="Components" Csub="EMW3080" condition="B-U585I-IOT02A BSP EMW3080" Cversion="2.1.12">
+        <description>MXCHIP EMW3080 WiFi Module Component Driver (mx_wifi)</description>
+        <files>
+          <file category="header" name="Drivers/Config/mx_wifi_conf.h" attr="config" version="1.0.0"/>
+          <file category="header" name="Drivers/Components/mx_wifi/mx_wifi.h"/>
+          <file category="source" name="Drivers/Components/mx_wifi/mx_wifi.c"/>
+          <file category="header" name="Drivers/Components/mx_wifi/mx_wifi_bare_os.h"/>
+          <file category="header" name="Drivers/Components/mx_wifi/mx_wifi_cmsis_os.h"/>
+          <file category="header" name="Drivers/Components/mx_wifi/core/checksumutils.h"/>
+          <file category="source" name="Drivers/Components/mx_wifi/core/checksumutils.c"/>
+          <file category="header" name="Drivers/Components/mx_wifi/core/mx_rtos_abs.h"/>
+          <file category="source" name="Drivers/Components/mx_wifi/core/mx_rtos_abs.c"/>
+          <file category="header" name="Drivers/Components/mx_wifi/core/mx_wifi_hci.h"/>
+          <file category="source" name="Drivers/Components/mx_wifi/core/mx_wifi_hci.c"/>
+          <file category="header" name="Drivers/Components/mx_wifi/core/mx_wifi_ipc.h"/>
+          <file category="source" name="Drivers/Components/mx_wifi/core/mx_wifi_ipc.c"/>
+          <file category="header" name="Drivers/Components/mx_wifi/core/mx_wifi_slip.h"/>
+          <file category="source" name="Drivers/Components/mx_wifi/core/mx_wifi_slip.c"/>
+          <file category="source" name="Drivers/Components/mx_wifi/io_pattern/mx_wifi_spi.c"/>
+          <!-- <file category="source" name="Drivers/Components/mx_wifi/io_pattern/mx_wifi_uart.c"/> -->
+        </files>
+      </component>
+      <component Cgroup="Components" Csub="MX25LM51245G" condition="B-U585I-IOT02A BSP MX25LM51245G" Cversion="2.0.8">
+        <description>512-MB Octo-SPI Flash Component Driver (MX25LM51245G)</description>
+        <files>
+          <file category="header" name="Drivers/Config/mx25lm51245g_conf.h" attr="config" version="1.0.0"/>
+          <file category="header" name="Drivers/Components/mx25lm51245g/mx25lm51245g.h"/>
+          <file category="source" name="Drivers/Components/mx25lm51245g/mx25lm51245g.c"/>
+        </files>
+      </component>
+      <component Cgroup="Components" Csub="OV5640" condition="STM32U585" Cversion="3.2.2">
+        <description>OV5640 Camera Component Driver</description>
+        <files>
+          <file category="header" name="Drivers/Components/ov5640/ov5640.h"/>
+          <file category="source" name="Drivers/Components/ov5640/ov5640.c"/>
+          <file category="header" name="Drivers/Components/ov5640/ov5640_reg.h"/>
+          <file category="source" name="Drivers/Components/ov5640/ov5640_reg.c"/>
+        </files>
+      </component>
+      <component Cgroup="Components" Csub="STM32WB" condition="STM32U585" Cversion="1.0.11">
+        <description>Bluetooth Low Energy Module Component Driver (stm32wb_at)</description>
+        <files>
+          <file category="header" name="Drivers/Components/stm32wb_at/stm32wb_at.h"/>
+          <file category="source" name="Drivers/Components/stm32wb_at/stm32wb_at.c"/>
+          <file category="header" name="Drivers/Components/stm32wb_at/stm32wb_at_ble.h"/>
+          <file category="source" name="Drivers/Components/stm32wb_at/stm32wb_at_ble.c"/>
+          <file category="header" name="Drivers/Components/stm32wb_at/stm32wb_at_client.h"/>
+          <file category="source" name="Drivers/Components/stm32wb_at/stm32wb_at_client.c"/>
+          <file category="header" name="Drivers/Components/stm32wb_at/stm32wb_at_ll.h"/>
+          <file category="source" name="Drivers/Components/stm32wb_at/stm32wb_at_ll.c"/>
+        </files>
+      </component>
+      <component Cgroup="Components" Csub="TCPP0203" condition="STM32U585" Cversion="1.2.2">
+        <description>USB Type-C Port Protection Component Driver (TCPP0203)</description>
+        <files>
+          <file category="header" name="Drivers/Components/tcpp0203/tcpp0203.h"/>
+          <file category="source" name="Drivers/Components/tcpp0203/tcpp0203.c"/>
+          <file category="header" name="Drivers/Components/tcpp0203/tcpp0203_reg.h"/>
+          <file category="source" name="Drivers/Components/tcpp0203/tcpp0203_reg.c"/>
+        </files>
+      </component>
+      <component Cgroup="Components" Csub="VEML6030" condition="STM32U585" Cversion="1.0.1">
+        <description>Ambient Light Sensor Component Driver (VEML6030)</description>
+        <files>
+          <file category="header" name="Drivers/Components/veml6030/veml6030.h"/>
+          <file category="source" name="Drivers/Components/veml6030/veml6030.c"/>
+          <file category="header" name="Drivers/Components/veml6030/veml6030_reg.h"/>
+          <file category="source" name="Drivers/Components/veml6030/veml6030_reg.c"/>
+        </files>
+      </component>
+      <component Cgroup="Components" Csub="VL53l5CX" condition="STM32U585" Cversion="1.0.1">
+        <description>Time-of-Flight 8x8 Multizone Ranging Sensor Component Driver (VL53l5CX)</description>
+        <files>
+          <file category="header" name="Drivers/Components/vl53l5cx/vl53l5cx.h"/>
+          <file category="source" name="Drivers/Components/vl53l5cx/vl53l5cx.c"/>
+          <file category="header" name="Drivers/Components/vl53l5cx/modules/vl53l5cx_api.h"/>
+          <file category="source" name="Drivers/Components/vl53l5cx/modules/vl53l5cx_api.c"/>
+          <file category="header" name="Drivers/Components/vl53l5cx/modules/vl53l5cx_buffers.h"/>
+          <file category="header" name="Drivers/Components/vl53l5cx/modules/vl53l5cx_plugin_detection_thresholds.h"/>
+          <file category="source" name="Drivers/Components/vl53l5cx/modules/vl53l5cx_plugin_detection_thresholds.c"/>
+          <file category="header" name="Drivers/Components/vl53l5cx/modules/vl53l5cx_plugin_motion_indicator.h"/>
+          <file category="source" name="Drivers/Components/vl53l5cx/modules/vl53l5cx_plugin_motion_indicator.c"/>
+          <file category="header" name="Drivers/Components/vl53l5cx/modules/vl53l5cx_plugin_xtalk.h"/>
+          <file category="source" name="Drivers/Components/vl53l5cx/modules/vl53l5cx_plugin_xtalk.c"/>
+          <file category="header" name="Drivers/Components/vl53l5cx/porting/platform.h"/>
+          <file category="source" name="Drivers/Components/vl53l5cx/porting/platform.c"/>
+        </files>
+      </component>
+    </bundle>
+
+    <!-- CMSIS VIO Driver component for B-U585I-IOT02A -->
+    <component Cclass="CMSIS Driver" Cgroup="VIO" Csub="Board" Cvariant= "B-U585I-IOT02A" Cversion="1.2.0" Capiversion="0.1.0" condition="B-U585I-IOT02A VIO">
+      <description>Virtual I/O implementation for B-U585I-IOT02A</description>
+      <RTE_Components_h>
+        #define RTE_VIO_BOARD
+        #define RTE_VIO_B_U585I_IOT02A
+      </RTE_Components_h>
+      <files>
+        <file category="source" name="CMSIS/Driver/vio_B-U585I-IOT02A.c"/>
+      </files>
+    </component>
+
+    <!-- CMSIS WiFi Driver component for MXCHIP EMW3080 module on B-U585I-IOT02A -->
+    <component Cclass="CMSIS Driver" Cgroup="WiFi" Csub="EMW3080" Capiversion="1.1.0" Cvariant="SPI" Cversion="1.0.0" condition="B-U585I-IOT02A WIFI EMW3080">
+      <description>WiFi MXCHIP EMW3080 Driver (SPI)</description>
+      <RTE_Components_h>
+        #define RTE_Drivers_WiFi_EMW3080_SPI_B_U585I_IOT02A
+      </RTE_Components_h>
+      <files>
+        <file category="doc"     name="CMSIS/Driver/Doc/WiFi_EMW3080_README.md"/>
+        <file category="include" name="CMSIS/Driver/"/>
+        <file category="header"  name="CMSIS/Driver/Config/WiFi_EMW3080_Config.h" attr="config" version="1.0.0"/>
+        <file category="header"  name="CMSIS/Driver/WiFi_EMW3080.h"/>
+        <file category="source"  name="CMSIS/Driver/WiFi_EMW3080.c"/>
+      </files>
+    </component>
+  </components>
+
+  <boards>
+    <!-- B-U585I-IOT02A Board Support-->
+    <board vendor="STMicroelectronics" name="B-U585I-IOT02A" revision="Rev.C"
+           salesContact="https://www.st.com/content/st_com/en/contact-us.html"
+           orderForm   ="https://www.st.com/en/evaluation-tools/B-U585I-IOT02A.html">
+      <description>STM32 Discovery development board with STM32U585E MCU</description>
+      <image small="Images/B-U585I-IOT02A_small.jpg"
+             large="Images/B-U585I-IOT02A_large.jpg" public="true"/>
+      <book category="overview"  name="https://www.st.com/en/evaluation-tools/B-U585I-IOT02A.html" title="Discovery kit for IoT node with STM32U5 series"/>
+      <book category="schematic" name="https://www.st.com/resource/en/schematic_pack/mb1551-u585i-c02_schematic.pdf" title="Schematics revC-02" public="true"/>
+      <book category="manual"    name="https://www.st.com/resource/en/user_manual/um2839-discovery-kit-for-iot-node-with-stm32u5-series-stmicroelectronics.pdf" title="User Manual" public="true"/>
+      <book category="other"     name="Documents/README.md"                                        title="Guide"              public="true"/>
+      <mountedDevice    deviceIndex="0" Dvendor="STMicroelectronics:13" Dname="STM32U585AIIx"/>
+      <compatibleDevice deviceIndex="0" Dvendor="STMicroelectronics:13" DsubFamily="STM32U585"/>
+      <feature type="ODbg"          n="1"                name="On-board ST-LINK-V3E"/>
+      <feature type="ROM"           n="1"                name="512-Mbit Octal-SPI Flash memory"/>
+      <feature type="RAM"           n="1"                name="64-Mbit octal-SPI PSRAM"/>
+      <feature type="MemoryOther"   n="1"                name="256-Kbit I2C EEPROM"/>
+      <feature type="PWR"           n="6"                name="USB Powered"/>
+      <feature type="PWR"           n="3"  m="5"         name="External Supply"/>
+      <feature type="ConnOther"     n="1"                name="802.11 b/g/n compliant Wi-Fi® module from MXCHIP"/>
+      <feature type="ConnOther"     n="1"                name="Bluetooth Low Energy from STMicroelectronics"/>
+      <feature type="Accelerometer" n="1"                name="3D digital Accelerometer"/>
+      <feature type="Gyro"          n="1"                name="3D Gyroscope"/>
+      <feature type="SensOther"     n="1"                name="3-axis magnetometer"/>
+      <feature type="SensOther"     n="1"                name="Relative humidity sensor"/>
+      <feature type="TempSens"      n="1"                name="Temperature sensor"/>
+      <feature type="PressSens"     n="1"                name="Pressure sensor, 260-1260 hPa absolute digital output barometer"/>
+      <feature type="LightSens"     n="1"                name="Ambient-light sensor"/>
+      <feature type="SensOther"     n="1"                name="Time-of-Flight 8x8 Multizone Ranging Sensor"/>
+      <feature type="MIC"           n="2"                name="Digital microphones"/>
+      <feature type="Other"         n="1"                name="Authentication and security for peripherals and IoT devices from STMicrolectronic"/>
+      <feature type="Button"        n="2"                name="Push-Buttons for Reset and User"/>
+      <feature type="LED"           n="7"                name="2 User LEDs"/>
+      <feature type="USB"           n="1"                name="USB Type-C Sink device FS"/>
+      <feature type="ArduinoFF"     n="1"                name="ARDUINO® Uno V3 expansion connectors"/>
+      <feature type="ConnOther"     n="1"                name="Camera module expansion connector"/>
+      <feature type="ConnOther"     n="2"                name="STMod+ expansion connectors"/>
+      <feature type="ConnOther"     n="1"                name="Pmod expansion connector"/>
+      <debugInterface adapter="ST-Link" connector="Micro-USB"/>
+      <debugProbe connector="Micro-USB" debugClock="10000000" debugLink="swd" name="ST-Link"/>
+    </board>
+  </boards>
+
+  <examples>
+    <example name="Blinky" doc="README.md" folder="Projects/Blinky">
+      <description>CMSIS-RTOS2 Blinky example with VIO</description>
+      <board name="B-U585I-IOT02A" vendor="STMicroelectronics"/>
+      <project>
+        <environment name="uv" load="Blinky.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="CMSIS"        Cgroup="CORE"/>
+        <component Cclass="Device"       Cgroup="Startup"/>
+        <component Cclass="CMSIS"        Cgroup="RTOS"/>
+        <component Cclass="CMSIS Driver" Cgroup="VIO"/>
+        <category>Getting Started</category>
+      </attributes>
+    </example>
+
+    <example name="Platform" doc="README.md" folder="Projects/Platform">
+      <description>CMSIS-RTOS2 Platform example with VIO</description>
+      <board name="B-U585I-IOT02A" vendor="STMicroelectronics"/>
+      <project>
+        <environment name="uv" load="Platform.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="CMSIS"        Cgroup="CORE"/>
+        <component Cclass="Device"       Cgroup="Startup"/>
+        <component Cclass="CMSIS"        Cgroup="RTOS"/>
+        <component Cclass="CMSIS Driver" Cgroup="VIO"/>
+        <component Cclass="CMSIS Driver" Cgroup="WiFi"/>
+        <category>Getting Started</category>
+      </attributes>
+    </example>
+  </examples>
+</package>
