@@ -7,6 +7,9 @@
   <url>https://github.com/MDK-Packs/Pack/raw/master/Paho_MQTT/</url>
   <license>edl-v10.txt</license>
   <releases>
+    <release version="1.0.4" date="2022-08-30">
+      Updated to use mbedTLS 3.1.0
+    </release>
     <release version="1.0.3" date="2021-09-16">
       Updated MQTTClient-C Platform (corrected Network Initialization)
       Components made available also for Cortex-M35P and Cortex-M55
@@ -23,7 +26,7 @@
   </releases>
   <requirements>
     <packages>
-      <package vendor="ARM" name="mbedTLS" version="1.5.0-0"/>
+      <package vendor="ARM" name="mbedTLS" version="3.1.0"/>
     </packages>
   </requirements>
   <conditions>
@@ -51,6 +54,7 @@
       <require Cclass="CMSIS" Cgroup="RTOS2"/>
       <require Cclass="IoT Utility" Cgroup="Socket" Capiversion="1.0.0"/>
       <require Cclass="IoT Utility" Cgroup="MQTTPacket"/>
+      <require Cclass="Security" Cgroup="mbed TLS" Cversion="3.1.0"/>
     </condition>
   </conditions>
   <components>
@@ -75,7 +79,7 @@
         <file category="source"  name="MQTTPacket/src/MQTTUnsubscribeServer.c"/>
       </files>
     </component>
-    <component Cclass="IoT Client" Cgroup="MQTTClient-C" Cversion="1.1.1" condition="MQTTClient-C">
+    <component Cclass="IoT Client" Cgroup="MQTTClient-C" Cversion="1.1.2" condition="MQTTClient-C">
       <description>Paho MQTTClient-C</description>
       <RTE_Components_h>
         <!-- the following content goes into file 'RTE_Components.h' -->

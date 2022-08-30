@@ -2,7 +2,7 @@
 <index schemaVersion="1.0.0" xs:noNamespaceSchemaLocation="PackIndex.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance">
   <vendor>MDK-Packs</vendor>
   <url>https://github.com/MDK-Packs/Pack/raw/master/</url>
-  <timestamp>2022-05-30T09:00:00</timestamp>
+  <timestamp>2022-08-30T09:00:00</timestamp>
   <pindex>
     <pdsc url="https://github.com/MDK-Packs/Pack/raw/master/32L4R9IDISCOVERY_BSP/"    vendor="Keil"      name="32L4R9IDISCOVERY_BSP"    version="1.0.0"/>
     <pdsc url="https://github.com/MDK-Packs/Pack/raw/master/AWS_IoT_Device/"          vendor="MDK-Packs" name="AWS_IoT_Device"          version="2.0.0-beta"/>
@@ -23,7 +23,7 @@
     <pdsc url="https://github.com/MDK-Packs/Pack/raw/master/NUCLEO-G474RE_BSP/"       vendor="Keil"      name="NUCLEO-G474RE_BSP"       version="1.0.0"/>
     <pdsc url="https://github.com/MDK-Packs/Pack/raw/master/NUCLEO-H743ZI_BSP/"       vendor="Keil"      name="NUCLEO-H743ZI_BSP"       version="2.0.0"/>
     <pdsc url="https://github.com/MDK-Packs/Pack/raw/master/NUCLEO-L552ZE-Q_BSP/"     vendor="Keil"      name="NUCLEO-L552ZE-Q_BSP"     version="1.2.0"/>
-    <pdsc url="https://github.com/MDK-Packs/Pack/raw/master/Paho_MQTT/"               vendor="MDK-Packs" name="Paho_MQTT"               version="1.0.3"/>
+    <pdsc url="https://github.com/MDK-Packs/Pack/raw/master/Paho_MQTT/"               vendor="MDK-Packs" name="Paho_MQTT"               version="1.0.4"/>
     <pdsc url="https://github.com/MDK-Packs/Pack/raw/master/PKCS11/"                  vendor="Arm-Packs" name="PKCS11"                  version="1.0.0"/>
     <pdsc url="https://github.com/MDK-Packs/Pack/raw/master/QCA400x_Host_Driver_SDK/" vendor="MDK-Packs" name="QCA400x_Host_Driver_SDK" version="1.1.1"/>
     <pdsc url="https://github.com/MDK-Packs/Pack/raw/master/QCA400x_WiFi_Driver/"     vendor="MDK-Packs" name="QCA400x_WiFi_Driver"     version="1.1.0"/>
