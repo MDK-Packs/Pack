@@ -35,6 +35,6 @@
     <pdsc url="https://github.com/MDK-Packs/Pack/raw/master/STM32L562E-DK_BSP/"       vendor="Keil"      name="STM32L562E-DK_BSP"       version="1.3.0"/>
     <pdsc url="https://github.com/MDK-Packs/Pack/raw/master/TinyCBOR/"                vendor="MDK-Packs" name="TinyCBOR"                version="1.0.1"/>
     <pdsc url="https://github.com/MDK-Packs/Pack/raw/master/Unity/"                   vendor="Arm-Packs" name="Unity"                   version="1.0.0"/>
-    <pdsc url="https://github.com/MDK-Packs/Pack/raw/master/Watson_IoT_Device/"       vendor="MDK-Packs" name="Watson_IoT_Device"       version="1.0.3"/>
+    <pdsc url="https://github.com/MDK-Packs/Pack/raw/master/Watson_IoT_Device/"       vendor="MDK-Packs" name="Watson_IoT_Device"       version="1.0.4"/>
   </pindex>
 </index>

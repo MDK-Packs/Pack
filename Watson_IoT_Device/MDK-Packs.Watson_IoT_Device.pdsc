@@ -7,6 +7,9 @@
   <url>https://github.com/MDK-Packs/Pack/raw/master/Watson_IoT_Device/</url>
   <license>LICENSE.txt</license>
   <releases>
+    <release version="1.0.4" date="2022-08-30">
+      Updated to use mbedTLS 3.1.0
+    </release>
     <release version="1.0.3" date="2021-09-16">
       Fixed potential Hard Fault (use snprintf instead of sprintf)
       Components made available also for Cortex-M35P and Cortex-M55
@@ -24,8 +27,8 @@
   </releases>
   <requirements>
     <packages>
-      <package vendor="ARM"       name="mbedTLS"   version="1.5.0-0"/>
-      <package vendor="MDK-Packs" name="Paho_MQTT" version="1.0.0-0"/>
+      <package vendor="ARM"       name="mbedTLS"   version="3.1.0"/>
+      <package vendor="MDK-Packs" name="Paho_MQTT" version="1.0.0"/>
     </packages>
   </requirements>
   <conditions>
@@ -51,7 +54,7 @@
       <require condition="Cortex-M Device"/>
       <require Cclass="CMSIS" Cgroup="CORE" Cversion="5.0.1"/>
       <require Cclass="CMSIS" Cgroup="RTOS2"/>
-      <require Cclass="Security" Cgroup="mbed TLS"/>
+      <require Cclass="Security" Cgroup="mbed TLS" Cversion="3.1.0"/>
       <require Cclass="IoT Utility" Cgroup="Socket" Capiversion="1.0.0"/>
       <require Cclass="IoT Utility" Cgroup="MQTTPacket"/>
       <require Cclass="IoT Client" Cgroup="MQTTClient-C"/>
@@ -59,7 +62,7 @@
     </condition>
   </conditions>
   <components>
-    <component Cclass="IoT Client" Cgroup="Watson" Cversion="1.0.2" condition="Watson IoT Client">
+    <component Cclass="IoT Client" Cgroup="Watson" Cversion="1.0.3" condition="Watson IoT Client">
       <description>IBM Watson Cloud IoT Device Client</description>
       <RTE_Components_h>
         <!-- the following content goes into file 'RTE_Components.h' -->
