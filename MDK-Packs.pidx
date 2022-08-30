@@ -6,7 +6,7 @@
   <pindex>
     <pdsc url="https://github.com/MDK-Packs/Pack/raw/master/32L4R9IDISCOVERY_BSP/"    vendor="Keil"      name="32L4R9IDISCOVERY_BSP"    version="1.0.0"/>
     <pdsc url="https://github.com/MDK-Packs/Pack/raw/master/AWS_IoT_Device/"          vendor="MDK-Packs" name="AWS_IoT_Device"          version="2.0.0-beta"/>
-    <pdsc url="https://github.com/MDK-Packs/Pack/raw/master/Azure_IoT/"               vendor="MDK-Packs" name="Azure_IoT"               version="1.0.3"/>
+    <pdsc url="https://github.com/MDK-Packs/Pack/raw/master/Azure_IoT/"               vendor="MDK-Packs" name="Azure_IoT"               version="1.0.4"/>
     <pdsc url="https://github.com/MDK-Packs/Pack/raw/master/B-L475E-IOT01A_BSP/"      vendor="Keil"      name="B-L475E-IOT01A_BSP"      version="1.0.1"/>
     <pdsc url="https://github.com/MDK-Packs/Pack/raw/master/B-U585I-IOT02A_BSP/"      vendor="Keil"      name="B-U585I-IOT02A_BSP"      version="1.0.0"/>
     <pdsc url="https://github.com/MDK-Packs/Pack/raw/master/cJSON/"                   vendor="MDK-Packs" name="cJSON"                   version="1.0.0"/>
