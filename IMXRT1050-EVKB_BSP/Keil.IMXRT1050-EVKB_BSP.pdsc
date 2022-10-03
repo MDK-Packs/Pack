@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<package xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd" schemaVersion="1.7.2">
-  <vendor>Keil</vendor>
+<package xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd" schemaVersion="1.7.7">
   <name>IMXRT1050-EVKB_BSP</name>
+  <vendor>Keil</vendor>
   <description>NXP IMXRT1050-EVKB board support pack</description>
   <url>https://github.com/MDK-Packs/Pack/raw/master/IMXRT1050-EVKB_BSP/</url>
   <repository type="git">https://github.com/MDK-Packs/IMXRT1050-EVKB_BSP.git</repository>
 
   <releases>
+    <release version="1.1.0" date="2022-10-03">
+      Synchronize with NXP MIMXRT1052_DFP 15.0.0 and NXP EVKB-IMXRT1050_BSP 15.0.0
+      Platform project:
+      - add support for Audio
+    </release>
     <release version="1.0.1" date="2021-09-29">
       Added board features to board description
     </release>
@@ -23,8 +28,8 @@
 
   <requirements>
     <packages>
-      <package vendor="NXP" name="MIMXRT1052_DFP"     version="13.1.0-0"/>
-      <package vendor="NXP" name="EVKB-IMXRT1050_BSP" version="13.1.0-0"/>
+      <package vendor="NXP" name="MIMXRT1052_DFP"     version="15.0.0-0"/>
+      <package vendor="NXP" name="EVKB-IMXRT1050_BSP" version="15.0.0-0"/>
       <package vendor="ARM" name="CMSIS"              version="5.8.0"/>
     </packages>
   </requirements>
@@ -49,6 +54,7 @@
       <description>Virtual I/O IMXRT1050-EVKB</description>
       <require condition="MIMXRT1052 CMSIS"/>
       <require Cclass="Board Support" Cgroup="SDK Project Template"/>
+      <require Cclass="Device" Cgroup="SDK Drivers" Csub="fxos8700cq"/>
     </condition>
   </conditions>
 
