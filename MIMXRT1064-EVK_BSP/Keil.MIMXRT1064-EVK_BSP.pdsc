@@ -7,6 +7,14 @@
   <repository type="git">https://github.com/MDK-Packs/MIMXRT1064-EVK_BSP.git</repository>
 
   <releases>
+    <release version="1.3.1" date="2022-11-30">
+      Synchronize with NXP:MIMXRT1064_DFP 15.1.0 and NXP:EVK-MIMXRT1064_BSP 15.1.0
+      Drivers:
+      - CMSIS-Driver VIO:
+      -- Correct variables initialization to avoid compiler warnings
+      Example projects:
+      - Add BOARD_InitBootPeripherals() function call to main.c module
+    </release>
     <release version="1.3.0" date="2022-10-03">
       Synchronize with NXP:MIMXRT1064_DFP 15.0.0 and NXP:EVK-MIMXRT1064_BSP 15.0.0
       Correct device in board description attribute 'mountedDevice'
@@ -44,8 +52,8 @@
 
   <requirements>
     <packages>
-      <package vendor="NXP" name="MIMXRT1064_DFP"     version="15.0.0-0"/>
-      <package vendor="NXP" name="EVK-MIMXRT1064_BSP" version="15.0.0-0"/>
+      <package vendor="NXP" name="MIMXRT1064_DFP"     version="15.1.0-0"/>
+      <package vendor="NXP" name="EVK-MIMXRT1064_BSP" version="15.1.0-0"/>
       <package vendor="ARM" name="CMSIS"              version="5.7.0"/>
     </packages>
   </requirements>
@@ -62,7 +70,7 @@
   <conditions>
     <condition id="MIMXRT1064 CMSIS">
       <description>NXP i.MX RT 1064 device and CMSIS-CORE</description>
-      <require Dvendor="NXP:11" Dname="MIMXRT106*"/>
+      <require Dvendor="NXP:11" Dname="MIMXRT1064*"/>
       <require Cclass="CMSIS" Cgroup="CORE"/>
     </condition>
 
@@ -75,7 +83,7 @@
 
   <components>
     <!-- VIO component for MIMXRT1064-EVK -->
-    <component Cclass="CMSIS Driver" Cgroup="VIO" Csub="Board" Cvariant="MIMXRT1064-EVK" Cversion="1.0.1" Capiversion="0.1.0"   condition="MIMXRT1064-EVK VIO">
+    <component Cclass="CMSIS Driver" Cgroup="VIO" Csub="Board" Cvariant="MIMXRT1064-EVK" Cversion="1.0.2" Capiversion="0.1.0"   condition="MIMXRT1064-EVK VIO">
       <description>Virtual I/O implementation for MIMXRT1064-EVK VIO</description>
       <RTE_Components_h>
         #define RTE_VIO_BOARD

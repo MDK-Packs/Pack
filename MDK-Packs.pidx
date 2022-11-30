@@ -2,7 +2,7 @@
 <index schemaVersion="1.0.0" xs:noNamespaceSchemaLocation="PackIndex.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance">
   <vendor>MDK-Packs</vendor>
   <url>https://github.com/MDK-Packs/Pack/raw/master/</url>
-  <timestamp>2022-10-03T09:00:00</timestamp>
+  <timestamp>2022-11-30T12:00:00</timestamp>
   <pindex>
     <pdsc url="https://github.com/MDK-Packs/Pack/raw/master/32L4R9IDISCOVERY_BSP/"    vendor="Keil"      name="32L4R9IDISCOVERY_BSP"    version="1.0.0"/>
     <pdsc url="https://github.com/MDK-Packs/Pack/raw/master/AWS_IoT_Device/"          vendor="MDK-Packs" name="AWS_IoT_Device"          version="2.0.0-beta"/>
@@ -18,7 +18,7 @@
     <pdsc url="https://github.com/MDK-Packs/Pack/raw/master/LPC55S6x_TFM-PF/"         vendor="Keil"      name="LPC55S6x_TFM-PF"         version="1.1.0"/>
     <pdsc url="https://github.com/MDK-Packs/Pack/raw/master/LPCXpresso55S69_BSP/"     vendor="Keil"      name="LPCXpresso55S69_BSP"     version="1.1.1"/>
     <pdsc url="https://github.com/MDK-Packs/Pack/raw/master/mbedCrypto/"              vendor="ARM"       name="mbedCrypto"              version="3.0.1"/>
-    <pdsc url="https://github.com/MDK-Packs/Pack/raw/master/MIMXRT1064-EVK_BSP/"      vendor="Keil"      name="MIMXRT1064-EVK_BSP"      version="1.3.0"/>
+    <pdsc url="https://github.com/MDK-Packs/Pack/raw/master/MIMXRT1064-EVK_BSP/"      vendor="Keil"      name="MIMXRT1064-EVK_BSP"      version="1.3.1"/>
     <pdsc url="https://github.com/MDK-Packs/Pack/raw/master/NUCLEO-G0B1RE_BSP/"       vendor="Keil"      name="NUCLEO-G0B1RE_BSP"       version="1.0.0"/>
     <pdsc url="https://github.com/MDK-Packs/Pack/raw/master/NUCLEO-G474RE_BSP/"       vendor="Keil"      name="NUCLEO-G474RE_BSP"       version="1.0.0"/>
     <pdsc url="https://github.com/MDK-Packs/Pack/raw/master/NUCLEO-H743ZI_BSP/"       vendor="Keil"      name="NUCLEO-H743ZI_BSP"       version="2.0.0"/>
