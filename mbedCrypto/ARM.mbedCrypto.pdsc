@@ -7,6 +7,9 @@
   <url>https://github.com/MDK-Packs/Pack/raw/master/mbedCrypto/</url>
   <repository type="git">https://github.com/MDK-Packs/mbedCrypto.git</repository>
   <releases>
+    <release version="3.0.2" date="2023-03-17" deprecated="2023-03-17">
+	  This pack and contained software is no longer maintained.
+	</release>
     <release version="3.0.1" date="2020-06-05">
       Release based on mbed-crypto V3.0.1
     </release>
