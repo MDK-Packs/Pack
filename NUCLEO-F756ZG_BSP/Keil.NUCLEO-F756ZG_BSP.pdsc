@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package schemaVersion="1.7.28" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="https://raw.githubusercontent.com/Open-CMSIS-Pack/Open-CMSIS-Pack-Spec/v1.7.28/schema/PACK.xsd">
+  <name>NUCLEO-F756ZG_BSP</name>
+  <vendor>Keil</vendor>
+  <description>STMicroelectronics STM32F7 Series NUCLEO-F756ZG Board Support Pack</description>
+  <url>https://github.com/MDK-Packs/Pack/raw/master/NUCLEO-F756ZG_BSP/</url>
+  <repository type="git">https://github.com/MDK-Packs/NUCLEO-F756ZG_BSP.git</repository>
+  <license>LICENSE</license>
+
+  <releases>
+   <release date="2024-02-26" version="1.0.0">
+      Initial release.
+    </release>
+  </releases>
+
+  <keywords>
+    <!-- keywords for indexing -->
+    <keyword>ST</keyword>
+    <keyword>Board Support Pack</keyword>
+    <keyword>STM32F7</keyword>
+    <keyword>NUCLEO-F756ZG</keyword>
+  </keywords>
+
+  <requirements>
+    <packages>
+      <package vendor="Keil" name="STM32F7xx_DFP" version="2.16.0"/>
+    </packages>
+  </requirements>
+
+  <conditions>
+    <condition id="STM32F756">
+      <description>STMicroelectronics STM32F756 Devices</description>
+      <require Dvendor="STMicroelectronics:13" Dname="STM32F756*"/>
+    </condition>
+    
+    <!-- NUCLEO-F756ZG BSP Conditions -->
+    <condition id="NUCLEO-F756ZG BSP">
+      <description>STMicroelectronics NUCLEO-F756ZG BSP</description>
+      <require condition="STM32F756"/>
+      <require Cclass="Device" Cgroup="STM32Cube HAL" Csub="Common"/>
+      <require Cclass="Device" Cgroup="STM32Cube HAL" Csub="EXTI"/>
+      <require Cclass="Device" Cgroup="STM32Cube HAL" Csub="GPIO"/>
+      <require Cclass="Device" Cgroup="STM32Cube HAL" Csub="UART"/>
+    </condition>
+    <condition id="NUCLEO-F756ZG VIO">
+      <description>Virtual I/O NUCLEO-F756ZG</description>
+      <require condition="STM32F756"/>
+      <require Cclass="Board Support" Cgroup="Drivers" Csub="Basic I/O"/>
+    </condition>
+  </conditions>
+
+  <components>
+    <bundle Cbundle="NUCLEO-F756ZG" Cclass="Board Support" Cversion="1.0.0">
+      <description>STMicroelectronics NUCLEO-F756ZG Board</description>
+      <doc></doc>
+      <component Cgroup="Drivers" Csub="Basic I/O" condition="NUCLEO-F756ZG BSP">
+        <description>LEDs, push-buttons and COM ports for NUCLEO-F756ZG Board</description>
+        <files>
+          <file category="header" name="Drivers/STM32F7xx_Nucleo_144/stm32f7xx_nucleo_144.h"/>
+          <file category="source" name="Drivers/STM32F7xx_Nucleo_144/stm32f7xx_nucleo_144.c"/>
+        </files>
+      </component>
+    </bundle>
+
+    <!-- VIO component for NUCLEO-F756ZG -->
+    <component Cclass="CMSIS Driver" Cgroup="VIO" Csub="Board" Cvariant= "NUCLEO-F756ZG" Cversion="1.0.0" Capiversion="1.0.0"   condition="NUCLEO-F756ZG VIO">
+      <description>Virtual I/O implementation for NUCLEO-F756ZG</description>
+      <RTE_Components_h>
+        #define RTE_VIO_BOARD
+        #define RTE_VIO_NUCLEO_F756ZG
+      </RTE_Components_h>
+      <files>
+        <file category="source" name="CMSIS/Driver/vio_NUCLEO-F756ZG.c"/>
+      </files>
+    </component>
+  </components>
+
+  <boards>
+    <!-- NUCLEO-F756ZG Board Support -->
+    <board vendor="STMicroelectronics" name="NUCLEO-F756ZG" revision="Rev.B"
+           salesContact="https://www.st.com/content/st_com/en/contact-us.html"
+           orderForm   ="https://www.st.com/en/evaluation-tools/nucleo-f756Zg.html">
+      <description>STM32 Nucleo development board with STM32F756 MCU</description>
+      <image small="Images/NUCLEO_small.jpg"
+             large="Images/NUCLEO_large.jpg" public="true"/>
+      <book category="overview"  name="https://www.st.com/en/evaluation-tools/nucleo-f756Zg.html" title="STM32 Nucleo board"/>
+      <book category="overview"  name="https://www.st.com/resource/en/data_brief/nucleo-f756Zg.pdf" title="Data brief" public="true"/>
+      <book category="setup"     name="https://www.st.com/resource/en/user_manual/um1727-getting-started-with-stm32-nucleo-board-software-development-tools-stmicroelectronics.pdf" title="Getting started" public="true"/>
+      <book category="manual"    name="https://www.st.com/resource/en/user_manual/um1974-stm32-nucleo144-boards-mb1137-stmicroelectronics.pdf" title="User Manual" public="true"/>
+      <book category="schematic" name="https://www.st.com/resource/en/schematic_pack/nucleo_144pins_sch.zip" title="Schematics" public="true"/>
+      <book category="other"     name="Documents/README.md" title="Guide" public="true"/>
+      <mountedDevice    deviceIndex="0" Dvendor="STMicroelectronics:13" Dname="STM32F756ZGTx"/> 
+      <compatibleDevice deviceIndex="0" Dvendor="STMicroelectronics:13" DsubFamily="STM32F756"/>
+      <feature type="ODbg"      n="1"              name="On-board ST-LINK/V2-1"/>
+      <feature type="PWR"       n="4"              name="USB VBUS, ext. VIN, ext. 5V, ext +3.3V"/>
+      <feature type="CustomFF"  n="2"              name="STMicroelectronics Morpho connector"/>
+      <feature type="ArduinoFF" n="2"              name="STMicroelectronics Arduino connector"/>
+      <feature type="ETH"       n="1"              name="10/100 Ethernet Port"/>
+      <feature type="USB"       n="1"              name="USB re-enumeration capability"/>
+      <feature type="Button"    n="2"              name="Push-buttons: User and Reset"/>
+      <feature type="LED"       n="5"              name="LEDs: COM, Power, User LEDs"/>
+      <debugInterface adapter="ST-Link" connector="Micro-USB"/>
+      <debugProbe connector="Micro-USB" debugClock="10000000" debugLink="swd" name="ST-Link"/>
+    </board>
+  </boards>
+
+  <examples> 
+    <example name="Blinky" doc="README.md" folder="Projects/Blinky">
+      <description>CMSIS-RTOS2 Blinky example with VIO</description>
+      <board name="NUCLEO-F756ZG" vendor="STMicroelectronics"/>
+      <project>
+        <environment name="csolution" load="Blinky.csolution"/>
+      </project>
+      <attributes>
+        <component Cclass="CMSIS" Cgroup="CORE"/>
+        <component Cclass="Device" Cgroup="Startup"/>
+        <component Cclass="CMSIS" Cgroup="RTOS"/>
+        <component Cclass="CMSIS Driver" Cgroup="VIO"/>
+        <category>Getting Started</category>
+      </attributes>
+    </example>
+
+  </examples>
+</package>
