@@ -1,12 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<package xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd" schemaVersion="1.7.7">
+<package schemaVersion="1.7.28" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="https://raw.githubusercontent.com/Open-CMSIS-Pack/Open-CMSIS-Pack-Spec/v1.7.28/schema/PACK.xsd">
   <name>IMXRT1050-EVKB_BSP</name>
   <vendor>Keil</vendor>
   <description>NXP IMXRT1050-EVKB board support pack</description>
   <url>https://github.com/MDK-Packs/Pack/raw/master/IMXRT1050-EVKB_BSP/</url>
   <repository type="git">https://github.com/MDK-Packs/IMXRT1050-EVKB_BSP.git</repository>
+  <license>LICENSE</license>
 
   <releases>
+    <release version="1.2.0" date="2024-04-10">
+      Synchronize with NXP MIMXRT1052_DFP 17.0.0 and NXP EVKB-IMXRT1050_BSP 17.0.0
+      Pack Description:
+      - Add LICENSE file
+      - Update schemaVersion (1.7.28)
+      Drivers:
+      - CMSIS-Driver VIO:
+      -- Update VIO to API 1.0.0
+      Example projects:
+      - Update projects to CMSIS 6
+      - Migrate Event Recorder component (from Compiler to CMSIS-View pack)
+      - Add cmsis_core5.h legacy header file
+      - Platform:
+      -- Migrate STDIO components (from Compiler to CMSIS-Compiler pack)
+      -- Update README.md
+    </release>
     <release version="1.1.1" date="2022-11-30">
       Synchronize with NXP MIMXRT1052_DFP 15.1.0 and NXP EVKB-IMXRT1050_BSP 15.1.0
       Drivers:
@@ -38,9 +55,9 @@
 
   <requirements>
     <packages>
-      <package vendor="NXP" name="MIMXRT1052_DFP"     version="15.1.0-0"/>
-      <package vendor="NXP" name="EVKB-IMXRT1050_BSP" version="15.1.0-0"/>
-      <package vendor="ARM" name="CMSIS"              version="5.8.0"/>
+      <package vendor="NXP" name="MIMXRT1052_DFP"     version="17.0.0-0"/>
+      <package vendor="NXP" name="EVKB-IMXRT1050_BSP" version="17.0.0-0"/>
+      <package vendor="ARM" name="CMSIS"              version="6.0.0"/>
     </packages>
   </requirements>
 
@@ -70,7 +87,7 @@
 
   <components>
     <!-- VIO component for IMXRT1050-EVKB -->
-    <component Cclass="CMSIS Driver" Cgroup="VIO" Csub="Board" Cvariant="IMXRT1050-EVKB" Cversion="1.1.0" Capiversion="0.1.0"   condition="IMXRT1050-EVKB VIO">
+    <component Cclass="CMSIS Driver" Cgroup="VIO" Csub="Board" Cvariant="IMXRT1050-EVKB" Cversion="2.0.0" Capiversion="1.0.0"   condition="IMXRT1050-EVKB VIO">
       <description>Virtual I/O implementation for IMXRT1050-EVKB VIO</description>
       <RTE_Components_h>
         #define RTE_VIO_BOARD
