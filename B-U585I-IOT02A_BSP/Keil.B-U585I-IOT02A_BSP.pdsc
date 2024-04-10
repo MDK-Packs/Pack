@@ -1,12 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<package xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd" schemaVersion="1.7.2">
+<package schemaVersion="1.7.28" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="https://raw.githubusercontent.com/Open-CMSIS-Pack/Open-CMSIS-Pack-Spec/v1.7.28/schema/PACK.xsd">
   <name>B-U585I-IOT02A_BSP</name>
   <vendor>Keil</vendor>
   <description>STMicroelectronics STM32U5 Series B-U585I-IOT02A Board Support Pack</description>
   <url>https://github.com/MDK-Packs/Pack/raw/master/B-U585I-IOT02A_BSP/</url>
   <repository type="git">https://github.com/MDK-Packs/B-U585I-IOT02A_BSP.git</repository>
+  <license>LICENSE</license>
 
   <releases>
+    <release version="1.1.0" date="2024-04-10">
+      Synchronized with STM32CubeU5 Firmware Package version V1.2.0
+      Synchronized with CMSIS v6
+      Pack Description:
+      - Updated schemaVersion (1.7.28)
+      - Added LICENSE file
+      - Added external memory information
+      Drivers:
+      - CMSIS-Driver VIO updated to API 1.0.0
+      - Updated requirements for USB Power Delivery driver
+      Example projects:
+      - CMSIS-RTOS2 Blinky:
+      -- Updated CubeMx configuration to latest CubeMx
+      - CMSIS-RTOS2 Platform:
+      -- Updated CubeMx configuration to latest CubeMx
+      -- Enabled USB Device driver, USB PD BSP driver and necessary components
+      -- Enabled Environmental Sensors BSP driver and necessary components
+      - Middleware examples:
+      -- Added USB Device: HID, Mass Storage and Virtual COM examples
+      -- Added USB Host: Keyboard and Mass Storage examples
+    </release>
     <release version="1.0.0" date="2022-05-30">
       Board description and documentation for B-U585I-IOT02A
       Synchronized with STM32CubeU5 Firmware Package version V1.1.0
@@ -30,8 +52,8 @@
 
   <requirements>
     <packages>
-      <package vendor="Keil" name="STM32U5xx_DFP" version="2.0.0-0"/>
-      <package vendor="ARM"  name="CMSIS"         version="5.8.0-0"/>
+      <package vendor="Keil" name="STM32U5xx_DFP" version="2.1.0-0"/>
+      <package vendor="ARM"  name="CMSIS"         version="6.0.0-0"/>
     </packages>
   </requirements>
 
@@ -120,7 +142,9 @@
     <condition id="B-U585I-IOT02A BSP USB PD">
       <description>STMicroelectronics B-U585I-IOT02A BSP USB PD</description>
       <require condition="STM32U585"/>
+      <require Cclass="Device"        Cgroup="STM32Cube HAL" Csub="ADC"/>
       <require Cclass="Board Support" Cgroup="Drivers"       Csub="Basic I/O"/>
+      <require Cclass="Board Support" Cgroup="Drivers"       Csub="BUS"/>
       <require Cclass="Board Support" Cgroup="Components"    Csub="TCPP0203"/>
     </condition>
     <condition id="B-U585I-IOT02A BSP APS6408">
@@ -378,7 +402,7 @@
     </bundle>
 
     <!-- CMSIS VIO Driver component for B-U585I-IOT02A -->
-    <component Cclass="CMSIS Driver" Cgroup="VIO" Csub="Board" Cvariant= "B-U585I-IOT02A" Cversion="1.2.0" Capiversion="0.1.0" condition="B-U585I-IOT02A VIO">
+    <component Cclass="CMSIS Driver" Cgroup="VIO" Csub="Board" Cvariant= "B-U585I-IOT02A" Cversion="2.0.0" Capiversion="1.0.0" condition="B-U585I-IOT02A VIO">
       <description>Virtual I/O implementation for B-U585I-IOT02A</description>
       <RTE_Components_h>
         #define RTE_VIO_BOARD
@@ -419,6 +443,8 @@
       <book category="other"     name="Documents/README.md"                                        title="Guide"              public="true"/>
       <mountedDevice    deviceIndex="0" Dvendor="STMicroelectronics:13" Dname="STM32U585AIIx"/>
       <compatibleDevice deviceIndex="0" Dvendor="STMicroelectronics:13" DsubFamily="STM32U585"/>
+      <memory name="RAM-External"   access="rwx" start="0x90000000" size="0x00800000"/>
+      <memory name="Flash-External" access="rx"  start="0x70000000" size="0x04000000"/>
       <feature type="ODbg"          n="1"                name="On-board ST-LINK-V3E"/>
       <feature type="ROM"           n="1"                name="512-Mbit Octal-SPI Flash memory"/>
       <feature type="RAM"           n="1"                name="64-Mbit octal-SPI PSRAM"/>
@@ -478,6 +504,76 @@
         <component Cclass="CMSIS Driver" Cgroup="VIO"/>
         <component Cclass="CMSIS Driver" Cgroup="WiFi"/>
         <category>Getting Started</category>
+      </attributes>
+    </example>
+
+    <example name="USB Device HID" doc="Abstract.txt" folder="Projects/Middleware/USB/Device/HID">
+      <description>USB Human Interface Device providing access from PC to board LEDs and push buttons</description>
+      <board name="B-U585I-IOT02A" vendor="STMicroelectronics"/>
+      <project>
+        <environment name="uv" load="HID.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="USB" Cgroup="Device" Csub="HID"/>
+        <category>Middleware</category>
+        <category>USB Device</category>
+        <keyword>HID</keyword>
+      </attributes>
+    </example>
+
+    <example name="USB Device Mass Storage" doc="Abstract.txt" folder="Projects/Middleware/USB/Device/MassStorage">
+      <description>USB Mass Storage Device using RAM as storage media</description>
+      <board name="B-U585I-IOT02A" vendor="STMicroelectronics"/>
+      <project>
+        <environment name="uv" load="MassStorage.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="USB" Cgroup="Device" Csub="MSC"/>
+        <category>Middleware</category>
+        <category>USB Device</category>
+        <keyword>Memory Disk</keyword>
+      </attributes>
+    </example>
+
+    <example name="USB Device Virtual COM" doc="Abstract.txt" folder="Projects/Middleware/USB/Device/VirtualCOM">
+      <description>Bridge between PC USB Virtual COM Port and UART port (ST-Link Virtual COM Port)</description>
+      <board name="B-U585I-IOT02A" vendor="STMicroelectronics"/>
+      <project>
+        <environment name="uv" load="VirtualCOM.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="USB" Cgroup="Device" Csub="CDC"/>
+        <category>Middleware</category>
+        <category>USB Device</category>
+        <keyword>Virtual COM</keyword>
+      </attributes>
+    </example>
+
+    <example name="USB Host Mass Storage" doc="Abstract.txt" folder="Projects/Middleware/USB/Host/MassStorage">
+      <description>Simple Mass Storage example showing file access on the USB Memory Device</description>
+      <board name="B-U585I-IOT02A" vendor="STMicroelectronics"/>
+      <project>
+        <environment name="uv" load="MassStorage.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="USB" Cgroup="Host" Csub="MSC"/>
+        <category>Middleware</category>
+        <category>USB Host</category>
+        <keyword>Mass Storage</keyword>
+      </attributes>
+    </example>
+
+    <example name="USB Host Keyboard" doc="Abstract.txt" folder="Projects/Middleware/USB/Host/Keyboard">
+      <description>Simple example using USB Keyboard as input User Interface</description>
+      <board name="B-U585I-IOT02A" vendor="STMicroelectronics"/>
+      <project>
+        <environment name="uv" load="Keyboard.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="USB" Cgroup="Host" Csub="HID"/>
+        <category>Middleware</category>
+        <category>USB Host</category>
+        <keyword>Keyboard</keyword>
       </attributes>
     </example>
   </examples>
