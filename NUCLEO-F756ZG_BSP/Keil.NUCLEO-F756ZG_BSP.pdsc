@@ -8,7 +8,10 @@
   <license>LICENSE</license>
 
   <releases>
-   <release date="2024-02-26" version="1.0.0">
+    <release date="2024-04-16" version="1.0.1">
+      Fixed example project import problem on keil.arm.com.
+    </release>
+    <release date="2024-02-26" version="1.0.0">
       Initial release.
     </release>
   </releases>
@@ -109,7 +112,7 @@
       <description>CMSIS-RTOS2 Blinky example with VIO</description>
       <board name="NUCLEO-F756ZG" vendor="STMicroelectronics"/>
       <project>
-        <environment name="csolution" load="Blinky.csolution"/>
+        <environment name="csolution" load="Blinky.csolution.yml"/>
       </project>
       <attributes>
         <component Cclass="CMSIS" Cgroup="CORE"/>
