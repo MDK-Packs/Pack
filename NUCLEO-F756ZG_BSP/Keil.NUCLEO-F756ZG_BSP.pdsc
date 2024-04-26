@@ -8,6 +8,9 @@
   <license>LICENSE</license>
 
   <releases>
+    <release date="2024-04-26" version="1.1.0">
+      Remove example project. Available on https://github.com/Arm-Examples/Blinky_NUCLEO-F756ZG.
+    </release>
     <release date="2024-04-16" version="1.0.1">
       Fixed example project import problem on keil.arm.com.
     </release>
@@ -107,21 +110,4 @@
     </board>
   </boards>
 
-  <examples> 
-    <example name="Blinky" doc="README.md" folder="Projects/Blinky">
-      <description>CMSIS-RTOS2 Blinky example with VIO</description>
-      <board name="NUCLEO-F756ZG" vendor="STMicroelectronics"/>
-      <project>
-        <environment name="csolution" load="Blinky.csolution.yml"/>
-      </project>
-      <attributes>
-        <component Cclass="CMSIS" Cgroup="CORE"/>
-        <component Cclass="Device" Cgroup="Startup"/>
-        <component Cclass="CMSIS" Cgroup="RTOS"/>
-        <component Cclass="CMSIS Driver" Cgroup="VIO"/>
-        <category>Getting Started</category>
-      </attributes>
-    </example>
-
-  </examples>
 </package>
