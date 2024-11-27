@@ -1,13 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<package schemaVersion="1.6" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd">
+<package schemaVersion="1.7.37" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="https://raw.githubusercontent.com/Open-CMSIS-Pack/Open-CMSIS-Pack-Spec/v1.7.37/schema/PACK.xsd">
   <vendor>MDK-Packs</vendor>
   <name>IoT_Socket</name>
-  <description>Simple IP Socket (BSD like)</description>
+  <description overview="documentation/OVERVIEW.md">Simple IP Socket (BSD like)</description>
   <!-- web download link -->
   <url>https://github.com/MDK-Packs/Pack/raw/master/IoT_Socket/</url>
-  <license>LICENSE.txt</license>
+  <license>LICENSE</license>
+  <licenseSets>
+    <licenseSet id="all" default="true" gating="true">
+      <license name="LICENSE.txt" title="Apache 2.0 open-source license" spdx="Apache-2.0"/>
+    </licenseSet>
+  </licenseSets>
   <repository type="git">https://github.com/MDK-Packs/IoT_Socket.git</repository>
   <releases>
+    <release version="1.4.0" date="2024-11-27" tag="1.4.0">
+      Added IoT Socket implementation with FreeRTOS-Plus-TCP
+      Added IoT Socket implementation with VSocket
+      Updated IoT Socket implementation with MDK Network:
+      - added support for Network version 8
+      - fixed problem with socket operation in server mode
+      - corrected possible memset overflow
+      Updated IoT Socket implementation with lwIP:
+      - corrected iotSocketGetOpt/iotSocketSetOpt timeout options
+      Added Socket layers:
+      - VSocket
+      - FreeRTOS+TCP over Ethernet
+      - MDK Network over Ethernet
+      - WiFi
+    </release>
     <release version="1.3.0" date="2022-03-02">
       Added custom IoT Socket component
       Added IoT Socket Multiplexer component
@@ -53,24 +73,30 @@
       <accept Cbundle="MDK-Pro"    Cclass="Network" Cgroup="Socket"  Csub="BSD"        Cversion="7.9.0"/>
       <accept Cbundle="MDK-Plus"   Cclass="Network" Cgroup="Socket"  Csub="BSD"        Cversion="7.9.0"/>
       <accept Cbundle="MDK-Source" Cclass="Network" Cgroup="Socket"  Csub="BSD"        Cversion="7.9.0"/>
+      <accept Cbundle="MDK"        Cclass="Network" Cgroup="Socket"  Csub="BSD"        Cversion="8.0.0"/>
     </condition>
     <condition id="MDK Network DNS">
       <description>MDK Network DNS Client</description>
       <accept Cbundle="MDK-Pro"    Cclass="Network" Cgroup="Service" Csub="DNS Client" Cversion="7.9.0"/>
       <accept Cbundle="MDK-Plus"   Cclass="Network" Cgroup="Service" Csub="DNS Client" Cversion="7.9.0"/>
       <accept Cbundle="MDK-Source" Cclass="Network" Cgroup="Service" Csub="DNS Client" Cversion="7.9.0"/>
+      <accept Cbundle="MDK"        Cclass="Network" Cgroup="Service" Csub="DNS Client" Cversion="8.0.0"/>
     </condition>
-    <condition id="MDK Network Socket">
-      <description>MDK Network Socket</description>
+    <condition id="MDK Network Stack">
+      <description>MDK Network Stack</description>
       <require condition="MDK Network BSD"/>
       <require condition="MDK Network DNS"/>
     </condition>
-    <condition id="lwIP Socket">
-      <description>lwIP Socket</description>
+    <condition id="FreeRTOS-Plus-TCP Stack">
+      <description>FreeRTOS-Plus-TCP Network Stack</description>
+      <require Cclass="FreeRTOS" Cgroup="FreeRTOS+ TCP" Csub="Core Library"/>
+    </condition>
+    <condition id="lwIP Stack">
+      <description>lwIP Stack</description>
       <require Cbundle="lwIP" Cclass="Network" Cgroup="CORE"/>
     </condition>
-    <condition id="WiFi Driver Socket">
-      <description>WiFi Driver Socket</description>
+    <condition id="WiFi Driver">
+      <description>WiFi Driver</description>
       <require Cclass="CMSIS Driver" Cgroup="WiFi" Capiversion="1.1.0"/>
     </condition>
   </conditions>
@@ -85,18 +111,40 @@
         <file category="sourceC" name="template/iot_socket.c" attr="template" select="IoT Socket"/>
       </files>
     </component>
-    <component Cclass="IoT Utility" Cgroup="Socket" Csub="MDK Network" Capiversion="1.2.0" Cversion="1.2.1" condition="MDK Network Socket">
-      <description>IoT Socket implementation with MDK::Network</description>
+    <component Cclass="IoT Utility" Cgroup="Socket" Csub="VSocket" Capiversion="1.2.0" Cversion="1.0.0">
+      <description>IoT Socket implementation with VSocket</description>
       <RTE_Components_h>
         <!-- the following content goes into file 'RTE_Components.h' -->
         #define RTE_IoT_Socket                  /* IoT Socket */
-        #define RTE_IoT_Socket_MDK_Network      /* IoT Socket: MDK::Network */
+        #define RTE_IoT_Socket_VSocket          /* IoT Socket: VSocket */
+      </RTE_Components_h>
+      <files>
+        <file category="sourceC" name="source/vsocket/iot_socket.c"/>
+      </files>
+    </component>
+    <component Cclass="IoT Utility" Cgroup="Socket" Csub="MDK Network" Capiversion="1.2.0" Cversion="1.3.0" condition="MDK Network Stack">
+      <description>IoT Socket implementation with MDK Network</description>
+      <RTE_Components_h>
+        <!-- the following content goes into file 'RTE_Components.h' -->
+        #define RTE_IoT_Socket                  /* IoT Socket */
+        #define RTE_IoT_Socket_MDK_Network      /* IoT Socket: MDK Network */
       </RTE_Components_h>
       <files>
         <file category="sourceC" name="source/mdk_network/iot_socket.c"/>
       </files>
     </component>
-    <component Cclass="IoT Utility" Cgroup="Socket" Csub="lwIP" Capiversion="1.2.0" Cversion="1.0.3" condition="lwIP Socket">
+    <component Cclass="IoT Utility" Cgroup="Socket" Csub="FreeRTOS-Plus-TCP" Capiversion="1.2.0" Cversion="1.0.0" condition="FreeRTOS-Plus-TCP Stack">
+      <description>IoT Socket implementation with FreeRTOS+ TCP</description>
+      <RTE_Components_h>
+        <!-- the following content goes into file 'RTE_Components.h' -->
+        #define RTE_IoT_Socket                   /* IoT Socket */
+        #define RTE_IoT_Socket_FreeRTOS_Plus_TCP /* IoT Socket: FreeRTOS-Plus-TCP */
+      </RTE_Components_h>
+      <files>
+        <file category="sourceC" name="source/freertos_plus_tcp/iot_socket.c"/>
+      </files>
+    </component>
+    <component Cclass="IoT Utility" Cgroup="Socket" Csub="lwIP" Capiversion="1.2.0" Cversion="1.0.4" condition="lwIP Stack">
       <description>IoT Socket implementation with lwIP</description>
       <RTE_Components_h>
         <!-- the following content goes into file 'RTE_Components.h' -->
@@ -107,7 +155,7 @@
         <file category="sourceC" name="source/lwip/iot_socket.c"/>
       </files>
     </component>
-    <component Cclass="IoT Utility" Cgroup="Socket" Csub="WiFi" Capiversion="1.2.0" Cversion="1.0.0" condition="WiFi Driver Socket">
+    <component Cclass="IoT Utility" Cgroup="Socket" Csub="WiFi" Capiversion="1.2.0" Cversion="1.0.0" condition="WiFi Driver">
       <description>IoT Socket implementation with WiFi Driver</description>
       <RTE_Components_h>
         <!-- the following content goes into file 'RTE_Components.h' -->
@@ -131,4 +179,12 @@
       </files>
     </component>
   </components>
+
+  <csolution>
+    <clayer type="Socket" path="layer/VSocket"           file="Socket.clayer.yml" copy-to="Socket/VSocket"/>
+    <clayer type="Socket" path="layer/FreeRTOS_Plus_TCP" file="Socket.clayer.yml" copy-to="Socket/FreeRTOS_Plus_TCP"/>
+    <clayer type="Socket" path="layer/MDK_Network_ETH"   file="Socket.clayer.yml" copy-to="Socket/MDK_Network_ETH"/>
+    <clayer type="Socket" path="layer/WiFi"              file="Socket.clayer.yml" copy-to="Socket/WiFi"/>
+  </csolution>
+
 </package>
