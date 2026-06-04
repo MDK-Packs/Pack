@@ -1,12 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<package xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd" schemaVersion="1.7.7">
+<package schemaVersion="1.7.36" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="https://raw.githubusercontent.com/Open-CMSIS-Pack/Open-CMSIS-Pack-Spec/v1.7.36/schema/PACK.xsd">
   <vendor>Keil</vendor>
   <name>MIMXRT1064-EVK_BSP</name>
   <description>NXP MIMXRT1064-EVK board support pack</description>
   <url>https://github.com/MDK-Packs/Pack/raw/master/MIMXRT1064-EVK_BSP/</url>
   <repository type="git">https://github.com/MDK-Packs/MIMXRT1064-EVK_BSP.git</repository>
+  <license>LICENSES</license>
+  <licenseSets>
+    <licenseSet id="all" default="true" gating="true">
+      <license title="Apache-2.0 License for CMSIS add-ons" name="LICENSE-Apache-2.0"   spdx="Apache-2.0"/>
+      <license title="BSD-3-Clause License for NXP SDK"     name="LICENSE-BSD-3-Clause" spdx="BSD-3-Clause"/>
+    </licenseSet>
+  </licenseSets>
 
   <releases>
+    <release version="1.3.2" date="2026-06-04" deprecated="2026-06-04">
+      This Software Pack is no longer maintained
+      Reorganize Licenses:
+      - LICENSES (combined license file: Apache-2.0 and BSD-3-Clause)
+      - LICENSE-Apache-2.0 (for CMSIS add-ons)
+      - LICENSE-BSD-3-Clause (for NXP SDK)
+      Pack Description:
+      - Add LICENSE file
+      - Update schemaVersion (1.7.28)
+    </release>
     <release version="1.3.1" date="2022-11-30">
       Synchronize with NXP:MIMXRT1064_DFP 15.1.0 and NXP:EVK-MIMXRT1064_BSP 15.1.0
       Drivers:
@@ -83,7 +100,7 @@
 
   <components>
     <!-- VIO component for MIMXRT1064-EVK -->
-    <component Cclass="CMSIS Driver" Cgroup="VIO" Csub="Board" Cvariant="MIMXRT1064-EVK" Cversion="1.0.2" Capiversion="0.1.0"   condition="MIMXRT1064-EVK VIO">
+    <component Cclass="CMSIS Driver" Cgroup="VIO" Csub="Board" Cvariant="MIMXRT1064-EVK" Cversion="1.0.2" Capiversion="1.0.0"   condition="MIMXRT1064-EVK VIO">
       <description>Virtual I/O implementation for MIMXRT1064-EVK VIO</description>
       <RTE_Components_h>
         #define RTE_VIO_BOARD
